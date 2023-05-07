@@ -7,6 +7,8 @@ package view;
 import control.DosenControl;
 import exception.InputKosongException;
 import exception.NoIndukDosenException;
+import javax.swing.JOptionPane;
+import model.Dosen;
 
 /**
  *
@@ -15,6 +17,8 @@ import exception.NoIndukDosenException;
 public class DosenView extends javax.swing.JFrame {
     private DosenControl dosenControl;
     String action = null;
+    
+    
     /**
      * Creates new form DosenView
      */
@@ -44,7 +48,7 @@ public class DosenView extends javax.swing.JFrame {
         addBtn = new javax.swing.JButton();
         editBtn = new javax.swing.JButton();
         deleteBtn = new javax.swing.JButton();
-        inputSearch = new javax.swing.JTextField();
+        searchInput = new javax.swing.JTextField();
         searchBtn = new javax.swing.JButton();
         containerInputNID = new javax.swing.JPanel();
         nidLabel = new javax.swing.JLabel();
@@ -114,6 +118,11 @@ public class DosenView extends javax.swing.JFrame {
         titileContent.setText("DOSEN");
 
         addBtn.setText("Tambah");
+        addBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addBtnActionPerformed(evt);
+            }
+        });
 
         editBtn.setText("Ubah");
         editBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -123,8 +132,18 @@ public class DosenView extends javax.swing.JFrame {
         });
 
         deleteBtn.setText("Hapus");
+        deleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteBtnActionPerformed(evt);
+            }
+        });
 
         searchBtn.setText("Cari");
+        searchBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBtnActionPerformed(evt);
+            }
+        });
 
         containerInputNID.setPreferredSize(new java.awt.Dimension(300, 65));
 
@@ -219,8 +238,18 @@ public class DosenView extends javax.swing.JFrame {
         );
 
         saveBtn.setText("Simpan");
+        saveBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveBtnActionPerformed(evt);
+            }
+        });
 
         cancelBtn.setText("Batal");
+        cancelBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelBtnActionPerformed(evt);
+            }
+        });
 
         showDataPanel.setPreferredSize(new java.awt.Dimension(200, 200));
 
@@ -258,7 +287,7 @@ public class DosenView extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(88, 88, 88)
-                                .addComponent(inputSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(searchInput, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(ContainerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -286,7 +315,7 @@ public class DosenView extends javax.swing.JFrame {
                     .addComponent(addBtn)
                     .addComponent(editBtn)
                     .addComponent(deleteBtn)
-                    .addComponent(inputSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(searchBtn))
                 .addGap(18, 18, 18)
                 .addComponent(containerInputNID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -330,8 +359,99 @@ public class DosenView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
-        // TODO add your handling code here:
+        setComponent(true);
+        nidInput.setEnabled(false);
+        
+        action = "Ubah";
     }//GEN-LAST:event_editBtnActionPerformed
+
+    private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
+        setComponent(true);
+        clearText();
+        searchInput.setText("");
+        action = "Tambah";
+    }//GEN-LAST:event_addBtnActionPerformed
+
+    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
+       int getAnswer = JOptionPane.showConfirmDialog(rootPane, "Apakah Anda Yakin ingin Menghapus Data ??", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+       
+        if (getAnswer == JOptionPane.YES_OPTION) {
+            try{
+                dosenControl.deleteDataDosen(nidInput.getText());
+                clearText();
+                showDosen();
+                JOptionPane.showMessageDialog(null, "Data Berhasil dihapus");
+            }catch(Exception e){
+                System.out.println("Error : " + e.getMessage());
+            }
+        }
+    }//GEN-LAST:event_deleteBtnActionPerformed
+
+    private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
+        setEditDeleteBtn(true);
+        
+        setComponent(false);
+        
+        Dosen dosen = dosenControl.searchDataDosen(searchInput.getText());
+        
+        try{
+            if (dosen == null) {
+                clearText();
+                setEditDeleteBtn(false);
+                JOptionPane.showConfirmDialog(null, "Data Dosen Tidak ditemukan !!!", "Konfirmasi", JOptionPane.DEFAULT_OPTION);
+
+
+            }else{
+                nidInput.setText(dosen.getNomerIndukDosen());
+                namaInput.setText(dosen.getNama());
+                emailInput.setText(dosen.getEmail());
+                handphoneInput.setText(dosen.getNoHandphone());
+
+            }
+        
+        }catch (Exception e){
+            System.out.println("Error : " +e.getMessage());
+        }
+        
+        
+        
+    }//GEN-LAST:event_searchBtnActionPerformed
+
+    private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
+        
+        try{
+            inputKosongException();
+            noIndukDosenException();
+            
+            
+            Dosen d = new Dosen(nidInput.getText(), namaInput.getText(), emailInput.getText(), handphoneInput.getText());
+            
+            if ("Tambah".equals(action)) {
+                dosenControl.insertDataDosen(d);
+            }else if ("Edit".equals(action)) {
+                dosenControl.updateDataDosen(d, nidInput.getText());
+            }
+            
+            clearText();
+            showDosen();
+            setComponent(false);
+            setEditDeleteBtn(false);
+            
+        }catch(InputKosongException e){
+            JOptionPane.showMessageDialog(this, e.message());
+        }catch(NoIndukDosenException e){
+            JOptionPane.showMessageDialog(this, e.message());
+        }
+        
+        
+        
+    }//GEN-LAST:event_saveBtnActionPerformed
+
+    private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
+        clearText();
+        setComponent(false);
+        setEditDeleteBtn(false);
+    }//GEN-LAST:event_cancelBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -382,7 +502,6 @@ public class DosenView extends javax.swing.JFrame {
     private javax.swing.JTextField emailInput;
     private javax.swing.JTextField handphoneInput;
     private javax.swing.JLabel handphoneLabel;
-    private javax.swing.JTextField inputSearch;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lecturerLabel;
@@ -393,6 +512,7 @@ public class DosenView extends javax.swing.JFrame {
     private javax.swing.JLabel nidLabel;
     private javax.swing.JButton saveBtn;
     private javax.swing.JButton searchBtn;
+    private javax.swing.JTextField searchInput;
     private javax.swing.JPanel showDataPanel;
     private javax.swing.JTextArea showDataTextArea;
     private javax.swing.JPanel sidebarPanel;
@@ -429,5 +549,13 @@ public class DosenView extends javax.swing.JFrame {
         if (nidInput.getText().length() != 5) {
             throw new NoIndukDosenException();
         }
+    }
+
+    private void clearText() {
+        nidInput.setText("");
+        namaInput.setText("");
+        emailInput.setText("");
+        handphoneInput.setText("");
+        searchInput.setText("");
     }
 }
