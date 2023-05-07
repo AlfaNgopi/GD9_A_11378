@@ -136,11 +136,11 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="titileContent" min="-2" pref="135" max="-2" attributes="0"/>
                                   <Group type="102" attributes="0">
-                                      <Component id="addButton" min="-2" pref="93" max="-2" attributes="0"/>
+                                      <Component id="addBtn" min="-2" pref="93" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="editButton" min="-2" pref="93" max="-2" attributes="0"/>
+                                      <Component id="editBtn" min="-2" pref="93" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="deleteButton" min="-2" pref="93" max="-2" attributes="0"/>
+                                      <Component id="deleteBtn" min="-2" pref="93" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
                                       <Component id="inputSearch" min="-2" pref="198" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
@@ -176,9 +176,9 @@
                       <Component id="titileContent" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="addButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="editButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="deleteButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="addBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="editBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="deleteBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="inputSearch" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="searchBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -209,20 +209,20 @@
                 <Property name="text" type="java.lang.String" value="DOSEN"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="addButton">
+            <Component class="javax.swing.JButton" name="addBtn">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Tambah"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="editButton">
+            <Component class="javax.swing.JButton" name="editBtn">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ubah"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editButtonActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editBtnActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="deleteButton">
+            <Component class="javax.swing.JButton" name="deleteBtn">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Hapus"/>
               </Properties>
@@ -367,7 +367,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="handphoneinput" alignment="0" min="-2" pref="250" max="-2" attributes="0"/>
+                              <Component id="handphoneInput" alignment="0" min="-2" pref="250" max="-2" attributes="0"/>
                               <Component id="handphoneLabel" alignment="0" min="-2" pref="250" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="38" max="32767" attributes="0"/>
@@ -379,7 +379,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="handphoneLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="31" max="32767" attributes="0"/>
-                          <Component id="handphoneinput" min="-2" max="-2" attributes="0"/>
+                          <Component id="handphoneInput" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -390,7 +390,7 @@
                     <Property name="text" type="java.lang.String" value="Nomor HandPhone"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="handphoneinput">
+                <Component class="javax.swing.JTextField" name="handphoneInput">
                 </Component>
               </SubComponents>
             </Container>

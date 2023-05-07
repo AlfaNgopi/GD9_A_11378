@@ -4,17 +4,26 @@
  */
 package view;
 
+import control.DosenControl;
+import exception.InputKosongException;
+import exception.NoIndukDosenException;
+
 /**
  *
  * @author ASUS
  */
 public class DosenView extends javax.swing.JFrame {
-
+    private DosenControl dosenControl;
+    String action = null;
     /**
      * Creates new form DosenView
      */
     public DosenView() {
         initComponents();
+        setComponent(false);
+        setEditDeleteBtn(false);
+        dosenControl = new DosenControl();
+        showDosen();
     }
 
     /**
@@ -32,9 +41,9 @@ public class DosenView extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         ContainerPanel = new javax.swing.JPanel();
         titileContent = new javax.swing.JLabel();
-        addButton = new javax.swing.JButton();
-        editButton = new javax.swing.JButton();
-        deleteButton = new javax.swing.JButton();
+        addBtn = new javax.swing.JButton();
+        editBtn = new javax.swing.JButton();
+        deleteBtn = new javax.swing.JButton();
         inputSearch = new javax.swing.JTextField();
         searchBtn = new javax.swing.JButton();
         containerInputNID = new javax.swing.JPanel();
@@ -48,7 +57,7 @@ public class DosenView extends javax.swing.JFrame {
         emailInput = new javax.swing.JTextField();
         containerInputHandPhone = new javax.swing.JPanel();
         handphoneLabel = new javax.swing.JLabel();
-        handphoneinput = new javax.swing.JTextField();
+        handphoneInput = new javax.swing.JTextField();
         saveBtn = new javax.swing.JButton();
         cancelBtn = new javax.swing.JButton();
         showDataPanel = new javax.swing.JPanel();
@@ -104,16 +113,16 @@ public class DosenView extends javax.swing.JFrame {
         titileContent.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titileContent.setText("DOSEN");
 
-        addButton.setText("Tambah");
+        addBtn.setText("Tambah");
 
-        editButton.setText("Ubah");
-        editButton.addActionListener(new java.awt.event.ActionListener() {
+        editBtn.setText("Ubah");
+        editBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editButtonActionPerformed(evt);
+                editBtnActionPerformed(evt);
             }
         });
 
-        deleteButton.setText("Hapus");
+        deleteBtn.setText("Hapus");
 
         searchBtn.setText("Cari");
 
@@ -197,7 +206,7 @@ public class DosenView extends javax.swing.JFrame {
             .addGroup(containerInputHandPhoneLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(containerInputHandPhoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(handphoneinput, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(handphoneInput, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(handphoneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
@@ -206,7 +215,7 @@ public class DosenView extends javax.swing.JFrame {
             .addGroup(containerInputHandPhoneLayout.createSequentialGroup()
                 .addComponent(handphoneLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addComponent(handphoneinput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(handphoneInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         saveBtn.setText("Simpan");
@@ -243,11 +252,11 @@ public class DosenView extends javax.swing.JFrame {
                         .addGroup(ContainerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(titileContent, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(ContainerPanelLayout.createSequentialGroup()
-                                .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(editBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(88, 88, 88)
                                 .addComponent(inputSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -274,9 +283,9 @@ public class DosenView extends javax.swing.JFrame {
                 .addComponent(titileContent)
                 .addGap(47, 47, 47)
                 .addGroup(ContainerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addButton)
-                    .addComponent(editButton)
-                    .addComponent(deleteButton)
+                    .addComponent(addBtn)
+                    .addComponent(editBtn)
+                    .addComponent(deleteBtn)
                     .addComponent(inputSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(searchBtn))
                 .addGap(18, 18, 18)
@@ -320,9 +329,9 @@ public class DosenView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
+    private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_editButtonActionPerformed
+    }//GEN-LAST:event_editBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -361,18 +370,18 @@ public class DosenView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel ContainerPanel;
-    private javax.swing.JButton addButton;
+    private javax.swing.JButton addBtn;
     private javax.swing.JButton cancelBtn;
     private javax.swing.JPanel containerInputEmail;
     private javax.swing.JPanel containerInputHandPhone;
     private javax.swing.JPanel containerInputNID;
     private javax.swing.JPanel containerInputNama;
-    private javax.swing.JButton deleteButton;
-    private javax.swing.JButton editButton;
+    private javax.swing.JButton deleteBtn;
+    private javax.swing.JButton editBtn;
     private javax.swing.JLabel emailILabel;
     private javax.swing.JTextField emailInput;
+    private javax.swing.JTextField handphoneInput;
     private javax.swing.JLabel handphoneLabel;
-    private javax.swing.JTextField handphoneinput;
     private javax.swing.JTextField inputSearch;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -389,4 +398,36 @@ public class DosenView extends javax.swing.JFrame {
     private javax.swing.JPanel sidebarPanel;
     private javax.swing.JLabel titileContent;
     // End of variables declaration//GEN-END:variables
+
+    private void setComponent(boolean b) {
+        nidInput.setEnabled(b);
+        namaInput.setEnabled(b);
+        emailInput.setEnabled(b);
+        handphoneInput.setEnabled(b);
+        
+        saveBtn.setEnabled(b);
+        cancelBtn.setEnabled(b);
+        
+    }
+
+    private void setEditDeleteBtn(boolean b) {
+        editBtn.setEnabled(b);
+        deleteBtn.setEnabled(b);
+    }
+
+    private void showDosen() {
+        showDataTextArea.setText(dosenControl.showDataDosen());
+    }
+    
+    private void inputKosongException() throws InputKosongException{
+        if (nidInput.getText().isEmpty() || namaInput.getText().isEmpty() || emailInput.getText().isEmpty() || handphoneInput.getText().isEmpty()) {
+            throw new InputKosongException();
+        }
+    }
+    
+    private void noIndukDosenException() throws NoIndukDosenException{
+        if (nidInput.getText().length() != 5) {
+            throw new NoIndukDosenException();
+        }
+    }
 }
