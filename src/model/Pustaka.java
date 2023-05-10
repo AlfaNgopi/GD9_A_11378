@@ -82,14 +82,24 @@ public class Pustaka {
 
     
     
-    public String showData(){
+    public String showDataMajalah(){
         return 
-                this.id_pustaka + " | "
-                + this.judul + " | "
-                + this.jenis + " | "
-                + this.tahunTerbit + " | "
-                + this.penerbit + " | "
-                + this.edisi + " | "
-                + this.volume;
+                "ID Pustaka      : " +this.id_pustaka +
+                "\nJudul               : " + this.judul +
+                
+                "\nTahun Terbit   : "+ this.tahunTerbit +
+                "\nPenerbit          : "+ this.penerbit + 
+                "\nVolume                : "+ this.volume;
+    }
+    
+    public String showDataBuku(){
+        return 
+                "ID Pustaka      : " +this.id_pustaka +
+                "\nJudul               : " + this.judul +
+                
+                "\nTahun Terbit   : "+ this.tahunTerbit +
+                "\nPenerbit          : "+ this.penerbit + 
+                "\nEdisi                : "+ this.edisi;
+                
     }
 }

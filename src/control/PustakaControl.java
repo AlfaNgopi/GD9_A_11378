@@ -24,11 +24,34 @@ public class PustakaControl {
         pDAO.deletePustaka(no_pustaka);
     }
     
-    public String showDataPustaka(){
+//    public String showDataPustaka(){
+//        List<Pustaka> dataPustaka = pDAO.showPustaka();
+//        String pustakaString = "";
+//        for (int i = 0; i < dataPustaka.size(); i++) {
+//            pustakaString = pustakaString + dataPustaka.get(i).showData() + "\n";
+//        }
+//        return pustakaString;
+//    }
+    
+    public String showDataBuku(){
         List<Pustaka> dataPustaka = pDAO.showPustaka();
         String pustakaString = "";
         for (int i = 0; i < dataPustaka.size(); i++) {
-            pustakaString = pustakaString + dataPustaka.get(i).showData() + "\n";
+            if ("Buku".equals(dataPustaka.get(i).getJenis())) {
+                pustakaString = pustakaString + dataPustaka.get(i).showDataBuku() + "\n";
+            }
+            
+        }
+        return pustakaString;
+    }
+    
+    public String showDataMajalah(){
+        List<Pustaka> dataPustaka = pDAO.showPustaka();
+        String pustakaString = "";
+        for (int i = 0; i < dataPustaka.size(); i++) {
+            if ("Majalah".equals(dataPustaka.get(i).getJenis())) {
+                pustakaString = pustakaString + dataPustaka.get(i).showDataMajalah() + "\n";
+            }
         }
         return pustakaString;
     }

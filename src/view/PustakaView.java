@@ -17,6 +17,7 @@ public class PustakaView extends javax.swing.JFrame {
     private PustakaControl pustakaControl;
     String action = null;
     String jenis = " ";
+    boolean rdoMajalahOnPush, rdoBukuOnPush;
     
     
     /**
@@ -70,7 +71,7 @@ public class PustakaView extends javax.swing.JFrame {
         cancelBtn = new javax.swing.JButton();
         showDataPanel = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        showDataTextArea = new javax.swing.JTextArea();
+        showBukuTextArea = new javax.swing.JTextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
         showMajalahTextArea = new javax.swing.JTextArea();
         containerInputNID1 = new javax.swing.JPanel();
@@ -323,10 +324,10 @@ public class PustakaView extends javax.swing.JFrame {
 
         showDataPanel.setPreferredSize(new java.awt.Dimension(200, 200));
 
-        showDataTextArea.setEditable(false);
-        showDataTextArea.setColumns(20);
-        showDataTextArea.setRows(5);
-        jScrollPane2.setViewportView(showDataTextArea);
+        showBukuTextArea.setEditable(false);
+        showBukuTextArea.setColumns(20);
+        showBukuTextArea.setRows(5);
+        jScrollPane2.setViewportView(showBukuTextArea);
 
         showMajalahTextArea.setEditable(false);
         showMajalahTextArea.setColumns(20);
@@ -527,6 +528,7 @@ public class PustakaView extends javax.swing.JFrame {
 
     private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
         setComponent(true);
+        updateBukuMajalah();
         nidInput.setEnabled(false);
         
         action = "Ubah";
@@ -534,6 +536,7 @@ public class PustakaView extends javax.swing.JFrame {
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         setComponent(true);
+        updateBukuMajalah();
         clearText();
         searchInput.setText("");
         action = "Tambah";
@@ -559,20 +562,31 @@ public class PustakaView extends javax.swing.JFrame {
         
         setComponent(false);
         
-        Pustaka Pustaka = pustakaControl.searchDataPustaka(searchInput.getText());
+        Pustaka pustaka = pustakaControl.searchDataPustaka(searchInput.getText());
         
         try{
-            if (Pustaka == null) {
+            if (pustaka == null) {
                 clearText();
                 setEditDeleteBtn(false);
                 JOptionPane.showConfirmDialog(null, "Data Pustaka Tidak ditemukan !!!", "Konfirmasi", JOptionPane.DEFAULT_OPTION);
 
 
             }else{
-                nidInput.setText(Pustaka.getIdPustaka());
-                judulInput.setText(Pustaka.getJudul());
-                TTInput.setText(Pustaka.getTahunTerbit());
-                penerbitInput.setText(Pustaka.getPenerbit());
+                nidInput.setText(pustaka.getIdPustaka());
+                judulInput.setText(pustaka.getJudul());
+                TTInput.setText(pustaka.getTahunTerbit());
+                penerbitInput.setText(pustaka.getPenerbit());
+                
+                if ("Buku".equals(pustaka.getJenis())) {
+                    
+                    String ed = "" +pustaka.getEdisi()+ "";
+                    
+                    edisiInput.setText(ed);
+                }else{
+                    String vol = "" +pustaka.getVolume()+ "";
+                    
+                    volumeInput.setText(vol);
+                }
 
             }
         
@@ -605,14 +619,15 @@ public class PustakaView extends javax.swing.JFrame {
             
             if ("Tambah".equals(action)) {
                 pustakaControl.insertDataPustaka(p);
-            }else if ("Edit".equals(action)) {
+            }else if ("Ubah".equals(action)) {
                 pustakaControl.updateDataPustaka(p, nidInput.getText());
+                System.out.println("tes");
             }
             
             clearText();
             showPustaka();
             setComponent(false);
-            setEditDeleteBtn(false);
+           
             
         }catch(InputKosongException e){
             JOptionPane.showMessageDialog(this, e.message());
@@ -629,15 +644,15 @@ public class PustakaView extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelBtnActionPerformed
 
     private void rdoMajalahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoMajalahActionPerformed
-        jenis = "Majalah";
-        volumeInput.setEnabled(true);
-        edisiInput.setEnabled(false);
+        rdoMajalahOnPush = !rdoMajalahOnPush;
+        updateBukuMajalah();
+        
     }//GEN-LAST:event_rdoMajalahActionPerformed
 
     private void rdoBukuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoBukuActionPerformed
-        jenis = "Buku";
-        edisiInput.setEnabled(true);
-        volumeInput.setEnabled(false);
+        rdoBukuOnPush = !rdoBukuOnPush;
+        updateBukuMajalah();
+        
     }//GEN-LAST:event_rdoBukuActionPerformed
 
     /**
@@ -718,8 +733,8 @@ public class PustakaView extends javax.swing.JFrame {
     private javax.swing.JButton saveBtn;
     private javax.swing.JButton searchBtn;
     private javax.swing.JTextField searchInput;
+    private javax.swing.JTextArea showBukuTextArea;
     private javax.swing.JPanel showDataPanel;
-    private javax.swing.JTextArea showDataTextArea;
     private javax.swing.JTextArea showMajalahTextArea;
     private javax.swing.JPanel sidebarPanel;
     private javax.swing.JLabel titileContent;
@@ -738,6 +753,9 @@ public class PustakaView extends javax.swing.JFrame {
         edisiInput.setEnabled(b);
         volumeInput.setEnabled(b);
         
+        rdoBuku.setEnabled(b);
+        rdoMajalah.setEnabled(b);
+        
     }
 
     private void setEditDeleteBtn(boolean b) {
@@ -746,10 +764,31 @@ public class PustakaView extends javax.swing.JFrame {
     }
     
     
+    private void updateBukuMajalah(){
+        volumeInput.setEnabled(false);
+        edisiInput.setEnabled(false);
+        rdoBuku.setEnabled(true);
+        rdoMajalah.setEnabled(true);
+        
+        if (rdoMajalahOnPush) {
+            jenis = "Majalah";
+            volumeInput.setEnabled(true);
+            edisiInput.setEnabled(false);
+            rdoBuku.setEnabled(false);
+        }
+        
+        if (rdoBukuOnPush) {
+            jenis = "Buku";
+            volumeInput.setEnabled(false);
+            edisiInput.setEnabled(true);
+            rdoMajalah.setEnabled(false);
+        }
+    }
 
     private void showPustaka() {
         
-        showDataTextArea.setText(pustakaControl.showDataPustaka());
+        showBukuTextArea.setText(pustakaControl.showDataBuku());
+        showMajalahTextArea.setText(pustakaControl.showDataMajalah());
     }
     
     private void inputKosongException() throws InputKosongException{

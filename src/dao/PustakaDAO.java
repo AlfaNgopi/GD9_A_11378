@@ -22,8 +22,8 @@ public class PustakaDAO {
        
        String sql = "INSERT INTO pustaka(id_pustaka, judul, jenis, tahunTerbit, penerbit, edisi, volume) VALUES ('"
                + p.getIdPustaka()+ "','" + p.getJudul() + "','" + p.getJenis() + "','"
-               + p.getTahunTerbit() + "','" + p.getPenerbit() + "','" 
-               + p.getEdisi() + "','" + p.getVolume() + "')";
+               + p.getTahunTerbit() + "','" + p.getPenerbit() + "'," 
+               + p.getEdisi() + "," + p.getVolume() + ")";
        
         System.out.println("Adding Pustaka....");
         
@@ -44,7 +44,7 @@ public class PustakaDAO {
         
         String sql = "UPDATE pustaka SET judul = '" + p.getJudul() + "', jenis = '" + p.getJenis()
                 + ", tahunTerbit = '" + p.getTahunTerbit() + "', penerbit = '" + p.getPenerbit()
-                + "', edisi = '" + p.getEdisi() + "', volume = '" + p.getVolume() + "' "
+                + "', edisi = " + p.getEdisi() + ", volume = " + p.getVolume() + " "
                 + "WHERE id_pustaka = '" + id_pustaka + "'";
         
         System.out.println("Editing Pustaka...");
@@ -64,7 +64,7 @@ public class PustakaDAO {
     public void deletePustaka(String id_pustaka){
         con = dbcon.makeConnection();
         
-        String sql = "DELTE FROM pustaka WHERE id_pustaka = '" + id_pustaka + "'";
+        String sql = "DELETE FROM pustaka WHERE id_pustaka = '" + id_pustaka + "'";
         
         System.out.println("Deleting Pustaka...");
         
