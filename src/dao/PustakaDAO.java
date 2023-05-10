@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 // asdlasjdl
 // dasjkdah
+=======
+
+//xzxzxzxzx
+>>>>>>> a0f942cac8a2adcd47cdcbf5cb8dc219ae530f8c
 
 package dao;
 import java.sql.Connection;
