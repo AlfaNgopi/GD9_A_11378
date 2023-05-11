@@ -43,7 +43,7 @@ public class PustakaDAO {
         con = dbcon.makeConnection();
         
         String sql = "UPDATE pustaka SET judul = '" + p.getJudul() + "', jenis = '" + p.getJenis()
-                + ", tahunTerbit = '" + p.getTahunTerbit() + "', penerbit = '" + p.getPenerbit()
+                + "', tahunTerbit = '" + p.getTahunTerbit() + "', penerbit = '" + p.getPenerbit()
                 + "', edisi = " + p.getEdisi() + ", volume = " + p.getVolume() + " "
                 + "WHERE id_pustaka = '" + id_pustaka + "'";
         

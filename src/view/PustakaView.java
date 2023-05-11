@@ -1,12 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package view;
+
+// Nama : Vincentius Kenton
+// NPM : 210711307
+
+// Nama : Alfa Nada Yulaswara
+// NPM : 210711378
 
 import control.PustakaControl;
 import exception.InputKosongException;
-import exception.NoIndukDosenException;
+import exception.NoIdPustakaException;
 import javax.swing.JOptionPane;
 import model.Pustaka;
 /**
@@ -40,6 +42,7 @@ public class PustakaView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         sidebarPanel = new javax.swing.JPanel();
         lecturerPanel = new javax.swing.JPanel();
         lecturerLabel = new javax.swing.JLabel();
@@ -85,8 +88,10 @@ public class PustakaView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        sidebarPanel.setBackground(new java.awt.Color(102, 255, 255));
         sidebarPanel.setMinimumSize(new java.awt.Dimension(100, 660));
 
+        lecturerPanel.setBackground(new java.awt.Color(153, 153, 255));
         lecturerPanel.setPreferredSize(new java.awt.Dimension(100, 90));
 
         lecturerLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -109,6 +114,7 @@ public class PustakaView extends javax.swing.JFrame {
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
+        lecturerPanel1.setBackground(new java.awt.Color(153, 153, 255));
         lecturerPanel1.setPreferredSize(new java.awt.Dimension(100, 90));
 
         lecturerLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -131,6 +137,7 @@ public class PustakaView extends javax.swing.JFrame {
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
+        lecturerPanel2.setBackground(new java.awt.Color(153, 153, 255));
         lecturerPanel2.setPreferredSize(new java.awt.Dimension(100, 90));
 
         lecturerLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -185,6 +192,10 @@ public class PustakaView extends javax.swing.JFrame {
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
+        ContainerPanel.setBackground(new java.awt.Color(153, 255, 153));
+
+        titileContent.setFont(new java.awt.Font("Segoe Script", 3, 18)); // NOI18N
+        titileContent.setForeground(new java.awt.Color(255, 102, 102));
         titileContent.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titileContent.setText("Object - Persistance 1");
 
@@ -373,6 +384,7 @@ public class PustakaView extends javax.swing.JFrame {
                 .addComponent(edisiInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
+        buttonGroup1.add(rdoMajalah);
         rdoMajalah.setText("Majalah");
         rdoMajalah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -403,6 +415,7 @@ public class PustakaView extends javax.swing.JFrame {
                 .addComponent(volumeInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
+        buttonGroup1.add(rdoBuku);
         rdoBuku.setText("Buku");
         rdoBuku.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -417,55 +430,53 @@ public class PustakaView extends javax.swing.JFrame {
             .addGroup(ContainerPanelLayout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addGroup(ContainerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(ContainerPanelLayout.createSequentialGroup()
-                        .addGap(264, 264, 264)
-                        .addComponent(titileContent, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(540, Short.MAX_VALUE))
+                    .addComponent(showDataPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 927, Short.MAX_VALUE)
                     .addGroup(ContainerPanelLayout.createSequentialGroup()
                         .addGroup(ContainerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(showDataPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 927, Short.MAX_VALUE)
+                            .addGroup(ContainerPanelLayout.createSequentialGroup()
+                                .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(editBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(61, 61, 61)
+                                .addComponent(searchInput, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(ContainerPanelLayout.createSequentialGroup()
                                 .addGroup(ContainerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(ContainerPanelLayout.createSequentialGroup()
-                                        .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(editBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(61, 61, 61)
-                                        .addComponent(searchInput, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(ContainerPanelLayout.createSequentialGroup()
-                                        .addGroup(ContainerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(containerInputNama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(containerInputNID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(77, 77, 77)
-                                        .addGroup(ContainerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(containerInputNID1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(rdoBuku, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(ContainerPanelLayout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(saveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(ContainerPanelLayout.createSequentialGroup()
-                                        .addGroup(ContainerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(containerInputEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(containerInputHandPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(77, 77, 77)
-                                        .addGroup(ContainerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(rdoMajalah, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(containerInputNID2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())))
+                                    .addComponent(containerInputNama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(containerInputNID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(77, 77, 77)
+                                .addGroup(ContainerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(containerInputNID1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(rdoBuku, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(ContainerPanelLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(saveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(ContainerPanelLayout.createSequentialGroup()
+                                .addGroup(ContainerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(containerInputEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(containerInputHandPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(77, 77, 77)
+                                .addGroup(ContainerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(rdoMajalah, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(containerInputNID2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 250, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(ContainerPanelLayout.createSequentialGroup()
+                .addGap(218, 218, 218)
+                .addComponent(titileContent, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         ContainerPanelLayout.setVerticalGroup(
             ContainerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ContainerPanelLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(36, 36, 36)
                 .addComponent(titileContent)
-                .addGap(53, 53, 53)
+                .addGap(43, 43, 43)
                 .addGroup(ContainerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addBtn)
                     .addComponent(editBtn)
@@ -602,6 +613,7 @@ public class PustakaView extends javax.swing.JFrame {
         
         try{
             inputKosongException();
+            noIdPustakaException();
             Pustaka p;
             
             if (jenis == "Buku") {
@@ -631,6 +643,10 @@ public class PustakaView extends javax.swing.JFrame {
             
         }catch(InputKosongException e){
             JOptionPane.showMessageDialog(this, e.message());
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }catch(NoIdPustakaException e){
+            JOptionPane.showMessageDialog(this, e.message());
         }
         
         
@@ -644,13 +660,16 @@ public class PustakaView extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelBtnActionPerformed
 
     private void rdoMajalahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoMajalahActionPerformed
-        rdoMajalahOnPush = !rdoMajalahOnPush;
+        rdoBukuOnPush = false;
+        rdoMajalahOnPush = true;
         updateBukuMajalah();
         
     }//GEN-LAST:event_rdoMajalahActionPerformed
 
     private void rdoBukuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoBukuActionPerformed
-        rdoBukuOnPush = !rdoBukuOnPush;
+        //rdoBukuOnPush = !rdoBukuOnPush;
+        rdoBukuOnPush = true;
+        rdoMajalahOnPush = false;
         updateBukuMajalah();
         
     }//GEN-LAST:event_rdoBukuActionPerformed
@@ -702,6 +721,7 @@ public class PustakaView extends javax.swing.JFrame {
     private javax.swing.JTextField TTInput;
     private javax.swing.JLabel TTLabel;
     private javax.swing.JButton addBtn;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton cancelBtn;
     private javax.swing.JPanel containerInputEmail;
     private javax.swing.JPanel containerInputHandPhone;
@@ -767,21 +787,20 @@ public class PustakaView extends javax.swing.JFrame {
     private void updateBukuMajalah(){
         volumeInput.setEnabled(false);
         edisiInput.setEnabled(false);
-        rdoBuku.setEnabled(true);
-        rdoMajalah.setEnabled(true);
+        
         
         if (rdoMajalahOnPush) {
             jenis = "Majalah";
             volumeInput.setEnabled(true);
             edisiInput.setEnabled(false);
-            rdoBuku.setEnabled(false);
+            
         }
         
         if (rdoBukuOnPush) {
             jenis = "Buku";
             volumeInput.setEnabled(false);
             edisiInput.setEnabled(true);
-            rdoMajalah.setEnabled(false);
+            
         }
     }
 
@@ -796,6 +815,14 @@ public class PustakaView extends javax.swing.JFrame {
             throw new InputKosongException();
         }
     }
+    
+    private void noIdPustakaException() throws NoIdPustakaException{
+        if (nidInput.getText().length()<5 || nidInput.getText().length()>8) {
+            throw new NoIdPustakaException();
+        }
+    }
+    
+    
     
     
 
