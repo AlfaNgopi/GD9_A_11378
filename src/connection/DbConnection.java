@@ -4,6 +4,12 @@
  */
 package connection;
 
+// Nama : Vincentius Kenton
+// NPM : 210711307
+
+// Nama : Alfa Nada Yulaswara
+// NPM : 210711378
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 

@@ -3,11 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package model;
+// Nama : Vincentius Kenton
+// NPM : 210711307
 
-/**
- *
- * @author ASUS
- */
+// Nama : Alfa Nada Yulaswara
+// NPM : 210711378
+
 public class Pustaka {
     private String id_pustaka, judul, jenis, tahunTerbit, penerbit;
     private int edisi, volume;
@@ -82,14 +83,26 @@ public class Pustaka {
 
     
     
-    public String showData(){
+    public String showDataMajalah(){
         return 
-                this.id_pustaka + " | "
-                + this.judul + " | "
-                + this.jenis + " | "
-                + this.tahunTerbit + " | "
-                + this.penerbit + " | "
-                + this.edisi + " | "
-                + this.volume;
+                "\nID Pustaka      : " +this.id_pustaka +
+                "\nJudul               : " + this.judul +
+                
+                "\nTahun Terbit   : "+ this.tahunTerbit +
+                "\nPenerbit          : "+ this.penerbit + 
+                "\nVolume                : "+ this.volume +
+                "\n";
+    }
+    
+    public String showDataBuku(){
+        return 
+                "ID Pustaka      : " +this.id_pustaka +
+                "\nJudul               : " + this.judul +
+                
+                "\nTahun Terbit   : "+ this.tahunTerbit +
+                "\nPenerbit          : "+ this.penerbit + 
+                "\nEdisi                : "+ this.edisi +
+                "\n";
+                
     }
 }
