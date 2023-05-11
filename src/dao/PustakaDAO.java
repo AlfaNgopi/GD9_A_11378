@@ -1,69 +1,101 @@
-<<<<<<< HEAD
-// asdlasjdl
-// dasjkdah
-=======
-
-//xzxzxzxzx
->>>>>>> a0f942cac8a2adcd47cdcbf5cb8dc219ae530f8c
-
 package dao;
+// Nama : Vincentius Kenton
+// NPM : 210711307
+
+// Nama : Alfa Nada Yulaswara
+// NPM : 210711378
+
+import connection.DbConnection;
+import model.Pustaka;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import connection.DbConnection;
 import java.util.ArrayList;
 import java.util.List;
-import model.Pustaka;
 
-/**
- *
- * @author ASUS
- */
 public class PustakaDAO {
-    private DbConnection dbCON = new DbConnection();
-    private Connection CON;
+    private DbConnection dbcon = new DbConnection();
+    private Connection con;
     
-    
-    
-    public void insertPustaka(Pustaka d){
-        CON = dbCON.makeConnection();
-        
-        String sql = "INSERT INTO Pustaka(id_pustaka, judul, jenis, tahunTerbit, Penerbit, edisi, volume"
-                + "VALUES ('"+d.getIdPustaka()+"','"+d.getJudul()+"','"+d.getJenis()+"','"+d.getTahunTerbit()+"','"+d.getPenerbit()+"','"+d.getEdisi()+"','"+d.getVolume()+"')";
-        
+    public void insertPustaka(Pustaka p){
+       con = dbcon.makeConnection();
+       
+       String sql = "INSERT INTO pustaka(id_pustaka, judul, jenis, tahunTerbit, penerbit, edisi, volume) VALUES ('"
+               + p.getIdPustaka()+ "','" + p.getJudul() + "','" + p.getJenis() + "','"
+               + p.getTahunTerbit() + "','" + p.getPenerbit() + "','" 
+               + p.getEdisi() + "','" + p.getVolume() + "')";
+       
         System.out.println("Adding Pustaka....");
         
         try{
-            Statement statement = CON.createStatement();
+            Statement statement = con.createStatement();
             int result = statement.executeUpdate(sql);
-            System.out.println("added "+ result +" Pustaka");
+            System.out.println("Added " + result + " Pustaka");
             statement.close();
-            
         }catch(Exception e){
-            System.out.println("Error Adding Pustaka....");
+            System.out.println("Error Adding Pustaka...");
+            System.out.println("e");
+        }
+        dbcon.closeConnection();
+    }
+    
+    public void updatePustaka(Pustaka p, String id_pustaka){
+        con = dbcon.makeConnection();
+        
+        String sql = "UPDATE pustaka SET judul = '" + p.getJudul() + "', jenis = '" + p.getJenis()
+                + ", tahunTerbit = '" + p.getTahunTerbit() + "', penerbit = '" + p.getPenerbit()
+                + "', edisi = '" + p.getEdisi() + "', volume = '" + p.getVolume() + "' "
+                + "WHERE id_pustaka = '" + id_pustaka + "'";
+        
+        System.out.println("Editing Pustaka...");
+        
+        try{
+            Statement statement = con.createStatement();
+            int result = statement.executeUpdate(sql);
+            System.out.println("Edited " + result + " Pustaka" + id_pustaka);
+            statement.close();
+        }catch(Exception e){
+            System.out.println("Error editing Pustaka...");
+            System.out.println("e");
+        }
+        dbcon.closeConnection();
+    }
+    
+    public void deletePustaka(String id_pustaka){
+        con = dbcon.makeConnection();
+        
+        String sql = "DELTE FROM pustaka WHERE id_pustaka = '" + id_pustaka + "'";
+        
+        System.out.println("Deleting Pustaka...");
+        
+        try{
+            Statement statement = con.createStatement();
+            int result = statement.executeUpdate(sql);
+            System.out.println("Delete " + result + " Pustaka " + id_pustaka);
+            statement.close();
+        }catch(Exception e){
+            System.out.println("Error deleting Pustaka...");
             System.out.println(e);
         }
-        
-        dbCON.closeConnection();
-        
+        dbcon.closeConnection();
     }
     
     public List<Pustaka> showPustaka(){
-        CON = dbCON.makeConnection();
+        con = dbcon.makeConnection();
+        
         String sql = "SELECT * FROM pustaka";
-        System.out.println("mengambil data dosen ....");
+        
+        System.out.println("Mengambil Data Pustaka...");
         
         List<Pustaka> list = new ArrayList();
         
         try{
-            Statement statement = CON.createStatement();
+            Statement statement = con.createStatement();
             ResultSet rs = statement.executeQuery(sql);
             
-            if (rs != null) {
+            if(rs!=null){
                 while(rs.next()){
-                    Pustaka d = new Pustaka(
-                            rs.getString("id_pustaka"),
+                    Pustaka p = new Pustaka(rs.getString("id_pustaka"),
                             rs.getString("judul"),
                             rs.getString("jenis"),
                             rs.getString("tahunTerbit"),
@@ -71,40 +103,35 @@ public class PustakaDAO {
                             rs.getInt("edisi"),
                             rs.getInt("volume")
                     );
-                    
-                    list.add(d);
+                    list.add(p);
                 }
             }
-            
             rs.close();
             statement.close();
-            
-            
-            
         }catch(Exception e){
-            System.out.println("Error Reading Database ...");
+            System.out.println("Error reading Pustaka...");
+            System.out.println(e);
         }
-        dbCON.closeConnection();
-        
+        dbcon.closeConnection();
         return list;
     }
     
-    public Pustaka searchPustaka(String noInduk){
-        CON = dbCON.makeConnection();
-        String sql = "SELECT * FROM dosen WHERE nomor_induk_dosen = '" + noInduk + "'";
-        System.out.println("mencari data dosen ....");
+    public Pustaka searchPustaka(String id_pustaka){
+        con = dbcon.makeConnection();
         
-        Pustaka d = null;
+        String sql = "SELECT * FROM pustaka WHERE id_pustaka = '" + id_pustaka + "'";
         
+        System.out.println("Searching Pustaka...");
+        
+        Pustaka p = null;
         
         try{
-            Statement statement = CON.createStatement();
+            Statement statement = con.createStatement();
             ResultSet rs = statement.executeQuery(sql);
             
-            if (rs != null) {
+            if(rs!=null){
                 while(rs.next()){
-                    d = new Pustaka(
-                            rs.getString("id_pustaka"),
+                    p = new Pustaka(rs.getString("id_pustaka"),
                             rs.getString("judul"),
                             rs.getString("jenis"),
                             rs.getString("tahunTerbit"),
@@ -112,74 +139,16 @@ public class PustakaDAO {
                             rs.getInt("edisi"),
                             rs.getInt("volume")
                     );
-                    
                 }
             }
-            
             rs.close();
             statement.close();
-            
-            
-            
         }catch(Exception e){
-            System.out.println("Error Reading Database ...");
+            System.out.println("Error reading Pustaka...");
+            System.out.println(e);
         }
-        dbCON.closeConnection();
-        
-        
-        return d;
-    }
-    
-    public void updatePustaka(Pustaka d, String idPustaka){
-        CON = dbCON.makeConnection();
-        String sql = "UPDATE pustaka SET id_pustaka = '" + d.getIdPustaka()+ "' , judul = '" + d.getJudul()+ "',jenis = '" 
-                + d.getJenis()+ "'" + "',tahunTerbit = '" + d.getTahunTerbit() + "',penerbit = '" + d.getPenerbit() + "',edisi = " + d.getEdisi()+ ", volume = " + d.getVolume()
-                + " WHERE no_induk_dosen = '" + idPustaka + "'";
-        
-        System.out.println("updating data dosen ....");
-        
-        
-        try{
-            Statement statement = CON.createStatement();
-            int rs = statement.executeUpdate(sql);
-            
-            System.out.println("Edited "+ rs +" Pustaka " + idPustaka);
-            
-            
-            statement.close();
-            
-            
-            
-        }catch(Exception e){
-            System.out.println("Error editing Database ...");
-        }
-        dbCON.closeConnection();
-        
-    }
-    
-    public void deletePustaka(String idPustaka){
-        CON = dbCON.makeConnection();
-        String sql = "DELETE FROM DOSEN "
-                + "WHERE no_induk_dosen = '" + idPustaka + "'";
-        
-        System.out.println("updating data dosen ....");
-        
-        
-        try{
-            Statement statement = CON.createStatement();
-            int rs = statement.executeUpdate(sql);
-            
-            System.out.println("Deleted "+ rs +" Pustaka " + idPustaka);
-            
-            
-            statement.close();
-            
-            
-            
-        }catch(Exception e){
-            System.out.println("Error deleting Database ...");
-        }
-        dbCON.closeConnection();
+        dbcon.closeConnection();
+        return p;
     }
     
 }

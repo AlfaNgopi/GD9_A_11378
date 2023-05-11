@@ -9,11 +9,11 @@ package model;
  * @author ASUS
  */
 public class Pustaka {
-    private String idPustaka, judul, jenis, tahunTerbit, penerbit;
+    private String id_pustaka, judul, jenis, tahunTerbit, penerbit;
     private int edisi, volume;
 
     public Pustaka(String idPustaka, String judul, String jenis, String tahunTerbit, String penerbit, int edisi, int volume) {
-        this.idPustaka = idPustaka;
+        this.id_pustaka = idPustaka;
         this.judul = judul;
         this.jenis = jenis;
         this.tahunTerbit = tahunTerbit;
@@ -23,11 +23,11 @@ public class Pustaka {
     }
 
     public String getIdPustaka() {
-        return idPustaka;
+        return id_pustaka;
     }
 
     public void setIdPustaka(String idPustaka) {
-        this.idPustaka = idPustaka;
+        this.id_pustaka = idPustaka;
     }
 
     public String getJudul() {
@@ -82,9 +82,9 @@ public class Pustaka {
 
     
     
-    public String showDataPustaka(){
+    public String showData(){
         return 
-                this.idPustaka + " | "
+                this.id_pustaka + " | "
                 + this.judul + " | "
                 + this.jenis + " | "
                 + this.tahunTerbit + " | "

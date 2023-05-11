@@ -1,54 +1,42 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package control;
+// Nama : Vincentius Kenton
+// NPM : 210711307
+
+// Nama : Alfa Nada Yulaswara
+// NPM : 210711378
 
 import dao.PustakaDAO;
-import java.util.ArrayList;
 import java.util.List;
-
 import model.Pustaka;
 
-/**
- *
- * @author ASUS
- */
 public class PustakaControl {
-    private PustakaDAO dDAO = new PustakaDAO();
+    private PustakaDAO pDAO = new PustakaDAO();  
     
-    public void insertDataPustaka(Pustaka d){
-        dDAO.insertPustaka(d);
+    public void insertDataPustaka(Pustaka p){
+        pDAO.insertPustaka(p);
+    }
+    
+    public void updateDataPustaka(Pustaka p, String no_pustaka){
+        pDAO.updatePustaka(p, no_pustaka);
+    }
+    
+    public void deleteDataPustaka(String no_pustaka){
+        pDAO.deletePustaka(no_pustaka);
     }
     
     public String showDataPustaka(){
-        
-        List<Pustaka> list = dDAO.showPustaka();
-        
-        String dosenString = "";
-        
-        for (Pustaka p : list) {
-            dosenString = dosenString + p.showDataPustaka()+ "\n";
+        List<Pustaka> dataPustaka = pDAO.showPustaka();
+        String pustakaString = "";
+        for (int i = 0; i < dataPustaka.size(); i++) {
+            pustakaString = pustakaString + dataPustaka.get(i).showData() + "\n";
         }
-        
-        return dosenString;
-        
-        
+        return pustakaString;
     }
     
-    public Pustaka searchDataPustaka(String noInduk){
-        Pustaka d = null;
-        d = dDAO.searchPustaka(noInduk);
-        
-        return d;
-        
+    public Pustaka searchDataPustaka(String id_pustaka){
+        Pustaka p = null;
+        p = pDAO.searchPustaka(id_pustaka);
+        return p;
     }
     
-    public void updateDataPustaka(Pustaka d, String noInduk){
-        dDAO.updatePustaka(d,noInduk);
-    }
-    
-    public void deleteDataPustaka(String noInduk){
-        dDAO.deletePustaka(noInduk);
-    }
 }

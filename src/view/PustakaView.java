@@ -588,12 +588,18 @@ public class PustakaView extends javax.swing.JFrame {
         
         try{
             inputKosongException();
+            Pustaka p;
             
-            
-            
-            Pustaka p = new Pustaka(nidInput.getText(), judulInput.getText(), jenis,  TTInput.getText(), penerbitInput.getText(),
+            if (jenis == "Buku") {
+                p = new Pustaka(nidInput.getText(), judulInput.getText(), jenis,  TTInput.getText(), penerbitInput.getText(),
                     Integer.parseInt(edisiInput.getText()), 
+                    0);
+            }else{
+                p = new Pustaka(nidInput.getText(), judulInput.getText(), jenis,  TTInput.getText(), penerbitInput.getText(),
+                    0, 
                     Integer.parseInt(volumeInput.getText()));
+            }
+            
             
             
             
@@ -625,10 +631,13 @@ public class PustakaView extends javax.swing.JFrame {
     private void rdoMajalahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoMajalahActionPerformed
         jenis = "Majalah";
         volumeInput.setEnabled(true);
+        edisiInput.setEnabled(false);
     }//GEN-LAST:event_rdoMajalahActionPerformed
 
     private void rdoBukuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoBukuActionPerformed
         jenis = "Buku";
+        edisiInput.setEnabled(true);
+        volumeInput.setEnabled(false);
     }//GEN-LAST:event_rdoBukuActionPerformed
 
     /**
@@ -739,6 +748,7 @@ public class PustakaView extends javax.swing.JFrame {
     
 
     private void showPustaka() {
+        
         showDataTextArea.setText(pustakaControl.showDataPustaka());
     }
     
