@@ -21,6 +21,9 @@ public class PustakaView extends javax.swing.JFrame {
     String jenis = " ";
     boolean rdoMajalahOnPush, rdoBukuOnPush;
     
+    //tugas
+    
+    
     
     /**
      * Creates new form PustakaView
@@ -624,7 +627,7 @@ public class PustakaView extends javax.swing.JFrame {
         
         try{
             inputKosongException();
-            noIdPustakaException();
+            //noIdPustakaException();
             Pustaka p;
             
             if (jenis == "Buku") {
@@ -642,6 +645,7 @@ public class PustakaView extends javax.swing.JFrame {
             
             if ("Tambah".equals(action)) {
                 pustakaControl.insertDataPustaka(p);
+                
             }else if ("Ubah".equals(action)) {
                 pustakaControl.updateDataPustaka(p, nidInput.getText());
                 System.out.println("tes");
@@ -656,8 +660,6 @@ public class PustakaView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, e.message());
         }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(this, e.getMessage());
-        }catch(NoIdPustakaException e){
-            JOptionPane.showMessageDialog(this, e.message());
         }
         
         
@@ -673,6 +675,7 @@ public class PustakaView extends javax.swing.JFrame {
     private void rdoMajalahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoMajalahActionPerformed
         rdoBukuOnPush = false;
         rdoMajalahOnPush = true;
+        updateId("Majalah");
         updateBukuMajalah();
         
     }//GEN-LAST:event_rdoMajalahActionPerformed
@@ -681,6 +684,7 @@ public class PustakaView extends javax.swing.JFrame {
         //rdoBukuOnPush = !rdoBukuOnPush;
         rdoBukuOnPush = true;
         rdoMajalahOnPush = false;
+        updateId("Buku");
         updateBukuMajalah();
         
     }//GEN-LAST:event_rdoBukuActionPerformed
@@ -774,7 +778,7 @@ public class PustakaView extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void setComponent(boolean b) {
-        nidInput.setEnabled(b);
+        nidInput.setEnabled(false);
         judulInput.setEnabled(b);
         TTInput.setEnabled(b);
         penerbitInput.setEnabled(b);
@@ -794,6 +798,22 @@ public class PustakaView extends javax.swing.JFrame {
         deleteBtn.setEnabled(b);
     }
     
+    private void updateId(String jenis){
+        if ("Buku".equals(jenis)) {
+            nidInput.setText(getNidBuku());
+        }else{
+            nidInput.setText(getNidMajalah());
+        }
+    }
+    
+    private String getNidBuku(){
+        return 
+                "BK-"+(pustakaControl.getLastIndexBuku()+1);
+    }
+    private String getNidMajalah(){
+        return 
+                "MJL-"+(pustakaControl.getLastIndexMajalah()+1);
+    }
     
     private void updateBukuMajalah(){
         volumeInput.setEnabled(false);
@@ -804,6 +824,7 @@ public class PustakaView extends javax.swing.JFrame {
             jenis = "Majalah";
             volumeInput.setEnabled(true);
             edisiInput.setEnabled(false);
+            nidInput.setText(getNidMajalah());
             
         }
         
@@ -811,6 +832,7 @@ public class PustakaView extends javax.swing.JFrame {
             jenis = "Buku";
             volumeInput.setEnabled(false);
             edisiInput.setEnabled(true);
+            nidInput.setText(getNidBuku());
             
         }
     }

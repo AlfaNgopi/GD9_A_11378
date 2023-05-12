@@ -49,6 +49,43 @@ public class PustakaControl {
         return pustakaString;
     }
     
+    public int getLastIndexBuku(){
+        List<Pustaka> dataPustaka = pDAO.showPustaka();
+        
+        String lastId = "kosong";
+        for (int i = 0; i < dataPustaka.size(); i++) {
+            if ("Buku".equals(dataPustaka.get(i).getJenis())) {
+                lastId = dataPustaka.get(i).getIdPustaka();
+            }
+        }
+        if ("kosong".equals(lastId)) {
+            return 0;
+        }
+        lastId = lastId.substring(3);
+        
+        return Integer.parseInt(lastId);
+    }
+    
+    public int getLastIndexMajalah(){
+        List<Pustaka> dataPustaka = pDAO.showPustaka();
+        
+        String lastId = "kosong";
+        for (int i = 0; i < dataPustaka.size(); i++) {
+            if ("Majalah".equals(dataPustaka.get(i).getJenis())) {
+                lastId = dataPustaka.get(i).getIdPustaka();
+            }
+        }
+        
+        if ("kosong".equals(lastId)) {
+            return 0;
+        }
+        
+        lastId = lastId.substring(4);
+        
+        return Integer.parseInt(lastId);
+    }
+    
+    
     public Pustaka searchDataPustaka(String id_pustaka){
         Pustaka p = null;
         p = pDAO.searchPustaka(id_pustaka);
