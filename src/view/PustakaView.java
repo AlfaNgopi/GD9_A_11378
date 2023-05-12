@@ -846,6 +846,16 @@ public class PustakaView extends javax.swing.JFrame {
     private void inputKosongException() throws InputKosongException{
         if (nidInput.getText().isEmpty() || judulInput.getText().isEmpty() || TTInput.getText().isEmpty() || penerbitInput.getText().isEmpty()) {
             throw new InputKosongException();
+            
+        }
+        if ("Buku".equals(jenis)) {
+            if (edisiInput.getText().isEmpty()) {
+                throw new InputKosongException();
+            }
+        }else{
+            if (volumeInput.getText().isEmpty()) {
+                throw new InputKosongException();
+            }
         }
     }
     
