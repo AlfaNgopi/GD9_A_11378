@@ -563,8 +563,9 @@ public class PustakaView extends javax.swing.JFrame {
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         setComponent(true);
-        tambahBukuMajalah();
         clearText();
+        tambahBukuMajalah();
+        
         searchInput.setText("");
         action = "Tambah";
     }//GEN-LAST:event_addBtnActionPerformed
@@ -645,11 +646,11 @@ public class PustakaView extends javax.swing.JFrame {
             
             if ("Tambah".equals(action)) {
                 pustakaControl.insertDataPustaka(p);
-                JOptionPane.showMessageDialog(this, "[*] Berhasil menambahkan [*]");
+                JOptionPane.showMessageDialog(this, "[*] Berhasil menambahkan " + jenis + "[*] ");
                 
             }else if ("Ubah".equals(action)) {
                 pustakaControl.updateDataPustaka(p, nidInput.getText());
-                JOptionPane.showMessageDialog(this, "[*] Berhasil mengubah [*]");
+                JOptionPane.showMessageDialog(this, "[*] Berhasil mengubah " + jenis + "[*] ");
             }
             
             clearText();
@@ -831,9 +832,12 @@ public class PustakaView extends javax.swing.JFrame {
         
         
         if (rdoMajalahOnPush) {
+            System.out.println("tes");
             jenis = "Majalah";
             volumeInput.setEnabled(true);
             edisiInput.setEnabled(false);
+            
+            nidInput.setText(getNidMajalah());
             
             
         }
@@ -842,6 +846,8 @@ public class PustakaView extends javax.swing.JFrame {
             jenis = "Buku";
             volumeInput.setEnabled(false);
             edisiInput.setEnabled(true);
+            
+            nidInput.setText(getNidBuku());
             
             
         }
