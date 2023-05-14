@@ -85,7 +85,7 @@ public class Pustaka {
     
     public String showDataMajalah(){
         return 
-                "\nID Pustaka      : " +this.id_pustaka +
+                "ID Pustaka      : " +this.id_pustaka +
                 "\nJudul               : " + this.judul +
                 
                 "\nTahun Terbit   : "+ this.tahunTerbit +
