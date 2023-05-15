@@ -555,7 +555,7 @@ public class PustakaView extends javax.swing.JFrame {
 
     private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
         setComponent(true);
-        updateBukuMajalah();
+        ubahBukuMajalah();
         nidInput.setEnabled(false);
         
         action = "Ubah";
@@ -563,7 +563,7 @@ public class PustakaView extends javax.swing.JFrame {
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         setComponent(true);
-        updateBukuMajalah();
+        tambahBukuMajalah();
         clearText();
         searchInput.setText("");
         action = "Tambah";
@@ -630,7 +630,7 @@ public class PustakaView extends javax.swing.JFrame {
             //noIdPustakaException();
             Pustaka p;
             
-            if (jenis == "Buku") {
+            if ("Buku".equals(jenis)) {
                 p = new Pustaka(nidInput.getText(), judulInput.getText(), jenis,  TTInput.getText(), penerbitInput.getText(),
                     Integer.parseInt(edisiInput.getText()), 
                     0);
@@ -645,10 +645,11 @@ public class PustakaView extends javax.swing.JFrame {
             
             if ("Tambah".equals(action)) {
                 pustakaControl.insertDataPustaka(p);
+                JOptionPane.showMessageDialog(this, "[*] Berhasil menambahkan [*]");
                 
             }else if ("Ubah".equals(action)) {
                 pustakaControl.updateDataPustaka(p, nidInput.getText());
-                System.out.println("tes");
+                JOptionPane.showMessageDialog(this, "[*] Berhasil mengubah [*]");
             }
             
             clearText();
@@ -675,17 +676,26 @@ public class PustakaView extends javax.swing.JFrame {
     private void rdoMajalahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoMajalahActionPerformed
         rdoBukuOnPush = false;
         rdoMajalahOnPush = true;
-        updateId("Majalah");
-        updateBukuMajalah();
+        
+        if ("Tambah".equals(action)) {
+            updateId("Majalah");
+            tambahBukuMajalah();
+        }
+        
+       
         
     }//GEN-LAST:event_rdoMajalahActionPerformed
 
     private void rdoBukuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoBukuActionPerformed
-        //rdoBukuOnPush = !rdoBukuOnPush;
+        
         rdoBukuOnPush = true;
         rdoMajalahOnPush = false;
-        updateId("Buku");
-        updateBukuMajalah();
+        if ("Tambah".equals(action)) {
+            updateId("Buku");
+            tambahBukuMajalah();
+        }
+        
+        
         
     }//GEN-LAST:event_rdoBukuActionPerformed
 
@@ -815,7 +825,7 @@ public class PustakaView extends javax.swing.JFrame {
                 "MJL-"+(pustakaControl.getLastIndexMajalah()+1);
     }
     
-    private void updateBukuMajalah(){
+    private void tambahBukuMajalah(){
         volumeInput.setEnabled(false);
         edisiInput.setEnabled(false);
         
@@ -824,7 +834,7 @@ public class PustakaView extends javax.swing.JFrame {
             jenis = "Majalah";
             volumeInput.setEnabled(true);
             edisiInput.setEnabled(false);
-            nidInput.setText(getNidMajalah());
+            
             
         }
         
@@ -832,9 +842,29 @@ public class PustakaView extends javax.swing.JFrame {
             jenis = "Buku";
             volumeInput.setEnabled(false);
             edisiInput.setEnabled(true);
-            nidInput.setText(getNidBuku());
+            
             
         }
+    }
+    
+    private void ubahBukuMajalah(){
+        
+        edisiInput.setEnabled(false);
+        volumeInput.setEnabled(false);
+        rdoBuku.setEnabled(false);
+        rdoMajalah.setEnabled(false);
+        
+        //jika idnya BUKU :
+        if (nidInput.getText().contains("BK")) {
+            edisiInput.setEnabled(true);
+            
+        //jika idnya MAJALAH :
+        }else{
+            volumeInput.setEnabled(true);
+        }
+        
+        
+        
     }
 
     private void showPustaka() {
