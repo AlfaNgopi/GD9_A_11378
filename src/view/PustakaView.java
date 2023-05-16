@@ -8,7 +8,6 @@ package view;
 
 import control.PustakaControl;
 import exception.InputKosongException;
-import exception.NoIdPustakaException;
 import javax.swing.JOptionPane;
 import model.Pustaka;
 /**
@@ -662,10 +661,7 @@ public class PustakaView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, e.message());
         }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(this, e.getMessage());
-        }
-        
-        
-        
+        } 
     }//GEN-LAST:event_saveBtnActionPerformed
 
     private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
@@ -832,7 +828,6 @@ public class PustakaView extends javax.swing.JFrame {
         
         
         if (rdoMajalahOnPush) {
-            System.out.println("tes");
             jenis = "Majalah";
             volumeInput.setEnabled(true);
             edisiInput.setEnabled(false);
@@ -892,12 +887,6 @@ public class PustakaView extends javax.swing.JFrame {
             if (volumeInput.getText().isEmpty()) {
                 throw new InputKosongException();
             }
-        }
-    }
-    
-    private void noIdPustakaException() throws NoIdPustakaException{
-        if (nidInput.getText().length()<5 || nidInput.getText().length()>8) {
-            throw new NoIdPustakaException();
         }
     }
 
