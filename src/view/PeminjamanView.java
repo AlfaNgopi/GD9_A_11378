@@ -514,6 +514,7 @@ public class PeminjamanView extends javax.swing.JFrame {
             
                 
         }
+        showPeminjaman();
     }//GEN-LAST:event_deleteBtnActionPerformed
 
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
@@ -598,6 +599,7 @@ public class PeminjamanView extends javax.swing.JFrame {
                 
             }else{
                 Peminjaman pj = new Peminjaman(
+                        selectedId,
                         lamaPinjam,
                         tanggalPinjam,
                         kondisi,
@@ -610,8 +612,8 @@ public class PeminjamanView extends javax.swing.JFrame {
             showPeminjaman();
             setComponent(false);
             
-        }catch (Exception e){
-            JOptionPane.showMessageDialog(this, e.getMessage());
+        }catch (InputKosongException e){
+            JOptionPane.showMessageDialog(this, e.message());
         }
         
     }//GEN-LAST:event_saveBtnActionPerformed
@@ -644,7 +646,7 @@ public class PeminjamanView extends javax.swing.JFrame {
         TableModel tableModel = tablePeminjaman.getModel();
         
         //UNTUK DELETE
-        selectedId = Integer.parseInt(tableModel.getValueAt(clickedRow, 5).toString());
+        selectedId = Integer.parseInt(tableModel.getValueAt(clickedRow, 8).toString());
         
         
         //UNTUK UBAH
@@ -664,7 +666,7 @@ public class PeminjamanView extends javax.swing.JFrame {
         String namaMahasiswa = tableModel.getValueAt(clickedRow, 2).toString();
         for (Mahasiswa mahasiswa : listMahasiswa) {
             if (mahasiswa.getNama().equals(namaMahasiswa)) {
-                indexMahasiswa = listPustaka.indexOf(mahasiswa);
+                indexMahasiswa = listMahasiswa.indexOf(mahasiswa);
             }
         }
         namaMahasiswaCBX.setSelectedIndex(indexMahasiswa);
@@ -676,6 +678,9 @@ public class PeminjamanView extends javax.swing.JFrame {
         tanggalPinjamInput.setText(tableModel.getValueAt(clickedRow, 4).toString());
         
         //kondisi
+        sobekCheckBox.setSelected(false);
+        coretanCheckBox.setSelected(false);
+        menguningCheckBox.setSelected(false);
         String kondisi = tableModel.getValueAt(clickedRow, 5).toString();
         if (kondisi.contains("Sobek")) {
             sobekCheckBox.setSelected(true);
@@ -808,7 +813,13 @@ public class PeminjamanView extends javax.swing.JFrame {
     
     
     private void inputKosongException() throws InputKosongException{
-        throw new InputKosongException();
+        if (judulPustakaCBX.getSelectedIndex() == -1 
+                || namaMahasiswaCBX.getSelectedIndex() == -1 
+                || lamaPinjamInput.getText().isEmpty() 
+                || tanggalPinjamInput.getText().isEmpty()) {
+            throw new InputKosongException();
+        }
+        
     }
 
     
@@ -821,8 +832,8 @@ public class PeminjamanView extends javax.swing.JFrame {
 
     private void setMahasiswaToDrowDown() {
         listMahasiswa = mhsControl.showDataMahasiswa();
-        for (int i = 0; i < listPustaka.size(); i++) {
-            judulPustakaCBX.addItem(listPustaka.get(i));
+        for (int i = 0; i < listMahasiswa.size(); i++) {
+            namaMahasiswaCBX.addItem(listMahasiswa.get(i));
         }
     }
     

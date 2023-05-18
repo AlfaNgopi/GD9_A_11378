@@ -21,9 +21,10 @@ public class TablePeminjaman extends AbstractTableModel{
         return list.size();
     }
     public int getColumnCount() {
-        return 5;
+        return 8;
     }
     
+    @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         switch (columnIndex) {
             case 0:
@@ -53,6 +54,7 @@ public class TablePeminjaman extends AbstractTableModel{
         }
     }
      
+    @Override
     public String getColumnName(int column) {
         switch (column) {
             case 0:
