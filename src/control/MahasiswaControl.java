@@ -13,13 +13,9 @@ import model.Mahasiswa;
 public class MahasiswaControl {
     private MahasiswaDAO mDao = new MahasiswaDAO();
     
-    public String showDataMahasiswa(){
-        List<Mahasiswa> dataMahasiswa = mDao.showMahasiswa();
-        String MahasiswaString = "";
-        for (int i = 0; i < dataMahasiswa.size(); i++) {
-            MahasiswaString = MahasiswaString + dataMahasiswa.get(i).showDataMahasiswa() + "\n";
-        }
-        return MahasiswaString;
+    public List<Mahasiswa> showDataMahasiswa(){
+       
+        return mDao.showMahasiswa();
     }
     
 }

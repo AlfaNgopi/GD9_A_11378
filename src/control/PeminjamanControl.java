@@ -14,7 +14,7 @@ import table.TablePeminjaman;
 public class PeminjamanControl {
     private PeminjamanDAO pmDao = new PeminjamanDAO();
     
-    public void insertDataMataKuliah(Peminjaman pm){
+    public void insertDataPeminjaman(Peminjaman pm){
         pmDao.insertPeminjaman(pm);
     }
     
