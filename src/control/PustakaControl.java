@@ -38,6 +38,13 @@ public class PustakaControl {
         return pustakaString;
     }
     
+    public List<Pustaka> showData(){
+        
+        System.out.println("saat di control");
+        
+        return pDAO.showPustaka();
+    }
+
     public String showDataMajalah(){
         List<Pustaka> dataPustaka = pDAO.showPustaka();
         String pustakaString = "";
