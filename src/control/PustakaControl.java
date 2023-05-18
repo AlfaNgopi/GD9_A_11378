@@ -53,36 +53,39 @@ public class PustakaControl {
         List<Pustaka> dataPustaka = pDAO.showPustaka();
         
         String lastId = "kosong";
+        int maxId = 0;
         for (int i = 0; i < dataPustaka.size(); i++) {
             if ("Buku".equals(dataPustaka.get(i).getJenis())) {
                 lastId = dataPustaka.get(i).getIdPustaka();
+                lastId = lastId.substring(3);
+                
+                int idSekarang = Integer.parseInt(lastId);
+                if (maxId < idSekarang) {
+                    maxId = idSekarang;
+                }
             }
         }
-        if ("kosong".equals(lastId)) {
-            return 0;
-        }
-        lastId = lastId.substring(3);
-        
-        return Integer.parseInt(lastId);
+        return maxId;
     }
     
     public int getLastIndexMajalah(){
         List<Pustaka> dataPustaka = pDAO.showPustaka();
         
-        String lastId = "kosong";
+        String lastId;
+        int maxId = 0;
+        
         for (int i = 0; i < dataPustaka.size(); i++) {
             if ("Majalah".equals(dataPustaka.get(i).getJenis())) {
                 lastId = dataPustaka.get(i).getIdPustaka();
+                lastId = lastId.substring(4);
+                
+                int idSekarang = Integer.parseInt(lastId);
+                if (maxId < idSekarang) {
+                    maxId = idSekarang;
+                }
             }
         }
-        
-        if ("kosong".equals(lastId)) {
-            return 0;
-        }
-        
-        lastId = lastId.substring(4);
-        
-        return Integer.parseInt(lastId);
+        return maxId;
     }
     
     
@@ -90,6 +93,11 @@ public class PustakaControl {
         Pustaka p = null;
         p = pDAO.searchPustaka(id_pustaka);
         return p;
+    }
+    
+    public List<Pustaka> showAllPustaka(){
+        List<Pustaka> dataPustaka = pDAO.showPustaka();
+        return dataPustaka;
     }
     
 }

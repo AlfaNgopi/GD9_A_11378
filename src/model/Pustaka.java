@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 // Nama : Vincentius Kenton
 // NPM : 210711307
@@ -21,6 +17,11 @@ public class Pustaka {
         this.penerbit = penerbit;
         this.edisi = edisi;
         this.volume = volume;
+    }
+    
+    @Override
+    public String toString(){
+        return judul;
     }
 
     public String getIdPustaka() {
