@@ -75,6 +75,7 @@ public class PeminjamanView extends javax.swing.JFrame {
         npmLabel1 = new javax.swing.JLabel();
         npmPanel2 = new javax.swing.JPanel();
         npmLabel2 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         containerPanel = new javax.swing.JPanel();
         headerPanel = new javax.swing.JPanel();
         titleContent = new javax.swing.JLabel();
@@ -241,22 +242,29 @@ public class PeminjamanView extends javax.swing.JFrame {
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/logo.png"))); // NOI18N
+
         javax.swing.GroupLayout sidebarPanelLayout = new javax.swing.GroupLayout(sidebarPanel);
         sidebarPanel.setLayout(sidebarPanelLayout);
         sidebarPanelLayout.setHorizontalGroup(
             sidebarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(peminjamanPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(sidebarPanelLayout.createSequentialGroup()
-                .addComponent(pustakaPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addComponent(kelompokPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(npmPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(npmPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(sidebarPanelLayout.createSequentialGroup()
+                .addGroup(sidebarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pustakaPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         sidebarPanelLayout.setVerticalGroup(
             sidebarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(sidebarPanelLayout.createSequentialGroup()
-                .addGap(140, 140, 140)
+                .addGap(25, 25, 25)
+                .addComponent(jLabel2)
+                .addGap(135, 135, 135)
                 .addComponent(pustakaPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
                 .addComponent(peminjamanPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -459,7 +467,7 @@ public class PeminjamanView extends javax.swing.JFrame {
                     .addComponent(lamaPinjamInput))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tanggalPinjamInput, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
+                    .addComponent(tanggalPinjamInput, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
                     .addGroup(contentPanelLayout.createSequentialGroup()
                         .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(contentPanelLayout.createSequentialGroup()
@@ -825,15 +833,12 @@ public class PeminjamanView extends javax.swing.JFrame {
     private javax.swing.JButton deleteBtn;
     private javax.swing.JButton editBtn;
     private javax.swing.JPanel headerPanel;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JComboBox<Pustaka> judulPustakaCBX;
     private javax.swing.JLabel judulPustakaLabel;
     private javax.swing.JLabel kelompokLabel;
-    private javax.swing.JLabel kelompokLabel1;
-    private javax.swing.JLabel kelompokLabel2;
     private javax.swing.JPanel kelompokPanel;
-    private javax.swing.JPanel kelompokPanel1;
-    private javax.swing.JPanel kelompokPanel2;
     private javax.swing.JTextField lamaPinjamInput;
     private javax.swing.JLabel lamaPinjamLabel;
     private javax.swing.JCheckBox menguningCheckBox;
