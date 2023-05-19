@@ -1,8 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package view;
+
+// Nama : Vincentius Kenton
+// NPM : 210711307
+
+// Nama : Alfa Nada Yulaswara
+// NPM : 210711378
 
 import control.MahasiswaControl;
 import control.PeminjamanControl;
@@ -62,11 +64,17 @@ public class PeminjamanView extends javax.swing.JFrame {
 
         sidebarPanel = new javax.swing.JPanel();
         pustakaPanel = new javax.swing.JPanel();
-        lecturerIcon = new javax.swing.JLabel();
-        lecturerLabel = new javax.swing.JLabel();
-        coursePanel = new javax.swing.JPanel();
-        courseIcon = new javax.swing.JLabel();
-        courseLabel = new javax.swing.JLabel();
+        pustakaIcon = new javax.swing.JLabel();
+        pustakaLabel = new javax.swing.JLabel();
+        peminjamanPanel = new javax.swing.JPanel();
+        peminjamanIcon = new javax.swing.JLabel();
+        peminjamanLabel = new javax.swing.JLabel();
+        kelompokPanel = new javax.swing.JPanel();
+        kelompokLabel = new javax.swing.JLabel();
+        npmPanel1 = new javax.swing.JPanel();
+        npmLabel1 = new javax.swing.JLabel();
+        npmPanel2 = new javax.swing.JPanel();
+        npmLabel2 = new javax.swing.JLabel();
         containerPanel = new javax.swing.JPanel();
         headerPanel = new javax.swing.JPanel();
         titleContent = new javax.swing.JLabel();
@@ -104,13 +112,13 @@ public class PeminjamanView extends javax.swing.JFrame {
             }
         });
 
-        lecturerIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/pustaka.png"))); // NOI18N
-        lecturerIcon.setText("jLabel1");
+        pustakaIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/pustaka.png"))); // NOI18N
+        pustakaIcon.setText("jLabel1");
 
-        lecturerLabel.setFont(new java.awt.Font("MS UI Gothic", 1, 14)); // NOI18N
-        lecturerLabel.setForeground(new java.awt.Color(255, 255, 255));
-        lecturerLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lecturerLabel.setText("Pustaka");
+        pustakaLabel.setFont(new java.awt.Font("MS UI Gothic", 1, 14)); // NOI18N
+        pustakaLabel.setForeground(new java.awt.Color(255, 255, 255));
+        pustakaLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pustakaLabel.setText("Pustaka");
 
         javax.swing.GroupLayout pustakaPanelLayout = new javax.swing.GroupLayout(pustakaPanel);
         pustakaPanel.setLayout(pustakaPanelLayout);
@@ -118,63 +126,132 @@ public class PeminjamanView extends javax.swing.JFrame {
             pustakaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pustakaPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lecturerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pustakaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(pustakaPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lecturerIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pustakaIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pustakaPanelLayout.setVerticalGroup(
             pustakaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pustakaPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lecturerIcon)
+                .addComponent(pustakaIcon)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lecturerLabel))
+                .addComponent(pustakaLabel))
         );
 
-        coursePanel.setBackground(new java.awt.Color(7, 24, 89));
+        peminjamanPanel.setBackground(new java.awt.Color(7, 24, 89));
 
-        courseIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/peminjaman.png"))); // NOI18N
-        courseIcon.setText("jLabel1");
+        peminjamanIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/peminjaman.png"))); // NOI18N
+        peminjamanIcon.setText("jLabel1");
 
-        courseLabel.setFont(new java.awt.Font("MS UI Gothic", 1, 14)); // NOI18N
-        courseLabel.setForeground(new java.awt.Color(255, 255, 255));
-        courseLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        courseLabel.setText("Peminjaman");
+        peminjamanLabel.setFont(new java.awt.Font("MS UI Gothic", 1, 14)); // NOI18N
+        peminjamanLabel.setForeground(new java.awt.Color(255, 255, 255));
+        peminjamanLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        peminjamanLabel.setText("Peminjaman");
 
-        javax.swing.GroupLayout coursePanelLayout = new javax.swing.GroupLayout(coursePanel);
-        coursePanel.setLayout(coursePanelLayout);
-        coursePanelLayout.setHorizontalGroup(
-            coursePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(coursePanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout peminjamanPanelLayout = new javax.swing.GroupLayout(peminjamanPanel);
+        peminjamanPanel.setLayout(peminjamanPanelLayout);
+        peminjamanPanelLayout.setHorizontalGroup(
+            peminjamanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(peminjamanPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(coursePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(coursePanelLayout.createSequentialGroup()
-                        .addComponent(courseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 2, Short.MAX_VALUE))
-                    .addComponent(courseIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGroup(peminjamanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(peminjamanPanelLayout.createSequentialGroup()
+                        .addComponent(peminjamanLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(peminjamanIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        coursePanelLayout.setVerticalGroup(
-            coursePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(coursePanelLayout.createSequentialGroup()
+        peminjamanPanelLayout.setVerticalGroup(
+            peminjamanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(peminjamanPanelLayout.createSequentialGroup()
                 .addGap(6, 6, 6)
-                .addComponent(courseIcon)
+                .addComponent(peminjamanIcon)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(courseLabel)
+                .addComponent(peminjamanLabel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        kelompokPanel.setBackground(new java.awt.Color(153, 153, 255));
+
+        kelompokLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        kelompokLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        kelompokLabel.setText("Kelompok 16");
+
+        javax.swing.GroupLayout kelompokPanelLayout = new javax.swing.GroupLayout(kelompokPanel);
+        kelompokPanel.setLayout(kelompokPanelLayout);
+        kelompokPanelLayout.setHorizontalGroup(
+            kelompokPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(kelompokLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        kelompokPanelLayout.setVerticalGroup(
+            kelompokPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(kelompokPanelLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(kelompokLabel)
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+
+        npmPanel1.setBackground(new java.awt.Color(153, 153, 255));
+
+        npmLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        npmLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        npmLabel1.setText("210711307");
+
+        javax.swing.GroupLayout npmPanel1Layout = new javax.swing.GroupLayout(npmPanel1);
+        npmPanel1.setLayout(npmPanel1Layout);
+        npmPanel1Layout.setHorizontalGroup(
+            npmPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(npmPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(npmLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        npmPanel1Layout.setVerticalGroup(
+            npmPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(npmPanel1Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(npmLabel1)
+                .addContainerGap(21, Short.MAX_VALUE))
+        );
+
+        npmPanel2.setBackground(new java.awt.Color(153, 153, 255));
+
+        npmLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        npmLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        npmLabel2.setText("210711378");
+
+        javax.swing.GroupLayout npmPanel2Layout = new javax.swing.GroupLayout(npmPanel2);
+        npmPanel2.setLayout(npmPanel2Layout);
+        npmPanel2Layout.setHorizontalGroup(
+            npmPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(npmPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(npmLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        npmPanel2Layout.setVerticalGroup(
+            npmPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(npmPanel2Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(npmLabel2)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout sidebarPanelLayout = new javax.swing.GroupLayout(sidebarPanel);
         sidebarPanel.setLayout(sidebarPanelLayout);
         sidebarPanelLayout.setHorizontalGroup(
             sidebarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(coursePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(peminjamanPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(sidebarPanelLayout.createSequentialGroup()
                 .addComponent(pustakaPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(kelompokPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(npmPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(npmPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         sidebarPanelLayout.setVerticalGroup(
             sidebarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,7 +259,13 @@ public class PeminjamanView extends javax.swing.JFrame {
                 .addGap(140, 140, 140)
                 .addComponent(pustakaPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
-                .addComponent(coursePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(peminjamanPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(kelompokPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(npmPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(npmPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -251,7 +334,7 @@ public class PeminjamanView extends javax.swing.JFrame {
                         .addComponent(editBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(deleteBtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
                         .addComponent(searchInput, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -374,29 +457,26 @@ public class PeminjamanView extends javax.swing.JFrame {
                     .addComponent(judulPustakaCBX, 0, 330, Short.MAX_VALUE)
                     .addComponent(namaMahasiswaCBX, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lamaPinjamInput))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tanggalPinjamInput, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
                     .addGroup(contentPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
-                        .addComponent(saveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(82, 82, 82))
-                    .addGroup(contentPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tanggalPinjamInput, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
+                        .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(contentPanelLayout.createSequentialGroup()
-                                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(metodeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tanggalPinjamLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(contentPanelLayout.createSequentialGroup()
-                                        .addComponent(sobekCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(coretanCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(menguningCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(27, 27, 27))))
+                                .addComponent(saveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(metodeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(tanggalPinjamLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(contentPanelLayout.createSequentialGroup()
+                                    .addComponent(sobekCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(coretanCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(menguningCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(27, 27, 27))
             .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         contentPanelLayout.setVerticalGroup(
@@ -414,27 +494,24 @@ public class PeminjamanView extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addComponent(namaMahasiswaLabel)
                 .addGap(18, 18, 18)
-                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(contentPanelLayout.createSequentialGroup()
-                        .addComponent(namaMahasiswaCBX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(lamaPinjamLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lamaPinjamInput, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(contentPanelLayout.createSequentialGroup()
-                        .addComponent(metodeLabel)
-                        .addGap(18, 18, 18)
-                        .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(sobekCheckBox)
-                            .addComponent(coretanCheckBox)
-                            .addComponent(menguningCheckBox))))
-                .addGap(50, 50, 50)
+                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(metodeLabel)
+                    .addComponent(namaMahasiswaCBX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(saveBtn)
-                    .addComponent(cancelBtn))
+                    .addComponent(sobekCheckBox)
+                    .addComponent(coretanCheckBox)
+                    .addComponent(menguningCheckBox))
+                .addGap(4, 4, 4)
+                .addComponent(lamaPinjamLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lamaPinjamInput, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(saveBtn)
+                        .addComponent(cancelBtn)))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout containerPanelLayout = new javax.swing.GroupLayout(containerPanel);
@@ -469,10 +546,12 @@ public class PeminjamanView extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(sidebarPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(containerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 661, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(sidebarPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -743,23 +822,33 @@ public class PeminjamanView extends javax.swing.JFrame {
     private javax.swing.JPanel containerPanel;
     private javax.swing.JPanel contentPanel;
     private javax.swing.JCheckBox coretanCheckBox;
-    private javax.swing.JLabel courseIcon;
-    private javax.swing.JLabel courseLabel;
-    private javax.swing.JPanel coursePanel;
     private javax.swing.JButton deleteBtn;
     private javax.swing.JButton editBtn;
     private javax.swing.JPanel headerPanel;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JComboBox<Pustaka> judulPustakaCBX;
     private javax.swing.JLabel judulPustakaLabel;
+    private javax.swing.JLabel kelompokLabel;
+    private javax.swing.JLabel kelompokLabel1;
+    private javax.swing.JLabel kelompokLabel2;
+    private javax.swing.JPanel kelompokPanel;
+    private javax.swing.JPanel kelompokPanel1;
+    private javax.swing.JPanel kelompokPanel2;
     private javax.swing.JTextField lamaPinjamInput;
     private javax.swing.JLabel lamaPinjamLabel;
-    private javax.swing.JLabel lecturerIcon;
-    private javax.swing.JLabel lecturerLabel;
     private javax.swing.JCheckBox menguningCheckBox;
     private javax.swing.JLabel metodeLabel;
     private javax.swing.JComboBox<Mahasiswa> namaMahasiswaCBX;
     private javax.swing.JLabel namaMahasiswaLabel;
+    private javax.swing.JLabel npmLabel1;
+    private javax.swing.JLabel npmLabel2;
+    private javax.swing.JPanel npmPanel1;
+    private javax.swing.JPanel npmPanel2;
+    private javax.swing.JLabel peminjamanIcon;
+    private javax.swing.JLabel peminjamanLabel;
+    private javax.swing.JPanel peminjamanPanel;
+    private javax.swing.JLabel pustakaIcon;
+    private javax.swing.JLabel pustakaLabel;
     private javax.swing.JPanel pustakaPanel;
     private javax.swing.JButton saveBtn;
     private javax.swing.JButton searchBtn;

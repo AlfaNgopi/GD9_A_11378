@@ -52,6 +52,9 @@ public class PustakaView extends javax.swing.JFrame {
         lecturerLabel1 = new javax.swing.JLabel();
         lecturerPanel2 = new javax.swing.JPanel();
         lecturerLabel2 = new javax.swing.JLabel();
+        peminjamanPanel = new javax.swing.JPanel();
+        peminjamanIcon = new javax.swing.JLabel();
+        peminjamanLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         ContainerPanel = new javax.swing.JPanel();
         titileContent = new javax.swing.JLabel();
@@ -162,6 +165,41 @@ public class PustakaView extends javax.swing.JFrame {
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
+        peminjamanPanel.setBackground(new java.awt.Color(153, 153, 255));
+        peminjamanPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                peminjamanPanelMouseClicked(evt);
+            }
+        });
+
+        peminjamanIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        peminjamanIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/peminjaman.png"))); // NOI18N
+
+        peminjamanLabel.setFont(new java.awt.Font("MS UI Gothic", 1, 14)); // NOI18N
+        peminjamanLabel.setForeground(new java.awt.Color(255, 255, 255));
+        peminjamanLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        peminjamanLabel.setText("Peminjaman");
+
+        javax.swing.GroupLayout peminjamanPanelLayout = new javax.swing.GroupLayout(peminjamanPanel);
+        peminjamanPanel.setLayout(peminjamanPanelLayout);
+        peminjamanPanelLayout.setHorizontalGroup(
+            peminjamanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(peminjamanPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(peminjamanLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(peminjamanIcon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        peminjamanPanelLayout.setVerticalGroup(
+            peminjamanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(peminjamanPanelLayout.createSequentialGroup()
+                .addGap(13, 13, 13)
+                .addComponent(peminjamanIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(peminjamanLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout sidebarPanelLayout = new javax.swing.GroupLayout(sidebarPanel);
         sidebarPanel.setLayout(sidebarPanelLayout);
         sidebarPanelLayout.setHorizontalGroup(
@@ -170,13 +208,14 @@ public class PustakaView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(sidebarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sidebarPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 2, Short.MAX_VALUE)
                         .addComponent(lecturerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(sidebarPanelLayout.createSequentialGroup()
                         .addGroup(sidebarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lecturerPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lecturerPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(peminjamanPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         sidebarPanelLayout.setVerticalGroup(
@@ -188,7 +227,9 @@ public class PustakaView extends javax.swing.JFrame {
                 .addComponent(lecturerPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lecturerPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(437, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(peminjamanPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(311, Short.MAX_VALUE))
         );
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -537,7 +578,7 @@ public class PustakaView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(sidebarPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 765, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 763, Short.MAX_VALUE)
                 .addGap(6, 6, 6))
         );
         layout.setVerticalGroup(
@@ -696,6 +737,12 @@ public class PustakaView extends javax.swing.JFrame {
         
     }//GEN-LAST:event_rdoBukuActionPerformed
 
+    private void peminjamanPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_peminjamanPanelMouseClicked
+        PeminjamanView pmv = new PeminjamanView();
+        this.dispose();
+        pmv.setVisible(true);
+    }//GEN-LAST:event_peminjamanPanelMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -768,6 +815,9 @@ public class PustakaView extends javax.swing.JFrame {
     private javax.swing.JPanel lecturerPanel2;
     private javax.swing.JTextField nidInput;
     private javax.swing.JLabel nidLabel;
+    private javax.swing.JLabel peminjamanIcon;
+    private javax.swing.JLabel peminjamanLabel;
+    private javax.swing.JPanel peminjamanPanel;
     private javax.swing.JTextField penerbitInput;
     private javax.swing.JLabel penerbitLabel;
     private javax.swing.JRadioButton rdoBuku;
@@ -899,4 +949,6 @@ public class PustakaView extends javax.swing.JFrame {
         edisiInput.setText("");
         volumeInput.setText("");
     }
+
+    
 }
