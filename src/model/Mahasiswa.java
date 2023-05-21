@@ -17,6 +17,14 @@ public class Mahasiswa {
         this.npm = npm;
         this.no_telepon = no_telepon;
     }
+
+    public Mahasiswa(String nama, String npm, String no_telepon) {
+        this.nama = nama;
+        this.npm = npm;
+        this.no_telepon = no_telepon;
+    }
+    
+    
     
     @Override
     public String toString(){
