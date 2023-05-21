@@ -17,39 +17,37 @@ import javax.swing.table.TableModel;
 import model.Mahasiswa;
 import model.Peminjaman;
 import model.Pustaka;
+import table.TableMahasiswa;
 import table.TablePeminjaman;
 
 /**
  *
  * @author ASUS
  */
-public class PeminjamanView extends javax.swing.JFrame {
+public class MahasiswaView extends javax.swing.JFrame {
 
     private MahasiswaControl mhsControl;
-    private PeminjamanControl pmjControl;
-    private PustakaControl pskControl;
     
-    private List<Pustaka> listPustaka;
-    private List<Mahasiswa> listMahasiswa;
+    
+    
+    
     
     
     //local
     int selectedId = 0;
     private String action = "";
     
-    public PeminjamanView() {
+    public MahasiswaView() {
         initComponents();
         setComponent(false);
         
         setEditDeleteBtn(false);
         mhsControl = new MahasiswaControl();
-        pmjControl = new PeminjamanControl();
-        pskControl = new PustakaControl();
         
-        setPustakaToDropDown();
-        setMahasiswaToDrowDown();
         
-        showPeminjaman();
+        
+        
+        showMahasiswa();
         
     }
 
@@ -85,22 +83,16 @@ public class PeminjamanView extends javax.swing.JFrame {
         searchBtn = new javax.swing.JButton();
         searchInput = new javax.swing.JTextField();
         contentPanel = new javax.swing.JPanel();
-        judulPustakaLabel = new javax.swing.JLabel();
-        namaMahasiswaLabel = new javax.swing.JLabel();
-        lamaPinjamLabel = new javax.swing.JLabel();
-        metodeLabel = new javax.swing.JLabel();
-        sobekCheckBox = new javax.swing.JCheckBox();
-        coretanCheckBox = new javax.swing.JCheckBox();
+        namaLabel = new javax.swing.JLabel();
+        npmLabel = new javax.swing.JLabel();
+        notelpLabel = new javax.swing.JLabel();
         saveBtn = new javax.swing.JButton();
         cancelBtn = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        tablePeminjaman = new javax.swing.JTable();
-        judulPustakaCBX = new javax.swing.JComboBox<>();
-        namaMahasiswaCBX = new javax.swing.JComboBox<>();
-        tanggalPinjamLabel = new javax.swing.JLabel();
-        lamaPinjamInput = new javax.swing.JTextField();
-        tanggalPinjamInput = new javax.swing.JTextField();
-        menguningCheckBox = new javax.swing.JCheckBox();
+        tableMahasiswa = new javax.swing.JTable();
+        notelpInput = new javax.swing.JTextField();
+        npmInput = new javax.swing.JTextField();
+        namaInput = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -143,10 +135,15 @@ public class PeminjamanView extends javax.swing.JFrame {
                 .addComponent(pustakaLabel))
         );
 
-        peminjamanPanel.setBackground(new java.awt.Color(7, 24, 89));
+        peminjamanPanel.setBackground(new java.awt.Color(22, 52, 122));
 
         peminjamanIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/peminjaman.png"))); // NOI18N
         peminjamanIcon.setText("jLabel1");
+        peminjamanIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                peminjamanIconMouseClicked(evt);
+            }
+        });
 
         peminjamanLabel.setFont(new java.awt.Font("MS UI Gothic", 1, 14)); // NOI18N
         peminjamanLabel.setForeground(new java.awt.Color(255, 255, 255));
@@ -244,11 +241,6 @@ public class PeminjamanView extends javax.swing.JFrame {
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/logo.png"))); // NOI18N
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout sidebarPanelLayout = new javax.swing.GroupLayout(sidebarPanel);
         sidebarPanel.setLayout(sidebarPanelLayout);
@@ -269,7 +261,7 @@ public class PeminjamanView extends javax.swing.JFrame {
             .addGroup(sidebarPanelLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jLabel2)
-                .addGap(135, 135, 135)
+                .addGap(138, 138, 138)
                 .addComponent(pustakaPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
                 .addComponent(peminjamanPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -287,7 +279,7 @@ public class PeminjamanView extends javax.swing.JFrame {
 
         titleContent.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 32)); // NOI18N
         titleContent.setForeground(new java.awt.Color(0, 0, 0));
-        titleContent.setText("Peminjaman");
+        titleContent.setText("Mahasiswa");
 
         addBtn.setBackground(new java.awt.Color(0, 153, 0));
         addBtn.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 14)); // NOI18N
@@ -371,36 +363,17 @@ public class PeminjamanView extends javax.swing.JFrame {
         contentPanel.setBackground(new java.awt.Color(255, 255, 255));
         contentPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder(null, java.awt.Color.lightGray));
 
-        judulPustakaLabel.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
-        judulPustakaLabel.setForeground(new java.awt.Color(0, 0, 0));
-        judulPustakaLabel.setText("Judul Pustaka");
+        namaLabel.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
+        namaLabel.setForeground(new java.awt.Color(0, 0, 0));
+        namaLabel.setText("Nama");
 
-        namaMahasiswaLabel.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
-        namaMahasiswaLabel.setForeground(new java.awt.Color(0, 0, 0));
-        namaMahasiswaLabel.setText("Nama Mahasiswa");
+        npmLabel.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
+        npmLabel.setForeground(new java.awt.Color(0, 0, 0));
+        npmLabel.setText("NPM");
 
-        lamaPinjamLabel.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
-        lamaPinjamLabel.setForeground(new java.awt.Color(0, 0, 0));
-        lamaPinjamLabel.setText("Lama Pinjam");
-
-        metodeLabel.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
-        metodeLabel.setForeground(new java.awt.Color(0, 0, 0));
-        metodeLabel.setText("Kondisi Pustaka");
-
-        sobekCheckBox.setBackground(new java.awt.Color(255, 255, 255));
-        sobekCheckBox.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
-        sobekCheckBox.setForeground(new java.awt.Color(0, 0, 0));
-        sobekCheckBox.setText("Sobek");
-
-        coretanCheckBox.setBackground(new java.awt.Color(255, 255, 255));
-        coretanCheckBox.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
-        coretanCheckBox.setForeground(new java.awt.Color(0, 0, 0));
-        coretanCheckBox.setText("Coretan");
-        coretanCheckBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                coretanCheckBoxActionPerformed(evt);
-            }
-        });
+        notelpLabel.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
+        notelpLabel.setForeground(new java.awt.Color(0, 0, 0));
+        notelpLabel.setText("No Telp");
 
         saveBtn.setBackground(new java.awt.Color(22, 52, 122));
         saveBtn.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 14)); // NOI18N
@@ -425,7 +398,7 @@ public class PeminjamanView extends javax.swing.JFrame {
         jScrollPane3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
         jScrollPane3.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
-        tablePeminjaman.setModel(new javax.swing.table.DefaultTableModel(
+        tableMahasiswa.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -436,90 +409,51 @@ public class PeminjamanView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tablePeminjaman.addMouseListener(new java.awt.event.MouseAdapter() {
+        tableMahasiswa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tablePeminjamanMouseClicked(evt);
+                tableMahasiswaMouseClicked(evt);
             }
         });
-        jScrollPane3.setViewportView(tablePeminjaman);
-
-        tanggalPinjamLabel.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
-        tanggalPinjamLabel.setForeground(new java.awt.Color(0, 0, 0));
-        tanggalPinjamLabel.setText("Tanggal Pinjam");
-
-        menguningCheckBox.setBackground(new java.awt.Color(255, 255, 255));
-        menguningCheckBox.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
-        menguningCheckBox.setForeground(new java.awt.Color(0, 0, 0));
-        menguningCheckBox.setText("Menguning");
-        menguningCheckBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menguningCheckBoxActionPerformed(evt);
-            }
-        });
+        jScrollPane3.setViewportView(tableMahasiswa);
 
         javax.swing.GroupLayout contentPanelLayout = new javax.swing.GroupLayout(contentPanel);
         contentPanel.setLayout(contentPanelLayout);
         contentPanelLayout.setHorizontalGroup(
             contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(contentPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(judulPustakaLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(namaMahasiswaLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lamaPinjamLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(judulPustakaCBX, 0, 330, Short.MAX_VALUE)
-                    .addComponent(namaMahasiswaCBX, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lamaPinjamInput))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tanggalPinjamInput, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
                     .addGroup(contentPanelLayout.createSequentialGroup()
                         .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(contentPanelLayout.createSequentialGroup()
-                                .addComponent(saveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(metodeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(tanggalPinjamLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(contentPanelLayout.createSequentialGroup()
-                                    .addComponent(sobekCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(coretanCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(menguningCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(27, 27, 27))
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(namaLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(npmLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(notelpLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(notelpInput, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(138, 138, 138)
+                        .addComponent(saveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(npmInput, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(namaInput, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         contentPanelLayout.setVerticalGroup(
             contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contentPanelLayout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(contentPanelLayout.createSequentialGroup()
-                        .addComponent(judulPustakaLabel)
-                        .addGap(4, 4, 4)
-                        .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(judulPustakaCBX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tanggalPinjamInput, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(tanggalPinjamLabel))
-                .addGap(27, 27, 27)
-                .addComponent(namaMahasiswaLabel)
-                .addGap(18, 18, 18)
-                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(metodeLabel)
-                    .addComponent(namaMahasiswaCBX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(namaLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(sobekCheckBox)
-                    .addComponent(coretanCheckBox)
-                    .addComponent(menguningCheckBox))
-                .addGap(4, 4, 4)
-                .addComponent(lamaPinjamLabel)
+                .addComponent(namaInput, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
+                .addComponent(npmLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(npmInput, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(notelpLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lamaPinjamInput, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(notelpInput, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(saveBtn)
                         .addComponent(cancelBtn)))
@@ -531,11 +465,11 @@ public class PeminjamanView extends javax.swing.JFrame {
         containerPanel.setLayout(containerPanelLayout);
         containerPanelLayout.setHorizontalGroup(
             containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, containerPanelLayout.createSequentialGroup()
+            .addGroup(containerPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(headerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(headerPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         containerPanelLayout.setVerticalGroup(
@@ -576,7 +510,7 @@ public class PeminjamanView extends javax.swing.JFrame {
         
         clearText();
         searchInput.setText("");
-        judulPustakaCBX.setSelectedIndex(0);
+        
         action = "Tambah";
     }//GEN-LAST:event_addBtnActionPerformed
 
@@ -596,9 +530,9 @@ public class PeminjamanView extends javax.swing.JFrame {
         
             
             //yes
-            pmjControl.deleteDataPeminjaman(selectedId);
+            mhsControl.deleteDataMahasiswa(selectedId);
             clearText();
-            //showMataKuliah();
+            
             setComponent(false);
             
             setEditDeleteBtn(false);
@@ -606,7 +540,7 @@ public class PeminjamanView extends javax.swing.JFrame {
             
                 
         }
-        showPeminjaman();
+        showMahasiswa();
     }//GEN-LAST:event_deleteBtnActionPerformed
 
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
@@ -614,7 +548,7 @@ public class PeminjamanView extends javax.swing.JFrame {
         setEditDeleteBtn(false);
         
         try{
-            TablePeminjaman peminjaman = pmjControl.showPeminjaman(searchInput.getText());
+            TableMahasiswa peminjaman = mhsControl.showMahasiswa(searchInput.getText());
             
             if (peminjaman.getRowCount() == 0) {
                 clearText();
@@ -622,7 +556,7 @@ public class PeminjamanView extends javax.swing.JFrame {
                 JOptionPane.showConfirmDialog(null, "Data Tidak Ditemukan !", "Konfirmasi", JOptionPane.DEFAULT_OPTION);
                 
             }else{
-                tablePeminjaman.setModel(peminjaman);
+                tableMahasiswa.setModel(peminjaman);
                 
             }
             
@@ -640,68 +574,44 @@ public class PeminjamanView extends javax.swing.JFrame {
             String tanggalPinjam = "";
             String kondisi = "";
             
-            //Pustaka
-            int selectedIndexPustaka = judulPustakaCBX.getSelectedIndex();
-            Pustaka selectedPustaka = listPustaka.get(selectedIndexPustaka);
+            //Nama
             
-            //Mahasiswa
-            int selectedIndexMahasiswa = namaMahasiswaCBX.getSelectedIndex();
-            Mahasiswa selectedMahasiswa = listMahasiswa.get(selectedIndexMahasiswa);
+            String nama = namaInput.getText();
             
-            //kondisi
-            boolean siapKoma = false;
-            if (sobekCheckBox.isSelected()) {
-                kondisi = "Sobek";
-                siapKoma = true;
-            }
-            if (coretanCheckBox.isSelected()) {
-                if (siapKoma) {
-                    kondisi = kondisi + ",";
-                }
-                kondisi = kondisi + "Coretan";
-                siapKoma = true;
-            }
-            if (menguningCheckBox.isSelected()) {
-                if (siapKoma) {
-                    kondisi = kondisi + ",";
-                }
-                kondisi = kondisi + "Menguning";
-                
-            }
+            //NPM
+            String npm = npmInput.getText();
             
-            //lama pinjam
-            lamaPinjam = lamaPinjamInput.getText();
+            //No telp
+            String noTelp = notelpInput.getText();
             
-            //tanggal pinjam
-            tanggalPinjam = tanggalPinjamInput.getText();
+            
             
             
             
             
             if ("Tambah".equals(action)) {
-                Peminjaman pj = new Peminjaman(
-                        lamaPinjam,
-                        tanggalPinjam,
-                        kondisi,
-                        selectedPustaka,
-                        selectedMahasiswa
+                Mahasiswa mhs = new Mahasiswa(
+                        nama,
+                        npm,
+                        noTelp
+                        
                         
                 );
-                pmjControl.insertDataPeminjaman(pj);
+                mhsControl.insertDataMahasiswa(mhs);
                 
             }else{
-                Peminjaman pj = new Peminjaman(
+                Mahasiswa mhs = new Mahasiswa(
                         selectedId,
-                        lamaPinjam,
-                        tanggalPinjam,
-                        kondisi,
-                        selectedPustaka,
-                        selectedMahasiswa
+                        nama,
+                        npm,
+                        noTelp
+                        
+                        
                 );
-                pmjControl.updateDataPeminjaman(pj);
+                mhsControl.updateDataMahasiswa(mhs);
             }
             clearText();
-            showPeminjaman();
+            showMahasiswa();
             setComponent(false);
             
         }catch (InputKosongException e){
@@ -712,7 +622,7 @@ public class PeminjamanView extends javax.swing.JFrame {
 
     private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
         clearText();
-        showPeminjaman();
+        showMahasiswa();
         setComponent(false);
         
     }//GEN-LAST:event_cancelBtnActionPerformed
@@ -723,81 +633,43 @@ public class PeminjamanView extends javax.swing.JFrame {
         pv.setVisible(true);
     }//GEN-LAST:event_pustakaPanelMouseClicked
 
-    private void coretanCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coretanCheckBoxActionPerformed
-        
-        
-    }//GEN-LAST:event_coretanCheckBoxActionPerformed
-
-    private void tablePeminjamanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablePeminjamanMouseClicked
+    private void tableMahasiswaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMahasiswaMouseClicked
         
         setEditDeleteBtn(true);
         setComponent(false);
         
         
-        int clickedRow = tablePeminjaman.getSelectedRow();
-        TableModel tableModel = tablePeminjaman.getModel();
+        int clickedRow = tableMahasiswa.getSelectedRow();
+        TableModel tableModel = tableMahasiswa.getModel();
         
-        //UNTUK DELETE
-        selectedId = Integer.parseInt(tableModel.getValueAt(clickedRow, 8).toString());
+        //UNTUK DELETE & ubah
+        selectedId = Integer.parseInt(tableModel.getValueAt(clickedRow, 0).toString());
         
         
         //UNTUK UBAH
         
-        //judul pustaka
-        int indexPustaka = -1;
-        String judulPustaka = tableModel.getValueAt(clickedRow, 0).toString();
-        for (Pustaka pustaka : listPustaka) {
-            if (pustaka.getJudul().equals(judulPustaka)) {
-                indexPustaka = listPustaka.indexOf(pustaka);
-            }
-        }
-        judulPustakaCBX.setSelectedIndex(indexPustaka);
         
         //nama Mahaiswa
-        int indexMahasiswa = -1;
-        String namaMahasiswa = tableModel.getValueAt(clickedRow, 2).toString();
-        for (Mahasiswa mahasiswa : listMahasiswa) {
-            if (mahasiswa.getNama().equals(namaMahasiswa)) {
-                indexMahasiswa = listMahasiswa.indexOf(mahasiswa);
-            }
-        }
-        namaMahasiswaCBX.setSelectedIndex(indexMahasiswa);
+        namaInput.setText(tableModel.getValueAt(clickedRow, 1).toString());
         
-        //lama pinjam
-        lamaPinjamInput.setText(tableModel.getValueAt(clickedRow, 3).toString());
         
-        //tanggal pinjam
-        tanggalPinjamInput.setText(tableModel.getValueAt(clickedRow, 4).toString());
+        //NPM
+        npmInput.setText(tableModel.getValueAt(clickedRow, 2).toString());
         
-        //kondisi
-        sobekCheckBox.setSelected(false);
-        coretanCheckBox.setSelected(false);
-        menguningCheckBox.setSelected(false);
-        String kondisi = tableModel.getValueAt(clickedRow, 5).toString();
-        if (kondisi.contains("Sobek")) {
-            sobekCheckBox.setSelected(true);
-        }
-        if (kondisi.contains("Coretan")) {
-            coretanCheckBox.setSelected(true);
-        }
-       if (kondisi.contains("Menguning")) {
-            menguningCheckBox.setSelected(true);
-        }
+        //NO TELP
+        notelpInput.setText(tableModel.getValueAt(clickedRow, 3).toString());
         
         
         
         
-    }//GEN-LAST:event_tablePeminjamanMouseClicked
+        
+    }//GEN-LAST:event_tableMahasiswaMouseClicked
 
-    private void menguningCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menguningCheckBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_menguningCheckBoxActionPerformed
-
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        MahasiswaView pv = new MahasiswaView();
+    private void peminjamanIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_peminjamanIconMouseClicked
+        PeminjamanView pv = new PeminjamanView();
         this.dispose();
         pv.setVisible(true);
-    }//GEN-LAST:event_jLabel2MouseClicked
+    }//GEN-LAST:event_peminjamanIconMouseClicked
 
     /**
      * @param args the command line arguments
@@ -840,22 +712,19 @@ public class PeminjamanView extends javax.swing.JFrame {
     private javax.swing.JButton cancelBtn;
     private javax.swing.JPanel containerPanel;
     private javax.swing.JPanel contentPanel;
-    private javax.swing.JCheckBox coretanCheckBox;
     private javax.swing.JButton deleteBtn;
     private javax.swing.JButton editBtn;
     private javax.swing.JPanel headerPanel;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JComboBox<Pustaka> judulPustakaCBX;
-    private javax.swing.JLabel judulPustakaLabel;
     private javax.swing.JLabel kelompokLabel;
     private javax.swing.JPanel kelompokPanel;
-    private javax.swing.JTextField lamaPinjamInput;
-    private javax.swing.JLabel lamaPinjamLabel;
-    private javax.swing.JCheckBox menguningCheckBox;
-    private javax.swing.JLabel metodeLabel;
-    private javax.swing.JComboBox<Mahasiswa> namaMahasiswaCBX;
-    private javax.swing.JLabel namaMahasiswaLabel;
+    private javax.swing.JTextField namaInput;
+    private javax.swing.JLabel namaLabel;
+    private javax.swing.JTextField notelpInput;
+    private javax.swing.JLabel notelpLabel;
+    private javax.swing.JTextField npmInput;
+    private javax.swing.JLabel npmLabel;
     private javax.swing.JLabel npmLabel1;
     private javax.swing.JLabel npmLabel2;
     private javax.swing.JPanel npmPanel1;
@@ -870,21 +739,18 @@ public class PeminjamanView extends javax.swing.JFrame {
     private javax.swing.JButton searchBtn;
     private javax.swing.JTextField searchInput;
     private javax.swing.JPanel sidebarPanel;
-    private javax.swing.JCheckBox sobekCheckBox;
-    private javax.swing.JTable tablePeminjaman;
-    private javax.swing.JTextField tanggalPinjamInput;
-    private javax.swing.JLabel tanggalPinjamLabel;
+    private javax.swing.JTable tableMahasiswa;
     private javax.swing.JLabel titleContent;
     // End of variables declaration//GEN-END:variables
 
     private void setComponent(boolean b) {
-        judulPustakaCBX.setEnabled(b);
-        namaMahasiswaCBX.setEnabled(b);
-        lamaPinjamInput.setEnabled(b);
-        tanggalPinjamInput.setEnabled(b);
-        sobekCheckBox.setEnabled(b);
-        coretanCheckBox.setEnabled(b);
-        menguningCheckBox.setEnabled(b);
+        
+       
+        
+        namaInput.setEnabled(b);
+        npmInput.setEnabled(b);
+        notelpInput.setEnabled(b);
+        
         
         saveBtn.setEnabled(b);
         cancelBtn.setEnabled(b);
@@ -899,47 +765,34 @@ public class PeminjamanView extends javax.swing.JFrame {
     }
     
     private void clearText(){
-        judulPustakaCBX.setSelectedItem(ABORT);
-        namaMahasiswaCBX.setSelectedItem(ABORT);
-        lamaPinjamInput.setText("");
-        tanggalPinjamInput.setText("");
         
-        sobekCheckBox.setSelected(false);
-        coretanCheckBox.setSelected(false);
-        menguningCheckBox.setSelected(false);
+        namaInput.setText("");
+        npmInput.setText("");
+        notelpInput.setText("");
+        
+        
         
         
     }
     
-    private void showPeminjaman(){
-        tablePeminjaman.setModel(pmjControl.showPeminjaman(""));
+    private void showMahasiswa(){
+        tableMahasiswa.setModel(mhsControl.showMahasiswa(""));
     }
     
     
     
     private void inputKosongException() throws InputKosongException{
-        if (judulPustakaCBX.getSelectedIndex() == -1 
-                || namaMahasiswaCBX.getSelectedIndex() == -1 
-                || lamaPinjamInput.getText().isEmpty() 
-                || tanggalPinjamInput.getText().isEmpty()) {
+        if (namaInput.getText().isEmpty()
+                || npmInput.getText().isEmpty() 
+                || notelpInput.getText().isEmpty()) {
             throw new InputKosongException();
         }
         
     }
 
     
-    private void setPustakaToDropDown() {
-        listPustaka = pskControl.showData();
-        for (int i = 0; i < listPustaka.size(); i++) {
-            judulPustakaCBX.addItem(listPustaka.get(i));
-        }
-    }
+    
 
-    private void setMahasiswaToDrowDown() {
-        listMahasiswa = mhsControl.showDataMahasiswa();
-        for (int i = 0; i < listMahasiswa.size(); i++) {
-            namaMahasiswaCBX.addItem(listMahasiswa.get(i));
-        }
-    }
+    
     
 }
