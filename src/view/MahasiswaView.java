@@ -666,7 +666,7 @@ public class MahasiswaView extends javax.swing.JFrame {
     }//GEN-LAST:event_tableMahasiswaMouseClicked
 
     private void peminjamanIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_peminjamanIconMouseClicked
-        PeminjamanView pv = new PeminjamanView();
+        HomeView pv = new HomeView();
         this.dispose();
         pv.setVisible(true);
     }//GEN-LAST:event_peminjamanIconMouseClicked
@@ -688,13 +688,13 @@ public class MahasiswaView extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PeminjamanView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomeView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PeminjamanView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomeView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PeminjamanView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomeView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PeminjamanView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomeView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -702,7 +702,7 @@ public class MahasiswaView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PeminjamanView().setVisible(true);
+                new HomeView().setVisible(true);
             }
         });
     }

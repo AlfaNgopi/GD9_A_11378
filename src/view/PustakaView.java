@@ -738,7 +738,7 @@ public class PustakaView extends javax.swing.JFrame {
     }//GEN-LAST:event_rdoBukuActionPerformed
 
     private void peminjamanPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_peminjamanPanelMouseClicked
-        PeminjamanView pmv = new PeminjamanView();
+        HomeView pmv = new HomeView();
         this.dispose();
         pmv.setVisible(true);
     }//GEN-LAST:event_peminjamanPanelMouseClicked
