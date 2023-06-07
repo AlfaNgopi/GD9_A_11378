@@ -95,9 +95,8 @@ public class MahasiswaDAO {
     public void insertMahasiswa(Mahasiswa m){
         con = dbcon.makeConnection();
         
-        String sql = "INSERT INTO mahasiswa(id, nama, npm, no_telepon) VALUES ('"
-                + m.getId()+ "',"
-                + m.getNama()+ ",'"
+        String sql = "INSERT INTO mahasiswa(nama, npm, no_telepon) VALUES ('"
+                + m.getNama()+ "','"
                 + m.getNpm()+ "','"
                 + m.getNo_telepon()+ "')";
         System.out.println("Adding data Mahasiswa...");
