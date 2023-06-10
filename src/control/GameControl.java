@@ -8,13 +8,13 @@ import tabel.TableGame;
 public class GameControl {
     private GameDAO gDao = new GameDAO();
     
-    public void insertDataGame(Game g){
-        gDao.insertGame(g);
-    }
-    
-    public void updateDataGame(Game g, int game_id){
-        gDao.updateGame(g, game_id);
-    }
+//    public void insertDataGame(Game g){
+//        gDao.insertGame(g);
+//    }
+//    
+//    public void updateDataGame(Game g, int game_id){
+//        gDao.updateGame(g, game_id);
+//    }
     
     public List<Game> showDataGame(){
         return gDao.showGame();

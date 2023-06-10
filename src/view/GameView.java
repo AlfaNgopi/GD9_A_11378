@@ -1,6 +1,19 @@
 package view;
 
 // Nama : Vincentius Kenton
+
+import control.PembelianControl;
+import control.UserControl;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.Date;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import model.Game;
+import model.Pembelian;
+import model.User;
+
 // NPM : 210711307
 
 // Nama : Alfa Nada Yulaswara
@@ -13,10 +26,24 @@ package view;
  */
 public class GameView extends javax.swing.JFrame {
 
+    static User user;
+    static Game game;
     
+    UserControl UserC = new UserControl();
     
-    public GameView() {
+    PembelianControl PembelianC = new PembelianControl();
+    
+    public GameView(User user, Game game) {
+        this.user = user;
+        this.game = game;
+        
+        
+        
+        
         initComponents();
+        initUser();
+        initGame();
+        
         
         
     }
@@ -33,19 +60,22 @@ public class GameView extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         pnlFull = new javax.swing.JPanel();
-        pnlHeader2 = new javax.swing.JPanel();
-        titleContent2 = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
-        lblHome = new javax.swing.JLabel();
-        pnlLibary = new javax.swing.JPanel();
-        lblLibary = new javax.swing.JLabel();
-        pnlHistory = new javax.swing.JPanel();
-        lblHistory = new javax.swing.JLabel();
+        pnlHeader = new javax.swing.JPanel();
+        titleContent = new javax.swing.JLabel();
+        pnlHome = new javax.swing.JPanel();
+        lblHome1 = new javax.swing.JLabel();
+        pnlLibary1 = new javax.swing.JPanel();
+        lblLibary1 = new javax.swing.JLabel();
+        pnlHistory1 = new javax.swing.JPanel();
+        lblHistory1 = new javax.swing.JLabel();
         lblUserName = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        lblWallet = new javax.swing.JLabel();
         pnlContainer = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtDeskribsi = new javax.swing.JTextArea();
         lblGameName = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         inputReview = new javax.swing.JTextField();
@@ -53,11 +83,14 @@ public class GameView extends javax.swing.JFrame {
         inputPublisher = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         inputRelaseDate = new javax.swing.JTextField();
-        jPanel1 = new javax.swing.JPanel();
+        pnlBuy = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        lblHarga = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
+        gameLogo = new javax.swing.JLabel();
+        lblGenre = new javax.swing.JLabel();
+        inputGenre = new javax.swing.JTextField();
 
         jLabel4.setText("Review : ");
 
@@ -67,132 +100,150 @@ public class GameView extends javax.swing.JFrame {
 
         pnlFull.setBackground(new java.awt.Color(39, 55, 77));
 
-        pnlHeader2.setBackground(new java.awt.Color(82, 109, 130));
-        pnlHeader2.setBorder(javax.swing.BorderFactory.createEtchedBorder(null, java.awt.Color.lightGray));
+        pnlHeader.setBackground(new java.awt.Color(82, 109, 130));
+        pnlHeader.setBorder(javax.swing.BorderFactory.createEtchedBorder(null, java.awt.Color.lightGray));
 
-        titleContent2.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 32)); // NOI18N
-        titleContent2.setForeground(new java.awt.Color(0, 0, 0));
-        titleContent2.setText("nama apk");
+        titleContent.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 32)); // NOI18N
+        titleContent.setForeground(new java.awt.Color(0, 0, 0));
+        titleContent.setText("nama apk");
 
-        jPanel7.setBackground(new java.awt.Color(39, 55, 77));
-
-        lblHome.setBackground(new java.awt.Color(82, 109, 130));
-        lblHome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblHome.setText("Home");
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblHome, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblHome, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-
-        pnlLibary.setBackground(new java.awt.Color(82, 109, 130));
-        pnlLibary.addMouseListener(new java.awt.event.MouseAdapter() {
+        pnlHome.setBackground(new java.awt.Color(39, 55, 77));
+        pnlHome.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pnlLibaryMouseClicked(evt);
+                pnlHomeMouseClicked(evt);
             }
         });
 
-        lblLibary.setBackground(new java.awt.Color(82, 109, 130));
-        lblLibary.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblLibary.setText("Libary");
-        lblLibary.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblHome1.setBackground(new java.awt.Color(82, 109, 130));
+        lblHome1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblHome1.setText("Home");
+
+        javax.swing.GroupLayout pnlHomeLayout = new javax.swing.GroupLayout(pnlHome);
+        pnlHome.setLayout(pnlHomeLayout);
+        pnlHomeLayout.setHorizontalGroup(
+            pnlHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblHome1, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+        );
+        pnlHomeLayout.setVerticalGroup(
+            pnlHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblHome1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        pnlLibary1.setBackground(new java.awt.Color(82, 109, 130));
+        pnlLibary1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblLibaryMouseClicked(evt);
+                pnlLibary1MouseClicked(evt);
             }
         });
 
-        javax.swing.GroupLayout pnlLibaryLayout = new javax.swing.GroupLayout(pnlLibary);
-        pnlLibary.setLayout(pnlLibaryLayout);
-        pnlLibaryLayout.setHorizontalGroup(
-            pnlLibaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblLibary, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+        lblLibary1.setBackground(new java.awt.Color(82, 109, 130));
+        lblLibary1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblLibary1.setText("Libary");
+
+        javax.swing.GroupLayout pnlLibary1Layout = new javax.swing.GroupLayout(pnlLibary1);
+        pnlLibary1.setLayout(pnlLibary1Layout);
+        pnlLibary1Layout.setHorizontalGroup(
+            pnlLibary1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblLibary1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
-        pnlLibaryLayout.setVerticalGroup(
-            pnlLibaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblLibary, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+        pnlLibary1Layout.setVerticalGroup(
+            pnlLibary1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblLibary1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        pnlHistory.setBackground(new java.awt.Color(82, 109, 130));
-        pnlHistory.addMouseListener(new java.awt.event.MouseAdapter() {
+        pnlHistory1.setBackground(new java.awt.Color(82, 109, 130));
+        pnlHistory1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pnlHistoryMouseClicked(evt);
-            }
-        });
-        pnlHistory.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                pnlHistoryKeyPressed(evt);
+                pnlHistory1MouseClicked(evt);
             }
         });
 
-        lblHistory.setBackground(new java.awt.Color(82, 109, 130));
-        lblHistory.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblHistory.setText("History");
+        lblHistory1.setBackground(new java.awt.Color(82, 109, 130));
+        lblHistory1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblHistory1.setText("History");
 
-        javax.swing.GroupLayout pnlHistoryLayout = new javax.swing.GroupLayout(pnlHistory);
-        pnlHistory.setLayout(pnlHistoryLayout);
-        pnlHistoryLayout.setHorizontalGroup(
-            pnlHistoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblHistory, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+        javax.swing.GroupLayout pnlHistory1Layout = new javax.swing.GroupLayout(pnlHistory1);
+        pnlHistory1.setLayout(pnlHistory1Layout);
+        pnlHistory1Layout.setHorizontalGroup(
+            pnlHistory1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblHistory1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
-        pnlHistoryLayout.setVerticalGroup(
-            pnlHistoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblHistory, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+        pnlHistory1Layout.setVerticalGroup(
+            pnlHistory1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblHistory1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
         );
 
         lblUserName.setText("username");
 
-        jLabel1.setText("logo apk");
+        jLabel9.setText("logo apk");
 
-        javax.swing.GroupLayout pnlHeader2Layout = new javax.swing.GroupLayout(pnlHeader2);
-        pnlHeader2.setLayout(pnlHeader2Layout);
-        pnlHeader2Layout.setHorizontalGroup(
-            pnlHeader2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlHeader2Layout.createSequentialGroup()
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/back.png"))); // NOI18N
+        jLabel10.setText("jLabel2");
+        jLabel10.setPreferredSize(new java.awt.Dimension(40, 40));
+        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel10MouseClicked(evt);
+            }
+        });
+
+        jLabel1.setText("-");
+
+        lblWallet.setText("wallet");
+
+        javax.swing.GroupLayout pnlHeaderLayout = new javax.swing.GroupLayout(pnlHeader);
+        pnlHeader.setLayout(pnlHeaderLayout);
+        pnlHeaderLayout.setHorizontalGroup(
+            pnlHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlHeaderLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(89, 89, 89)
+                .addComponent(titleContent, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, Short.MAX_VALUE)
+                .addComponent(lblUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(titleContent2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 317, Short.MAX_VALUE)
-                .addComponent(lblUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(pnlHeader2Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlLibary, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pnlHistory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblWallet, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(pnlHeaderLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(pnlHome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlLibary1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pnlHistory1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        pnlHeader2Layout.setVerticalGroup(
-            pnlHeader2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlHeader2Layout.createSequentialGroup()
-                .addGroup(pnlHeader2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(titleContent2, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlHeader2Layout.createSequentialGroup()
+        pnlHeaderLayout.setVerticalGroup(
+            pnlHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlHeaderLayout.createSequentialGroup()
+                .addGroup(pnlHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(titleContent, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlHeaderLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(lblUserName))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(pnlHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pnlHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblUserName)
+                                .addComponent(jLabel1)
+                                .addComponent(lblWallet)))))
                 .addGap(18, 18, 18)
-                .addGroup(pnlHeader2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlHistory, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pnlLibary, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(pnlHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlHistory1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlLibary1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlHome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         pnlContainer.setBackground(new java.awt.Color(82, 109, 130));
 
-        jTextArea1.setBackground(new java.awt.Color(82, 109, 130));
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setText("desc here");
-        jScrollPane2.setViewportView(jTextArea1);
+        txtDeskribsi.setBackground(new java.awt.Color(82, 109, 130));
+        txtDeskribsi.setColumns(20);
+        txtDeskribsi.setRows(5);
+        txtDeskribsi.setText("desc here");
+        jScrollPane2.setViewportView(txtDeskribsi);
 
         lblGameName.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 36)); // NOI18N
         lblGameName.setText("game name");
@@ -209,7 +260,12 @@ public class GameView extends javax.swing.JFrame {
 
         jLabel5.setText("Relase Date :");
 
-        jPanel1.setBackground(new java.awt.Color(157, 178, 191));
+        pnlBuy.setBackground(new java.awt.Color(157, 178, 191));
+        pnlBuy.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlBuyMouseClicked(evt);
+            }
+        });
 
         jLabel6.setBackground(new java.awt.Color(242, 196, 78));
         jLabel6.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 24)); // NOI18N
@@ -218,27 +274,27 @@ public class GameView extends javax.swing.JFrame {
         jLabel6.setText("Buy");
         jLabel6.setOpaque(true);
 
-        jLabel7.setFont(new java.awt.Font("Algerian", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Harga");
+        lblHarga.setFont(new java.awt.Font("Algerian", 1, 14)); // NOI18N
+        lblHarga.setForeground(new java.awt.Color(0, 0, 0));
+        lblHarga.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblHarga.setText("Harga");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnlBuyLayout = new javax.swing.GroupLayout(pnlBuy);
+        pnlBuy.setLayout(pnlBuyLayout);
+        pnlBuyLayout.setHorizontalGroup(
+            pnlBuyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBuyLayout.createSequentialGroup()
                 .addGap(6, 6, 6)
-                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblHarga, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        pnlBuyLayout.setVerticalGroup(
+            pnlBuyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlBuyLayout.createSequentialGroup()
+                .addGroup(pnlBuyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblHarga, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -262,6 +318,16 @@ public class GameView extends javax.swing.JFrame {
                 .addGap(6, 6, 6))
         );
 
+        gameLogo.setText("icon");
+
+        lblGenre.setText("Genre");
+
+        inputGenre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputGenreActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlContainerLayout = new javax.swing.GroupLayout(pnlContainer);
         pnlContainer.setLayout(pnlContainerLayout);
         pnlContainerLayout.setHorizontalGroup(
@@ -270,9 +336,11 @@ public class GameView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pnlContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlContainerLayout.createSequentialGroup()
-                        .addGroup(pnlContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(lblGameName, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
-                            .addComponent(jScrollPane2))
+                        .addGroup(pnlContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(lblGameName, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
+                                .addComponent(jScrollPane2))
+                            .addComponent(gameLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(pnlContainerLayout.createSequentialGroup()
@@ -287,7 +355,11 @@ public class GameView extends javax.swing.JFrame {
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(inputRelaseDate, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(pnlBuy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(pnlContainerLayout.createSequentialGroup()
+                                .addComponent(lblGenre, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(inputGenre, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
@@ -299,8 +371,7 @@ public class GameView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblGameName, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(pnlContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnlContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlContainerLayout.createSequentialGroup()
                         .addGroup(pnlContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
@@ -313,9 +384,16 @@ public class GameView extends javax.swing.JFrame {
                         .addGroup(pnlContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(inputRelaseDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(42, 42, 42))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pnlContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblGenre)
+                            .addComponent(inputGenre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(gameLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(44, 44, 44)
+                .addGroup(pnlContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlBuy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(85, 85, 85))
         );
 
         javax.swing.GroupLayout pnlFullLayout = new javax.swing.GroupLayout(pnlFull);
@@ -326,14 +404,14 @@ public class GameView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pnlFullLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlHeader2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(pnlHeader, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         pnlFullLayout.setVerticalGroup(
             pnlFullLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlFullLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(pnlHeader2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlHeader, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24)
                 .addComponent(pnlContainer, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(18, Short.MAX_VALUE))
@@ -357,27 +435,79 @@ public class GameView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_inputReviewActionPerformed
 
-    private void lblLibaryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLibaryMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lblLibaryMouseClicked
-
-    private void pnlLibaryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlLibaryMouseClicked
-        LibaryView pv = new LibaryView();
+    private void pnlLibary1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlLibary1MouseClicked
+        LibaryView pv = new LibaryView(user);
         this.dispose();
-        
+
         pv.setVisible(true);
-    }//GEN-LAST:event_pnlLibaryMouseClicked
+    }//GEN-LAST:event_pnlLibary1MouseClicked
 
-    private void pnlHistoryKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pnlHistoryKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pnlHistoryKeyPressed
-
-    private void pnlHistoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlHistoryMouseClicked
-        PurchaseHistoryView pv = new PurchaseHistoryView();
+    private void pnlHistory1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlHistory1MouseClicked
+        PurchaseHistoryView pv = new PurchaseHistoryView(user);
         this.dispose();
-        
+
         pv.setVisible(true);
-    }//GEN-LAST:event_pnlHistoryMouseClicked
+    }//GEN-LAST:event_pnlHistory1MouseClicked
+
+    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
+        LoginView pv = new LoginView();
+        this.dispose();
+
+        pv.setVisible(true);
+    }//GEN-LAST:event_jLabel10MouseClicked
+
+    private void inputGenreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputGenreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputGenreActionPerformed
+
+    private void pnlBuyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlBuyMouseClicked
+        
+        // CEK SUDAH BELI ATAU BELUM
+        if (!"".equals(user.getLibrary())) {
+            String[] userGames = user.getLibrary().split(",");
+            for (String userGame : userGames) {
+                if (Integer.parseInt(userGame) == game.getGameId()) {
+                    JOptionPane.showConfirmDialog(rootPane, "Sudah Memiliki Game Nya", "konfirmasi", JOptionPane.DEFAULT_OPTION);
+                    return;
+                }
+            }
+        }
+        
+        //CEK UANG
+        if (user.getWallet() < game.getPrice()) {
+            JOptionPane.showConfirmDialog(rootPane, "Uang Anda Kurang !!!", "konfirmasi", JOptionPane.DEFAULT_OPTION);
+            return;
+        }
+        
+        
+        String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
+        
+        user.setWallet(user.getWallet() - game.getPrice());
+        
+        Pembelian p = new Pembelian(timeStamp, user, game, user.getWallet());
+        
+        
+        
+        PembelianC.insertDataPembelian(p);
+        
+        if ("".equals(user.getLibrary())) {
+            user.setLibrary(""+game.getGameId()+"");
+        }else{
+            user.setLibrary(user.getLibrary() + "," + game.getGameId());
+        }
+        UserC.updateDataUser(user);
+        System.out.println("berhasil pembelian");
+        
+        initUser();
+        
+    }//GEN-LAST:event_pnlBuyMouseClicked
+
+    private void pnlHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlHomeMouseClicked
+        HomeView pv = new HomeView(user);
+        this.dispose();
+
+        pv.setVisible(true);
+    }//GEN-LAST:event_pnlHomeMouseClicked
 
     /**
      * @param args the command line arguments
@@ -416,49 +546,71 @@ public class GameView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GameView().setVisible(true);
+                new GameView(user, game).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel gameLogo;
+    private javax.swing.JTextField inputGenre;
     private javax.swing.JTextField inputPublisher;
     private javax.swing.JTextField inputRelaseDate;
     private javax.swing.JTextField inputReview;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JLabel lblGameName;
-    private javax.swing.JLabel lblHistory;
-    private javax.swing.JLabel lblHome;
-    private javax.swing.JLabel lblLibary;
+    private javax.swing.JLabel lblGenre;
+    private javax.swing.JLabel lblHarga;
+    private javax.swing.JLabel lblHistory1;
+    private javax.swing.JLabel lblHome1;
+    private javax.swing.JLabel lblLibary1;
     private javax.swing.JLabel lblUserName;
+    private javax.swing.JLabel lblWallet;
+    private javax.swing.JPanel pnlBuy;
     private javax.swing.JPanel pnlContainer;
     private javax.swing.JPanel pnlFull;
     private javax.swing.JPanel pnlHeader;
-    private javax.swing.JPanel pnlHeader1;
-    private javax.swing.JPanel pnlHeader2;
-    private javax.swing.JPanel pnlHistory;
-    private javax.swing.JLabel pnlHome;
-    private javax.swing.JLabel pnlHome1;
-    private javax.swing.JPanel pnlLibary;
+    private javax.swing.JPanel pnlHistory1;
+    private javax.swing.JPanel pnlHome;
+    private javax.swing.JPanel pnlLibary1;
     private javax.swing.JLabel titleContent;
-    private javax.swing.JLabel titleContent1;
-    private javax.swing.JLabel titleContent2;
+    private javax.swing.JTextArea txtDeskribsi;
     // End of variables declaration//GEN-END:variables
+
+    private void initUser() {
+        lblUserName.setText(user.getNama());
+        lblWallet.setText(""+user.getWallet()+"");
+    }
+
+    private void initGame() {
+        lblGameName.setText(game.getGameName());
+        txtDeskribsi.setText(game.getDeskripsi());
+        inputPublisher.setText(game.getPublisher());
+        inputRelaseDate.setText(game.getReleaseDate());
+        inputReview.setText(game.getReview());
+        inputGenre.setText(game.getGenre());
+        
+        lblHarga.setText(getGamePriceAsString());
+        
+        gameLogo.setIcon(new ImageIcon(game.getImage()));
+    }
+    
+    private String getGamePriceAsString(){
+        return "" + game.getPrice() + "";
+    }
+    
+    
 
     
     

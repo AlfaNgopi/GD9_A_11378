@@ -5,18 +5,22 @@ public class Pembelian {
     private String tanggal;
     private User user;
     private Game game;
+    private int ballance;
+    
 
-    public Pembelian(int id, String tanggal, User user, Game game) {
+    public Pembelian(int id, String tanggal, User user, Game game, int ballance) {
         this.id = id;
         this.tanggal = tanggal;
         this.user = user;
         this.game = game;
+        this.ballance = ballance;
     }
 
-    public Pembelian(String tanggal, User user, Game game) {
+    public Pembelian(String tanggal, User user, Game game, int ballance) {
         this.tanggal = tanggal;
         this.user = user;
         this.game = game;
+        this.ballance = ballance;
     }
 
     public int getId() {
@@ -50,4 +54,14 @@ public class Pembelian {
     public void setGame(Game game) {
         this.game = game;
     }
+
+    public int getBallance() {
+        return ballance;
+    }
+
+    public void setBallance(int ballance) {
+        this.ballance = ballance;
+    }
+    
+    
 }

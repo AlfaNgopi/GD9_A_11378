@@ -12,53 +12,53 @@ public class GameDAO {
     private DbConnection dbcon = new DbConnection();
     private Connection con;
     
-    public void insertGame(Game g){
-        con = dbcon.makeConnection();
-        
-        String sql = "INSERT INTO games(game_name, genre, price, release_date, deskripsi, review) VALUES('"
-                +g.getGameName()+"', '"
-                +g.getGenre()+"', "
-                +g.getPrice()+", '"
-                +g.getReleaseDate()+"', '"
-                +g.getDeskripsi()+"', '"
-                +g.getReview()+"')";
-        
-        System.out.println("Adding Games...");
-        
-        try{
-            Statement statement = con.createStatement();
-            int result = statement.executeUpdate(sql);
-            System.out.println("Added " + result + " Games");
-            statement.close();
-        }catch(Exception e){
-            System.out.println("Error Adding Games...");
-            System.out.println("e");
-        }
-        dbcon.closeConnection();
-    }
+//    public void insertGame(Game g){
+//        con = dbcon.makeConnection();
+//        
+//        String sql = "INSERT INTO games(game_name, genre, price, release_date, deskripsi, review) VALUES('"
+//                +g.getGameName()+"', '"
+//                +g.getGenre()+"', "
+//                +g.getPrice()+", '"
+//                +g.getReleaseDate()+"', '"
+//                +g.getDeskripsi()+"', '"
+//                +g.getReview()+"')";
+//        
+//        System.out.println("Adding Games...");
+//        
+//        try{
+//            Statement statement = con.createStatement();
+//            int result = statement.executeUpdate(sql);
+//            System.out.println("Added " + result + " Games");
+//            statement.close();
+//        }catch(Exception e){
+//            System.out.println("Error Adding Games...");
+//            System.out.println("e");
+//        }
+//        dbcon.closeConnection();
+//    }
     
-    public void updateGame(Game g, int id_game){
-        con = dbcon.makeConnection();
-        
-        String sql = "UPDATE games SET game_name = '"+g.getGameName()+"', genre = '"+g.getGenre()
-                +"', price = "+g.getPrice()
-                +", release_date = '"+g.getReleaseDate()
-                +"', deskripsi = '"+g.getDeskripsi()
-                +"', review = '"+g.getReview()+"' WHERE game_id = "+id_game;
-        
-        System.out.println("Editing Games...");
-        
-        try{
-            Statement statement = con.createStatement();
-            int result = statement.executeUpdate(sql);
-            System.out.println("Edited " + result + " Games" + id_game);
-            statement.close();
-        }catch(Exception e){
-            System.out.println("Error editing Games...");
-            System.out.println("e");
-        }
-        dbcon.closeConnection();
-    }
+//    public void updateGame(Game g, int id_game){
+//        con = dbcon.makeConnection();
+//        
+//        String sql = "UPDATE games SET game_name = '"+g.getGameName()+"', genre = '"+g.getGenre()
+//                +"', price = "+g.getPrice()
+//                +", release_date = '"+g.getReleaseDate()
+//                +"', deskripsi = '"+g.getDeskripsi()
+//                +"', review = '"+g.getReview()+"' WHERE game_id = "+id_game;
+//        
+//        System.out.println("Editing Games...");
+//        
+//        try{
+//            Statement statement = con.createStatement();
+//            int result = statement.executeUpdate(sql);
+//            System.out.println("Edited " + result + " Games" + id_game);
+//            statement.close();
+//        }catch(Exception e){
+//            System.out.println("Error editing Games...");
+//            System.out.println("e");
+//        }
+//        dbcon.closeConnection();
+//    }
     
     public List<Game> showGame(){
         con = dbcon.makeConnection();
@@ -81,7 +81,9 @@ public class GameDAO {
                             rs.getString("deskripsi"),
                             rs.getString("review"), 
                             rs.getInt("game_id"),
-                            rs.getInt("price")
+                            rs.getInt("price"),
+                            rs.getBytes("image"),
+                            rs.getString("publisher")
                     );
                     list.add(g);
                 }
@@ -122,7 +124,9 @@ public class GameDAO {
                             rs.getString("deskripsi"),
                             rs.getString("review"), 
                             rs.getInt("game_id"),
-                            rs.getInt("price")
+                            rs.getInt("price"),
+                            rs.getBytes("image"),
+                            rs.getString("publisher")
                     );
                                
                     list.add(g);
@@ -159,7 +163,9 @@ public class GameDAO {
                             rs.getString("deskripsi"),
                             rs.getString("review"), 
                             rs.getInt("game_id"),
-                            rs.getInt("price")
+                            rs.getInt("price"),
+                            rs.getBytes("image"),
+                            rs.getString("publisher")
                     );
                 }
             }

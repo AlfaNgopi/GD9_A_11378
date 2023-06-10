@@ -3,6 +3,11 @@ package view;
 // Nama : Vincentius Kenton
 
 import control.GameControl;
+import control.UserControl;
+import java.util.List;
+import model.Game;
+import model.User;
+import tabel.TableGame;
 
 // NPM : 210711307
 
@@ -17,10 +22,21 @@ import control.GameControl;
 public class HomeView extends javax.swing.JFrame {
 
     GameControl GameC = new GameControl();
+    UserControl UserC = new UserControl();
     
-    public HomeView() {
+    static User user;
+    
+    List<Game> gameList;
+    
+    public HomeView(User user) {
         initComponents();
+        this.user = user;
+        initUser();
+        gameList = GameC.showDataGame();
+        
         tblGameList.setModel(GameC.showDataGames(""));
+        
+        
         
     }
 
@@ -37,7 +53,7 @@ public class HomeView extends javax.swing.JFrame {
         pnlContainer = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblGameList = new javax.swing.JTable();
-        searchInput = new javax.swing.JTextField();
+        inputSearch = new javax.swing.JTextField();
         searchBtn = new javax.swing.JButton();
         pnlHeader = new javax.swing.JPanel();
         titleContent = new javax.swing.JLabel();
@@ -47,9 +63,11 @@ public class HomeView extends javax.swing.JFrame {
         lblLibary = new javax.swing.JLabel();
         pnlHistory = new javax.swing.JPanel();
         lblHistory = new javax.swing.JLabel();
-        lblUserName = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        lblUserName = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        lblWallet = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,12 +86,17 @@ public class HomeView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblGameList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblGameListMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblGameList);
 
-        searchInput.setBackground(new java.awt.Color(222, 222, 222));
-        searchInput.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 14)); // NOI18N
-        searchInput.setForeground(new java.awt.Color(0, 0, 0));
-        searchInput.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        inputSearch.setBackground(new java.awt.Color(222, 222, 222));
+        inputSearch.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 14)); // NOI18N
+        inputSearch.setForeground(new java.awt.Color(0, 0, 0));
+        inputSearch.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
         searchBtn.setBackground(new java.awt.Color(22, 52, 122));
         searchBtn.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 14)); // NOI18N
@@ -95,7 +118,7 @@ public class HomeView extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 752, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlContainerLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(searchInput, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(inputSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(33, 33, 33)
                         .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -105,7 +128,7 @@ public class HomeView extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlContainerLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(searchInput, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inputSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(searchBtn))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -180,8 +203,6 @@ public class HomeView extends javax.swing.JFrame {
             .addComponent(lblHistory, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
         );
 
-        lblUserName.setText("username");
-
         jLabel1.setText("logo apk");
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/back.png"))); // NOI18N
@@ -193,6 +214,12 @@ public class HomeView extends javax.swing.JFrame {
             }
         });
 
+        lblUserName.setText("username");
+
+        jLabel3.setText("-");
+
+        lblWallet.setText("wallet");
+
         javax.swing.GroupLayout pnlHeaderLayout = new javax.swing.GroupLayout(pnlHeader);
         pnlHeader.setLayout(pnlHeaderLayout);
         pnlHeaderLayout.setHorizontalGroup(
@@ -203,8 +230,12 @@ public class HomeView extends javax.swing.JFrame {
                 .addGap(89, 89, 89)
                 .addComponent(titleContent, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblWallet, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(pnlHeaderLayout.createSequentialGroup()
                 .addGap(35, 35, 35)
@@ -225,7 +256,10 @@ public class HomeView extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(pnlHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblUserName))))
+                            .addGroup(pnlHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblUserName)
+                                .addComponent(jLabel3)
+                                .addComponent(lblWallet)))))
                 .addGap(18, 18, 18)
                 .addGroup(pnlHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlHistory, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -269,18 +303,18 @@ public class HomeView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
-        
+        tblGameList.setModel(GameC.showDataGames(inputSearch.getText()));
     }//GEN-LAST:event_searchBtnActionPerformed
 
     private void pnlLibaryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlLibaryMouseClicked
-        LibaryView pv = new LibaryView();
+        LibaryView pv = new LibaryView(user);
         this.dispose();
         
         pv.setVisible(true);
     }//GEN-LAST:event_pnlLibaryMouseClicked
 
     private void pnlHistoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlHistoryMouseClicked
-        PurchaseHistoryView pv = new PurchaseHistoryView();
+        PurchaseHistoryView pv = new PurchaseHistoryView(user);
         this.dispose();
         
         pv.setVisible(true);
@@ -292,6 +326,77 @@ public class HomeView extends javax.swing.JFrame {
         
         pv.setVisible(true);
     }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void tblGameListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblGameListMouseClicked
+        
+        
+        int clickedRow = tblGameList.getSelectedRow();
+        
+        Game selectedGame = gameList.get(clickedRow);
+        
+        GameView pv = new GameView(user,selectedGame);
+        
+        this.dispose();
+        
+        pv.setVisible(true);
+        
+        
+        /*
+        setEditDeleteBtn(true);
+        setComponent(false);
+        
+        
+        int clickedRow = tablePeminjaman.getSelectedRow();
+        TableModel tableModel = tablePeminjaman.getModel();
+        
+        //UNTUK DELETE
+        selectedId = Integer.parseInt(tableModel.getValueAt(clickedRow, 8).toString());
+        
+        
+        //UNTUK UBAH
+        
+        //judul pustaka
+        int indexPustaka = -1;
+        String judulPustaka = tableModel.getValueAt(clickedRow, 0).toString();
+        for (Pustaka pustaka : listPustaka) {
+            if (pustaka.getJudul().equals(judulPustaka)) {
+                indexPustaka = listPustaka.indexOf(pustaka);
+            }
+        }
+        judulPustakaCBX.setSelectedIndex(indexPustaka);
+        
+        //nama Mahaiswa
+        int indexMahasiswa = -1;
+        String namaMahasiswa = tableModel.getValueAt(clickedRow, 2).toString();
+        for (Mahasiswa mahasiswa : listMahasiswa) {
+            if (mahasiswa.getNama().equals(namaMahasiswa)) {
+                indexMahasiswa = listMahasiswa.indexOf(mahasiswa);
+            }
+        }
+        namaMahasiswaCBX.setSelectedIndex(indexMahasiswa);
+        
+        //lama pinjam
+        lamaPinjamInput.setText(tableModel.getValueAt(clickedRow, 3).toString());
+        
+        //tanggal pinjam
+        tanggalPinjamInput.setText(tableModel.getValueAt(clickedRow, 4).toString());
+        
+        //kondisi
+        sobekCheckBox.setSelected(false);
+        coretanCheckBox.setSelected(false);
+        menguningCheckBox.setSelected(false);
+        String kondisi = tableModel.getValueAt(clickedRow, 5).toString();
+        if (kondisi.contains("Sobek")) {
+            sobekCheckBox.setSelected(true);
+        }
+        if (kondisi.contains("Coretan")) {
+            coretanCheckBox.setSelected(true);
+        }
+       if (kondisi.contains("Menguning")) {
+            menguningCheckBox.setSelected(true);
+        }
+       */
+    }//GEN-LAST:event_tblGameListMouseClicked
 
     /**
      * @param args the command line arguments
@@ -326,19 +431,22 @@ public class HomeView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new HomeView().setVisible(true);
+                new HomeView(user).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField inputSearch;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblHistory;
     private javax.swing.JLabel lblHome;
     private javax.swing.JLabel lblLibary;
     private javax.swing.JLabel lblUserName;
+    private javax.swing.JLabel lblWallet;
     private javax.swing.JPanel pnlContainer;
     private javax.swing.JPanel pnlFull;
     private javax.swing.JPanel pnlHeader;
@@ -346,11 +454,17 @@ public class HomeView extends javax.swing.JFrame {
     private javax.swing.JPanel pnlHome;
     private javax.swing.JPanel pnlLibary;
     private javax.swing.JButton searchBtn;
-    private javax.swing.JTextField searchInput;
     private javax.swing.JTable tblGameList;
     private javax.swing.JLabel titleContent;
     // End of variables declaration//GEN-END:variables
 
-    
+    public void initUser(){
+        lblUserName.setText(user.getNama());
+        lblWallet.setText(intToString(user.getWallet()));
+    }
+
+    private String intToString(int i) {
+        return "" + i + "" ;
+    }
     
 }

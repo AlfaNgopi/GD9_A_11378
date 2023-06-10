@@ -261,26 +261,28 @@ public class LoginView extends javax.swing.JFrame {
         String nama = inputName.getText();
         String pass = inputPassword.getText();
         
-        if (adaDatanya(nama,pass)) {
-            HomeView pv = new HomeView();
+        User user = getUser(nama, pass);
+        
+        if (user != null) {
+            HomeView pv = new HomeView(user);
             this.dispose();
             System.out.println("cek");
             pv.setVisible(true);
         }
     }
     
-    public boolean adaDatanya(String nama, String pass){
+    public User getUser(String nama, String pass){
         
         List<User> users = UserC.showDataUser();
         
         for (User user : users) {
             System.out.println(user.getNama());
             if (user.getNama().equals(nama) && user.getPassword().equals(pass)) {
-                return true;
+                return user;
             }
         }
         
-        return false;
+        return null;
     }
     
     

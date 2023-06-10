@@ -50,7 +50,7 @@ public class UserDAO {
         con = dbcon.makeConnection();
         
         String sql = "UPDATE user SET wallet = "+u.getWallet()
-                +", library = '"+u.getLibrary()+"' WHERE user_id = "+u.getUser_id()+"'";
+                +", library = '"+u.getLibrary()+"' WHERE user_id = "+u.getUser_id()+"";
         
         System.out.println("Editing User...");
         

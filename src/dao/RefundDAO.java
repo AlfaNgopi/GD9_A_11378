@@ -3,48 +3,51 @@ package dao;
 import connection.DbConnection;
 import model.Game;
 import model.User;
-import model.Pembelian;
+import model.Refund;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import model.Pembelian;
 
-public class PembelianDAO {
+public class RefundDAO {
     private DbConnection dbcon = new DbConnection();
     private Connection con;
     
-    public void insertPembelian(Pembelian p){
+    public void insertRefund(Refund r){
         con = dbcon.makeConnection();
         
-        String sql = "INSERT INTO pembelian(user_id, game_id, tanggal, ballance) VALUES ('"
-                + p.getUser().getUser_id()+ "',"
-                + p.getGame().getGameId() + ",'"
-                + p.getTanggal() + "', "
-                + p.getBallance() + ")";
-        System.out.println("Adding data Pembelian...");
+        String sql = "INSERT INTO refund(id_pembelian, tanggal_refund) VALUES ("
+                + r.getPembelian().getId()+ ", '"
+                + r.getTanggal_refund() + "', "
+                + r.getBallance()+ ")";
+        System.out.println("Adding data refund...");
         
         try{
             Statement statement = con.createStatement();
             int result = statement.executeUpdate(sql);
-            System.out.println("Added " + result + "Pembelian");
+            System.out.println("Added " + result + "refund");
             statement.close();
         }catch(Exception e){
-            System.out.println("Error Adding data Pembelian...");
+            System.out.println("Error Adding data refund...");
             System.out.println("e");
         }
         dbcon.closeConnection();
     }
     
-    public List<Pembelian> showPembelian(String query){
+    public List<Refund> showRefund(String query){
         con = dbcon.makeConnection();
         
-        String sql = "SELECT p.*, u.*, g.* FROM pembelian as p JOIN user as u ON p.user_id = u.user_id "
-                + "JOIN games as g ON p.game_id = g.game_id WHERE (u.user_id LIKE '% " + query +" %'"
-                + ")"
-                ;
-        System.out.println("Mengambil data Pembelian...");
-        List<Pembelian> list = new ArrayList();
+        String sql = "SELECT r.*, p.* FROM refund as r JOIN pembelian as p ON r.id_pembelian = p.id_pembelian "
+                + "JOIN user as u ON p.user_id = u.user_id JOIN games as g ON p.game_id = g.game_id "
+                + "WHERE (r.tanggal_refund LIKE '%" + query + "%'"
+                + "OR g.game_name LIKE '%" + query + "%'"
+                + "OR g.price LIKE '%" + query + "%'"
+                + "OR u.wallet LIKE '%" + query + "%'"
+                + "OR r.ballance LIKE '%"+ query +"&')";
+        System.out.println("Mengambil data Refund...");
+        List<Refund> list = new ArrayList();
         
         try{
             Statement statement = con.createStatement();
@@ -69,10 +72,13 @@ public class PembelianDAO {
                            rs.getString("password"),
                            rs.getString("library")
                     );
-
+                    
                     Pembelian p = new Pembelian(rs.getInt("id_pembelian"),
                         rs.getString("tanggal"), u, g, rs.getInt("ballance"));
-                    list.add(p);
+
+                    Refund r = new Refund(rs.getInt("id_refund"),
+                    p, rs.getString("tanggal_refund"), rs.getInt("ballance"));
+                    list.add(r);
                 } 
             }
             rs.close();
@@ -85,19 +91,19 @@ public class PembelianDAO {
         return list;
     }
     
-    public void deletePembelian(int id){
+    public void deleteRefund(int id){
         con = dbcon.makeConnection();
         
-        String sql = "DELETE FROM pembelian WHERE id_pembelian = " + id + "";
-        System.out.println("Deleting Pembelian...");
+        String sql = "DELETE FROM refund WHERE id_refund = " + id + "";
+        System.out.println("Deleting Refund...");
         
         try{
             Statement statement = con.createStatement();
             int result = statement.executeUpdate(sql);
-            System.out.println("Deleted " + result + " Pembelian " + id);
+            System.out.println("Deleted " + result + " Refund " + id);
             statement.close();
         }catch(Exception e){
-            System.out.println("Errod Deleting Pembelian...");
+            System.out.println("Errod Deleting Refund...");
             System.out.println(e);
         }
         dbcon.closeConnection();

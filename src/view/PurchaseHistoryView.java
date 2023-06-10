@@ -1,6 +1,12 @@
 package view;
 
 // Nama : Vincentius Kenton
+
+import control.PembelianControl;
+import control.RefundControl;
+import model.User;
+import static view.LibaryView.user;
+
 // NPM : 210711307
 
 // Nama : Alfa Nada Yulaswara
@@ -13,12 +19,22 @@ package view;
  */
 public class PurchaseHistoryView extends javax.swing.JFrame {
 
+    static User user;
+    
+    PembelianControl PembelianC = new PembelianControl();
+    RefundControl RefundC = new RefundControl();
     
     
-    public PurchaseHistoryView() {
+    public PurchaseHistoryView(User user) {
         initComponents();
         
+        this.user = user;
         
+        tblPurchase.setModel(PembelianC.showdataPembelian(""));
+        tblRefund.setModel(RefundC.showdataRefund(""+user.getUser_id()));
+        
+        
+        initUser();
     }
 
     /**
@@ -31,32 +47,90 @@ public class PurchaseHistoryView extends javax.swing.JFrame {
     private void initComponents() {
 
         pnlFull = new javax.swing.JPanel();
-        pnlHeader = new javax.swing.JPanel();
-        titleContent2 = new javax.swing.JLabel();
-        pnlHome = new javax.swing.JPanel();
-        lblHome = new javax.swing.JLabel();
-        pnlLibary = new javax.swing.JPanel();
-        lblLibary = new javax.swing.JLabel();
-        pnlHistory = new javax.swing.JPanel();
-        lblHistory = new javax.swing.JLabel();
-        lblUserName = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         pnlContainer = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblRefund = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblPurchase = new javax.swing.JTable();
+        pnlHeader = new javax.swing.JPanel();
+        titleContent = new javax.swing.JLabel();
+        pnlHome = new javax.swing.JPanel();
+        lblHome7 = new javax.swing.JLabel();
+        pnlLibary = new javax.swing.JPanel();
+        lblLibary = new javax.swing.JLabel();
+        pnlHistory = new javax.swing.JPanel();
+        lblHistory = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        lblUserName = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        lblWallet = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         pnlFull.setBackground(new java.awt.Color(39, 55, 77));
 
+        pnlContainer.setBackground(new java.awt.Color(82, 109, 130));
+
+        tblRefund.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tblRefund);
+
+        tblPurchase.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(tblPurchase);
+
+        javax.swing.GroupLayout pnlContainerLayout = new javax.swing.GroupLayout(pnlContainer);
+        pnlContainer.setLayout(pnlContainerLayout);
+        pnlContainerLayout.setHorizontalGroup(
+            pnlContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlContainerLayout.createSequentialGroup()
+                .addContainerGap(399, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(pnlContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlContainerLayout.createSequentialGroup()
+                    .addGap(10, 10, 10)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(401, Short.MAX_VALUE)))
+        );
+        pnlContainerLayout.setVerticalGroup(
+            pnlContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlContainerLayout.createSequentialGroup()
+                .addContainerGap(73, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24))
+            .addGroup(pnlContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlContainerLayout.createSequentialGroup()
+                    .addContainerGap(75, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(22, 22, 22)))
+        );
+
         pnlHeader.setBackground(new java.awt.Color(82, 109, 130));
         pnlHeader.setBorder(javax.swing.BorderFactory.createEtchedBorder(null, java.awt.Color.lightGray));
 
-        titleContent2.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 32)); // NOI18N
-        titleContent2.setForeground(new java.awt.Color(0, 0, 0));
-        titleContent2.setText("nama apk");
+        titleContent.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 32)); // NOI18N
+        titleContent.setForeground(new java.awt.Color(0, 0, 0));
+        titleContent.setText("nama apk");
 
         pnlHome.setBackground(new java.awt.Color(82, 109, 130));
         pnlHome.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -65,19 +139,19 @@ public class PurchaseHistoryView extends javax.swing.JFrame {
             }
         });
 
-        lblHome.setBackground(new java.awt.Color(82, 109, 130));
-        lblHome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblHome.setText("Home");
+        lblHome7.setBackground(new java.awt.Color(82, 109, 130));
+        lblHome7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblHome7.setText("Home");
 
         javax.swing.GroupLayout pnlHomeLayout = new javax.swing.GroupLayout(pnlHome);
         pnlHome.setLayout(pnlHomeLayout);
         pnlHomeLayout.setHorizontalGroup(
             pnlHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblHome, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+            .addComponent(lblHome7, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
         );
         pnlHomeLayout.setVerticalGroup(
             pnlHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblHome, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(lblHome7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pnlLibary.setBackground(new java.awt.Color(82, 109, 130));
@@ -124,9 +198,22 @@ public class PurchaseHistoryView extends javax.swing.JFrame {
             .addComponent(lblHistory, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
         );
 
+        jLabel9.setText("logo apk");
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/back.png"))); // NOI18N
+        jLabel10.setText("jLabel2");
+        jLabel10.setPreferredSize(new java.awt.Dimension(40, 40));
+        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel10MouseClicked(evt);
+            }
+        });
+
         lblUserName.setText("username");
 
-        jLabel1.setText("logo apk");
+        jLabel6.setText("-");
+
+        lblWallet.setText("wallet");
 
         javax.swing.GroupLayout pnlHeaderLayout = new javax.swing.GroupLayout(pnlHeader);
         pnlHeader.setLayout(pnlHeaderLayout);
@@ -134,12 +221,17 @@ public class PurchaseHistoryView extends javax.swing.JFrame {
             pnlHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlHeaderLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(89, 89, 89)
+                .addComponent(titleContent, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(titleContent2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 317, Short.MAX_VALUE)
-                .addComponent(lblUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblWallet, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(pnlHeaderLayout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(pnlHome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -153,71 +245,21 @@ public class PurchaseHistoryView extends javax.swing.JFrame {
             pnlHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlHeaderLayout.createSequentialGroup()
                 .addGroup(pnlHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(titleContent2, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(titleContent, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnlHeaderLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(lblUserName))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(pnlHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pnlHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblUserName)
+                                .addComponent(jLabel6)
+                                .addComponent(lblWallet)))))
                 .addGap(18, 18, 18)
                 .addGroup(pnlHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlHistory, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pnlLibary, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pnlHome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-        );
-
-        pnlContainer.setBackground(new java.awt.Color(82, 109, 130));
-
-        tblRefund.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(tblRefund);
-
-        tblPurchase.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(tblPurchase);
-
-        javax.swing.GroupLayout pnlContainerLayout = new javax.swing.GroupLayout(pnlContainer);
-        pnlContainer.setLayout(pnlContainerLayout);
-        pnlContainerLayout.setHorizontalGroup(
-            pnlContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlContainerLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(pnlContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlContainerLayout.createSequentialGroup()
-                    .addGap(10, 10, 10)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(401, Short.MAX_VALUE)))
-        );
-        pnlContainerLayout.setVerticalGroup(
-            pnlContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlContainerLayout.createSequentialGroup()
-                .addContainerGap(73, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
-            .addGroup(pnlContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlContainerLayout.createSequentialGroup()
-                    .addContainerGap(75, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(22, 22, 22)))
         );
 
         javax.swing.GroupLayout pnlFullLayout = new javax.swing.GroupLayout(pnlFull);
@@ -255,23 +297,30 @@ public class PurchaseHistoryView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void pnlHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlHomeMouseClicked
-        HomeView pv = new HomeView();
-        this.dispose();
-        
-        pv.setVisible(true);
-    }//GEN-LAST:event_pnlHomeMouseClicked
-
     private void pnlLibaryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlLibaryMouseClicked
-        LibaryView pv = new LibaryView();
+        LibaryView pv = new LibaryView(user);
         this.dispose();
-        
+
         pv.setVisible(true);
     }//GEN-LAST:event_pnlLibaryMouseClicked
 
     private void pnlHistoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlHistoryMouseClicked
         
     }//GEN-LAST:event_pnlHistoryMouseClicked
+
+    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
+        LoginView pv = new LoginView();
+        this.dispose();
+
+        pv.setVisible(true);
+    }//GEN-LAST:event_jLabel10MouseClicked
+
+    private void pnlHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlHomeMouseClicked
+        HomeView pv = new HomeView(user);
+        this.dispose();
+
+        pv.setVisible(true);
+    }//GEN-LAST:event_pnlHomeMouseClicked
 
     /**
      * @param args the command line arguments
@@ -318,19 +367,22 @@ public class PurchaseHistoryView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PurchaseHistoryView().setVisible(true);
+                new PurchaseHistoryView(user).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblHistory;
-    private javax.swing.JLabel lblHome;
+    private javax.swing.JLabel lblHome7;
     private javax.swing.JLabel lblLibary;
     private javax.swing.JLabel lblUserName;
+    private javax.swing.JLabel lblWallet;
     private javax.swing.JPanel pnlContainer;
     private javax.swing.JPanel pnlFull;
     private javax.swing.JPanel pnlHeader;
@@ -339,9 +391,12 @@ public class PurchaseHistoryView extends javax.swing.JFrame {
     private javax.swing.JPanel pnlLibary;
     private javax.swing.JTable tblPurchase;
     private javax.swing.JTable tblRefund;
-    private javax.swing.JLabel titleContent2;
+    private javax.swing.JLabel titleContent;
     // End of variables declaration//GEN-END:variables
 
-    
+    private void initUser() {
+        lblUserName.setText(user.getNama());
+        lblWallet.setText(""+user.getWallet()+"");
+    }
     
 }
