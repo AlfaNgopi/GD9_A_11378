@@ -11,12 +11,11 @@ package view;
  *
  * @author ASUS
  */
-public class GameView extends javax.swing.JFrame {
+public class RefundView extends javax.swing.JFrame {
 
     
     
-    public GameView() {
-        initComponents();
+    public RefundView() {
         
         
     }
@@ -33,16 +32,6 @@ public class GameView extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         pnlFull = new javax.swing.JPanel();
-        pnlHeader2 = new javax.swing.JPanel();
-        titleContent2 = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
-        lblHome = new javax.swing.JLabel();
-        pnlLibary = new javax.swing.JPanel();
-        lblLibary = new javax.swing.JLabel();
-        pnlHistory = new javax.swing.JPanel();
-        lblHistory = new javax.swing.JLabel();
-        lblUserName = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         pnlContainer = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
@@ -54,10 +43,20 @@ public class GameView extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         inputRelaseDate = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
+        lblRefund = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
+        pnlHeader2 = new javax.swing.JPanel();
+        titleContent2 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        pnlHome2 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        pnlLibary = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
+        pnlLibary1 = new javax.swing.JLabel();
+        lblUserName = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         jLabel4.setText("Review : ");
 
@@ -66,125 +65,6 @@ public class GameView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         pnlFull.setBackground(new java.awt.Color(39, 55, 77));
-
-        pnlHeader2.setBackground(new java.awt.Color(82, 109, 130));
-        pnlHeader2.setBorder(javax.swing.BorderFactory.createEtchedBorder(null, java.awt.Color.lightGray));
-
-        titleContent2.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 32)); // NOI18N
-        titleContent2.setForeground(new java.awt.Color(0, 0, 0));
-        titleContent2.setText("nama apk");
-
-        jPanel7.setBackground(new java.awt.Color(39, 55, 77));
-
-        lblHome.setBackground(new java.awt.Color(82, 109, 130));
-        lblHome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblHome.setText("Home");
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblHome, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblHome, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-
-        pnlLibary.setBackground(new java.awt.Color(82, 109, 130));
-        pnlLibary.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pnlLibaryMouseClicked(evt);
-            }
-        });
-
-        lblLibary.setBackground(new java.awt.Color(82, 109, 130));
-        lblLibary.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblLibary.setText("Libary");
-        lblLibary.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblLibaryMouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout pnlLibaryLayout = new javax.swing.GroupLayout(pnlLibary);
-        pnlLibary.setLayout(pnlLibaryLayout);
-        pnlLibaryLayout.setHorizontalGroup(
-            pnlLibaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblLibary, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        pnlLibaryLayout.setVerticalGroup(
-            pnlLibaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblLibary, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-
-        pnlHistory.setBackground(new java.awt.Color(82, 109, 130));
-        pnlHistory.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pnlHistoryMouseClicked(evt);
-            }
-        });
-        pnlHistory.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                pnlHistoryKeyPressed(evt);
-            }
-        });
-
-        lblHistory.setBackground(new java.awt.Color(82, 109, 130));
-        lblHistory.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblHistory.setText("History");
-
-        javax.swing.GroupLayout pnlHistoryLayout = new javax.swing.GroupLayout(pnlHistory);
-        pnlHistory.setLayout(pnlHistoryLayout);
-        pnlHistoryLayout.setHorizontalGroup(
-            pnlHistoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblHistory, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        pnlHistoryLayout.setVerticalGroup(
-            pnlHistoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblHistory, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
-        );
-
-        lblUserName.setText("username");
-
-        jLabel1.setText("logo apk");
-
-        javax.swing.GroupLayout pnlHeader2Layout = new javax.swing.GroupLayout(pnlHeader2);
-        pnlHeader2.setLayout(pnlHeader2Layout);
-        pnlHeader2Layout.setHorizontalGroup(
-            pnlHeader2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlHeader2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(titleContent2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 317, Short.MAX_VALUE)
-                .addComponent(lblUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(pnlHeader2Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlLibary, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pnlHistory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        pnlHeader2Layout.setVerticalGroup(
-            pnlHeader2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlHeader2Layout.createSequentialGroup()
-                .addGroup(pnlHeader2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(titleContent2, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlHeader2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblUserName))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(pnlHeader2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlHistory, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pnlLibary, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-        );
 
         pnlContainer.setBackground(new java.awt.Color(82, 109, 130));
 
@@ -211,12 +91,12 @@ public class GameView extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(157, 178, 191));
 
-        jLabel6.setBackground(new java.awt.Color(242, 196, 78));
-        jLabel6.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 24)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Buy");
-        jLabel6.setOpaque(true);
+        lblRefund.setBackground(new java.awt.Color(252, 3, 44));
+        lblRefund.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 24)); // NOI18N
+        lblRefund.setForeground(new java.awt.Color(0, 0, 0));
+        lblRefund.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblRefund.setText("Refund");
+        lblRefund.setOpaque(true);
 
         jLabel7.setFont(new java.awt.Font("Algerian", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
@@ -231,13 +111,13 @@ public class GameView extends javax.swing.JFrame {
                 .addGap(6, 6, 6)
                 .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(lblRefund, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblRefund, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -318,6 +198,105 @@ public class GameView extends javax.swing.JFrame {
                 .addGap(42, 42, 42))
         );
 
+        pnlHeader2.setBackground(new java.awt.Color(82, 109, 130));
+        pnlHeader2.setBorder(javax.swing.BorderFactory.createEtchedBorder(null, java.awt.Color.lightGray));
+
+        titleContent2.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 32)); // NOI18N
+        titleContent2.setForeground(new java.awt.Color(0, 0, 0));
+        titleContent2.setText("nama apk");
+
+        jPanel7.setBackground(new java.awt.Color(39, 55, 77));
+
+        pnlHome2.setBackground(new java.awt.Color(82, 109, 130));
+        pnlHome2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pnlHome2.setText("Home");
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlHome2, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlHome2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        jPanel5.setBackground(new java.awt.Color(82, 109, 130));
+
+        pnlLibary.setBackground(new java.awt.Color(82, 109, 130));
+        pnlLibary.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pnlLibary.setText("Libary");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlLibary, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlLibary, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        jPanel8.setBackground(new java.awt.Color(82, 109, 130));
+
+        pnlLibary1.setBackground(new java.awt.Color(82, 109, 130));
+        pnlLibary1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pnlLibary1.setText("History");
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlLibary1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlLibary1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+        );
+
+        lblUserName.setText("username");
+
+        jLabel1.setText("logo apk");
+
+        javax.swing.GroupLayout pnlHeader2Layout = new javax.swing.GroupLayout(pnlHeader2);
+        pnlHeader2.setLayout(pnlHeader2Layout);
+        pnlHeader2Layout.setHorizontalGroup(
+            pnlHeader2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlHeader2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(titleContent2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(pnlHeader2Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlHeader2Layout.setVerticalGroup(
+            pnlHeader2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlHeader2Layout.createSequentialGroup()
+                .addGroup(pnlHeader2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(titleContent2, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlHeader2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblUserName))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlHeader2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+
         javax.swing.GroupLayout pnlFullLayout = new javax.swing.GroupLayout(pnlFull);
         pnlFull.setLayout(pnlFullLayout);
         pnlFullLayout.setHorizontalGroup(
@@ -325,25 +304,29 @@ public class GameView extends javax.swing.JFrame {
             .addGroup(pnlFullLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlFullLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnlFullLayout.createSequentialGroup()
+                        .addComponent(pnlContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(pnlHeader2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         pnlFullLayout.setVerticalGroup(
             pnlFullLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlFullLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlFullLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(pnlHeader2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
+                .addGap(12, 12, 12)
                 .addComponent(pnlContainer, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlFull, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(pnlFull, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -356,28 +339,6 @@ public class GameView extends javax.swing.JFrame {
     private void inputReviewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputReviewActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_inputReviewActionPerformed
-
-    private void lblLibaryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLibaryMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lblLibaryMouseClicked
-
-    private void pnlLibaryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlLibaryMouseClicked
-        LibaryView pv = new LibaryView();
-        this.dispose();
-        
-        pv.setVisible(true);
-    }//GEN-LAST:event_pnlLibaryMouseClicked
-
-    private void pnlHistoryKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pnlHistoryKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pnlHistoryKeyPressed
-
-    private void pnlHistoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlHistoryMouseClicked
-        PurchaseHistoryView pv = new PurchaseHistoryView();
-        this.dispose();
-        
-        pv.setVisible(true);
-    }//GEN-LAST:event_pnlHistoryMouseClicked
 
     /**
      * @param args the command line arguments
@@ -396,14 +357,22 @@ public class GameView extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GameView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RefundView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GameView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RefundView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GameView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RefundView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GameView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RefundView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -416,7 +385,7 @@ public class GameView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GameView().setVisible(true);
+                new RefundView().setVisible(true);
             }
         });
     }
@@ -430,33 +399,29 @@ public class GameView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JLabel lblGameName;
-    private javax.swing.JLabel lblHistory;
-    private javax.swing.JLabel lblHome;
-    private javax.swing.JLabel lblLibary;
+    private javax.swing.JLabel lblRefund;
     private javax.swing.JLabel lblUserName;
     private javax.swing.JPanel pnlContainer;
     private javax.swing.JPanel pnlFull;
     private javax.swing.JPanel pnlHeader;
-    private javax.swing.JPanel pnlHeader1;
     private javax.swing.JPanel pnlHeader2;
-    private javax.swing.JPanel pnlHistory;
     private javax.swing.JLabel pnlHome;
-    private javax.swing.JLabel pnlHome1;
-    private javax.swing.JPanel pnlLibary;
+    private javax.swing.JLabel pnlHome2;
+    private javax.swing.JLabel pnlLibary;
+    private javax.swing.JLabel pnlLibary1;
     private javax.swing.JLabel titleContent;
-    private javax.swing.JLabel titleContent1;
     private javax.swing.JLabel titleContent2;
     // End of variables declaration//GEN-END:variables
 

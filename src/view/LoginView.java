@@ -1,23 +1,16 @@
 package view;
 
 // Nama : Vincentius Kenton
+
+import control.UserControl;
+import java.util.List;
+import model.User;
+
 // NPM : 210711307
 
 // Nama : Alfa Nada Yulaswara
 // NPM : 210711378
 
-import control.MahasiswaControl;
-import control.PeminjamanControl;
-import control.PustakaControl;
-import exception.InputKosongException;
-import java.util.List;
-import javax.lang.model.SourceVersion;
-import javax.swing.JOptionPane;
-import javax.swing.table.TableModel;
-import model.Mahasiswa;
-import model.Peminjaman;
-import model.Pustaka;
-import table.TablePeminjaman;
 
 /**
  *
@@ -25,32 +18,13 @@ import table.TablePeminjaman;
  */
 public class LoginView extends javax.swing.JFrame {
 
-    private MahasiswaControl mhsControl;
-    private PeminjamanControl pmjControl;
-    private PustakaControl pskControl;
+    UserControl UserC;
     
-    private List<Pustaka> listPustaka;
-    private List<Mahasiswa> listMahasiswa;
-    
-    
-    //local
-    int selectedId = 0;
-    private String action = "";
     
     public LoginView() {
         initComponents();
-        setComponent(false);
         
-        setEditDeleteBtn(false);
-        mhsControl = new MahasiswaControl();
-        pmjControl = new PeminjamanControl();
-        pskControl = new PustakaControl();
-        
-        setPustakaToDropDown();
-        setMahasiswaToDrowDown();
-        
-        showPeminjaman();
-        
+        UserC = new UserControl();
     }
 
     /**
@@ -148,6 +122,11 @@ public class LoginView extends javax.swing.JFrame {
         btnLogin.setFont(new java.awt.Font("Algerian", 1, 18)); // NOI18N
         btnLogin.setForeground(new java.awt.Color(39, 55, 77));
         btnLogin.setText("Login");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -222,6 +201,10 @@ public class LoginView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_inputNameActionPerformed
 
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        login();
+    }//GEN-LAST:event_btnLoginActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -274,69 +257,31 @@ public class LoginView extends javax.swing.JFrame {
     private javax.swing.JPanel panelLogo;
     // End of variables declaration//GEN-END:variables
 
-    private void setComponent(boolean b) {
-        judulPustakaCBX.setEnabled(b);
-        namaMahasiswaCBX.setEnabled(b);
-        lamaPinjamInput.setEnabled(b);
-        tanggalPinjamInput.setEnabled(b);
-        sobekCheckBox.setEnabled(b);
-        coretanCheckBox.setEnabled(b);
-        menguningCheckBox.setEnabled(b);
+    public void login(){
+        String nama = inputName.getText();
+        String pass = inputPassword.getText();
         
-        saveBtn.setEnabled(b);
-        cancelBtn.setEnabled(b);
-        
-    }
-    
-    
-    
-    private void setEditDeleteBtn(boolean b){
-        editBtn.setEnabled(b);
-        deleteBtn.setEnabled(b);
-    }
-    
-    private void clearText(){
-        judulPustakaCBX.setSelectedItem(ABORT);
-        namaMahasiswaCBX.setSelectedItem(ABORT);
-        lamaPinjamInput.setText("");
-        tanggalPinjamInput.setText("");
-        
-        sobekCheckBox.setSelected(false);
-        coretanCheckBox.setSelected(false);
-        menguningCheckBox.setSelected(false);
-        
-        
-    }
-    
-    private void showPeminjaman(){
-        tablePeminjaman.setModel(pmjControl.showPeminjaman(""));
-    }
-    
-    
-    
-    private void inputKosongException() throws InputKosongException{
-        if (judulPustakaCBX.getSelectedIndex() == -1 
-                || namaMahasiswaCBX.getSelectedIndex() == -1 
-                || lamaPinjamInput.getText().isEmpty() 
-                || tanggalPinjamInput.getText().isEmpty()) {
-            throw new InputKosongException();
-        }
-        
-    }
-
-    
-    private void setPustakaToDropDown() {
-        listPustaka = pskControl.showData();
-        for (int i = 0; i < listPustaka.size(); i++) {
-            judulPustakaCBX.addItem(listPustaka.get(i));
+        if (adaDatanya(nama,pass)) {
+            HomeView pv = new HomeView();
+            this.dispose();
+            System.out.println("cek");
+            pv.setVisible(true);
         }
     }
-
-    private void setMahasiswaToDrowDown() {
-        listMahasiswa = mhsControl.showDataMahasiswa();
-        for (int i = 0; i < listMahasiswa.size(); i++) {
-            namaMahasiswaCBX.addItem(listMahasiswa.get(i));
+    
+    public boolean adaDatanya(String nama, String pass){
+        
+        List<User> users = UserC.showDataUser();
+        
+        for (User user : users) {
+            System.out.println(user.getNama());
+            if (user.getNama().equals(nama) && user.getPassword().equals(pass)) {
+                return true;
+            }
         }
+        
+        return false;
     }
+    
     
 }
