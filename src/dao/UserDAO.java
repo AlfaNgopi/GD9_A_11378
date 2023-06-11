@@ -12,6 +12,29 @@ public class UserDAO {
     private DbConnection dbcon = new DbConnection();
     private Connection con;
     
+    public void insertUser(User u){
+       con = dbcon.makeConnection();
+       
+       String sql = "INSERT INTO user(nama, password, wallet, library) VALUES ('"
+               + u.getNama() + "', '"
+               + u.getPassword() + "', "
+               + u.getWallet() + ", '"
+               + u.getLibrary() + "')";
+       
+        System.out.println("Adding User....");
+        
+        try{
+            Statement statement = con.createStatement();
+            int result = statement.executeUpdate(sql);
+            System.out.println("Added " + result + " User");
+            statement.close();
+        }catch(Exception e){
+            System.out.println("Error Adding User...");
+            System.out.println("e");
+        }
+        dbcon.closeConnection();
+    }
+    
     public List<User> showUser(){
         con = dbcon.makeConnection();
         
@@ -61,6 +84,45 @@ public class UserDAO {
             statement.close();
         } catch (Exception e) {
             System.out.println("Error editing User...");
+            System.out.println(e);
+        }
+        dbcon.closeConnection();
+    }
+    
+    public void updateUserNamePassword(User u){
+         con = dbcon.makeConnection();
+        
+        String sql = "UPDATE user SET nama = '"+u.getNama()
+                +"', password = '"+u.getPassword()+"' WHERE user_id = "+u.getUser_id()+"";
+        
+        System.out.println("Editing User...");
+        
+        try {
+            Statement statement = con.createStatement();
+            int result = statement.executeUpdate(sql);
+            System.out.println("Edited " + result + " User " + u.getUser_id());
+            statement.close();
+        } catch (Exception e) {
+            System.out.println("Error editing User...");
+            System.out.println(e);
+        }
+        dbcon.closeConnection();
+    }
+    
+    public void deleteUser(int user_id){
+        con = dbcon.makeConnection();
+        
+        String sql = "DELETE FROM user WHERE user_id = " + user_id + "";
+        
+        System.out.println("Deleting User...");
+        
+        try{
+            Statement statement = con.createStatement();
+            int result = statement.executeUpdate(sql);
+            System.out.println("Delete " + result + " Pustaka " + user_id);
+            statement.close();
+        }catch(Exception e){
+            System.out.println("Error deleting User...");
             System.out.println(e);
         }
         dbcon.closeConnection();

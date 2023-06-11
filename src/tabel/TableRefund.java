@@ -30,7 +30,7 @@ public class TableRefund extends AbstractTableModel{
             case 3:
                 return list.get(rowIndex).getGame().getPrice();
             case 4:
-                return list.get(rowIndex).getUser().getWallet();
+                return list.get(rowIndex).getBallance();
             default:
                 return null;
         }

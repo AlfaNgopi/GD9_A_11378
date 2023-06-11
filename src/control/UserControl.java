@@ -15,9 +15,16 @@ public class UserControl {
         uDao.updateUser(u);
     }
 
-    public void insertUser(User newUser) {
+    public void insertDataUser(User u) {
+        uDao.insertUser(u);
     }
-
-    public void deleteUser(User user) {
+    
+    public void updateDataUserNamePassword(User u){
+        uDao.updateUserNamePassword(u);
     }
+    
+    public void deleteDataUser(int user_id){
+        uDao.deleteUser(user_id);
+    }
+    
 }
