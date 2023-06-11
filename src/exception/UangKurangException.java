@@ -10,8 +10,8 @@ package exception;
 // Nama : Alfa Nada Yulaswara
 // NPM : 210711378
 
-public class NoIdPustakaException extends Exception{
+public class UangKurangException extends Exception{
     public String message(){
-        return "Id Pustaka harus diantara 5-8 digit";
+        return "Uang Anda Kurang !!!";
     }
 }

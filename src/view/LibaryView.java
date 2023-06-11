@@ -83,7 +83,7 @@ public class LibaryView extends javax.swing.JFrame {
         titleContent.setForeground(new java.awt.Color(0, 0, 0));
         titleContent.setText("Gerobak Game");
 
-        pnlHome.setBackground(new java.awt.Color(39, 55, 77));
+        pnlHome.setBackground(new java.awt.Color(82, 109, 130));
         pnlHome.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlHomeMouseClicked(evt);
@@ -105,7 +105,7 @@ public class LibaryView extends javax.swing.JFrame {
             .addComponent(lblHome1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        pnlLibary1.setBackground(new java.awt.Color(82, 109, 130));
+        pnlLibary1.setBackground(new java.awt.Color(39, 55, 77));
         pnlLibary1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlLibary1MouseClicked(evt);

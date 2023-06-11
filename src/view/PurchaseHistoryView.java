@@ -128,7 +128,7 @@ public class PurchaseHistoryView extends javax.swing.JFrame {
         titleContent.setForeground(new java.awt.Color(0, 0, 0));
         titleContent.setText("Gerobak Game");
 
-        pnlHome.setBackground(new java.awt.Color(39, 55, 77));
+        pnlHome.setBackground(new java.awt.Color(82, 109, 130));
         pnlHome.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlHomeMouseClicked(evt);
@@ -172,7 +172,7 @@ public class PurchaseHistoryView extends javax.swing.JFrame {
             .addComponent(lblLibary1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        pnlHistory1.setBackground(new java.awt.Color(82, 109, 130));
+        pnlHistory1.setBackground(new java.awt.Color(39, 55, 77));
         pnlHistory1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlHistory1MouseClicked(evt);

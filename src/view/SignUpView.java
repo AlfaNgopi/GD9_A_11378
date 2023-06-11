@@ -3,8 +3,11 @@ package view;
 // Nama : Vincentius Kenton
 
 import control.UserControl;
+import exception.InputKosongException;
 import java.util.List;
+import javax.swing.JOptionPane;
 import model.User;
+import static view.GameView.game;
 
 // NPM : 210711307
 
@@ -363,8 +366,15 @@ public class SignUpView extends javax.swing.JFrame {
     }
 
     private void signup() {
-        User newUser = new User(0,inputName.getText(), inputPassword.getText(), "");
-        UserC.insertDataUser(newUser);
+        try{
+            User newUser = new User(0,inputName.getText(), inputPassword.getText(), "");
+            UserC.insertDataUser(newUser);
+            JOptionPane.showConfirmDialog(rootPane, newUser.getNama()+" Berhasil dibuat", "Konfirmasi", JOptionPane.DEFAULT_OPTION);
+        }catch(InputKosongException e){
+            e.getMessage();
+            JOptionPane.showConfirmDialog(rootPane, "Nama atau password tidak boleh kosong !!!", "Konfirmasi", JOptionPane.DEFAULT_OPTION);
+        }
+        
     }
     
     

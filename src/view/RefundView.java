@@ -101,6 +101,7 @@ public class RefundView extends javax.swing.JFrame {
 
         txtDeskribsi.setBackground(new java.awt.Color(82, 109, 130));
         txtDeskribsi.setColumns(20);
+        txtDeskribsi.setForeground(new java.awt.Color(255, 255, 255));
         txtDeskribsi.setRows(5);
         txtDeskribsi.setText("desc here");
         jScrollPane2.setViewportView(txtDeskribsi);

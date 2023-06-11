@@ -1,4 +1,5 @@
 package model;
+import exception.InputKosongException;
 
 public class User {
     private int user_id, wallet;
@@ -12,11 +13,19 @@ public class User {
         this.library = library;
     }
 
-    public User(int wallet, String nama, String password, String library) {
-        this.wallet = wallet;
-        this.nama = nama;
-        this.password = password;
-        this.library = library;
+    public User(int wallet, String nama, String password, String library) throws InputKosongException {
+        
+        if ("".equals(nama) || "".equals(password)) {
+            throw new InputKosongException();
+        }else{
+            this.wallet = wallet;
+            this.nama = nama;
+            this.password = password;
+            this.library = library;
+        }
+        
+        
+        
     }
 
     public int getUser_id() {

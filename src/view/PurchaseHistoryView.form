@@ -231,7 +231,7 @@
             <Container class="javax.swing.JPanel" name="pnlHome">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="4d" green="37" red="27" type="rgb"/>
+                  <Color blue="82" green="6d" red="52" type="rgb"/>
                 </Property>
               </Properties>
               <Events>
@@ -299,7 +299,7 @@
             <Container class="javax.swing.JPanel" name="pnlHistory1">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="82" green="6d" red="52" type="rgb"/>
+                  <Color blue="4d" green="37" red="27" type="rgb"/>
                 </Property>
               </Properties>
               <Events>
