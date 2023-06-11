@@ -18,8 +18,9 @@ public class RefundDAO {
     public void insertRefund(Refund r){
         con = dbcon.makeConnection();
         
-        String sql = "INSERT INTO refund(id_pembelian, tanggal_refund) VALUES ("
-                + r.getPembelian().getId()+ ", '"
+        String sql = "INSERT INTO refund(game_id, user_id, tanggal_refund, ballance) VALUES ("
+                + r.getGame().getGameId()+ ", "
+                + r.getUser().getUser_id()+", '"
                 + r.getTanggal_refund() + "', "
                 + r.getBallance()+ ")";
         System.out.println("Adding data refund...");
@@ -39,13 +40,9 @@ public class RefundDAO {
     public List<Refund> showRefund(String query){
         con = dbcon.makeConnection();
         
-        String sql = "SELECT r.*, p.* FROM refund as r JOIN pembelian as p ON r.id_pembelian = p.id_pembelian "
-                + "JOIN user as u ON p.user_id = u.user_id JOIN games as g ON p.game_id = g.game_id "
-                + "WHERE (r.tanggal_refund LIKE '%" + query + "%'"
-                + "OR g.game_name LIKE '%" + query + "%'"
-                + "OR g.price LIKE '%" + query + "%'"
-                + "OR u.wallet LIKE '%" + query + "%'"
-                + "OR r.ballance LIKE '%"+ query +"&')";
+        String sql = "SELECT r.*, u.*, g.* FROM refund as r JOIN user as u ON r.user_id = u.user_id "
+                + "JOIN games as g ON r.game_id = g.game_id WHERE (u.user_id =" + query +" "
+                + ")";
         System.out.println("Mengambil data Refund...");
         List<Refund> list = new ArrayList();
         
@@ -73,11 +70,10 @@ public class RefundDAO {
                            rs.getString("library")
                     );
                     
-                    Pembelian p = new Pembelian(rs.getInt("id_pembelian"),
-                        rs.getString("tanggal"), u, g, rs.getInt("ballance"));
+                    
 
                     Refund r = new Refund(rs.getInt("id_refund"),
-                    p, rs.getString("tanggal_refund"), rs.getInt("ballance"));
+                    g, u, rs.getString("tanggal_refund"), rs.getInt("ballance"));
                     list.add(r);
                 } 
             }

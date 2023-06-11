@@ -26,11 +26,11 @@ public class TableRefund extends AbstractTableModel{
             case 1:
                 return list.get(rowIndex).getTanggal_refund();
             case 2:
-                return list.get(rowIndex).getPembelian().getGame().getGameName();
+                return list.get(rowIndex).getGame().getGameName();
             case 3:
-                return list.get(rowIndex).getPembelian().getGame().getPrice();
+                return list.get(rowIndex).getGame().getPrice();
             case 4:
-                return list.get(rowIndex).getPembelian().getUser().getWallet();
+                return list.get(rowIndex).getUser().getWallet();
             default:
                 return null;
         }

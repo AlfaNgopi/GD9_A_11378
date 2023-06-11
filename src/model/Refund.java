@@ -2,24 +2,25 @@ package model;
 
 public class Refund {
     private int id;
-    private Pembelian pembelian;
+    private Game game;
+    private User user;
     private String tanggal_refund;
     private int ballance;
 
-    public Refund(int id, Pembelian pembelian, String tanggal_refund, int ballance) {
+    public Refund(int id, Game game, User user, String tanggal_refund, int ballance) {
         this.id = id;
-        this.pembelian = pembelian;
+        this.game = game;
+        this.user = user;
         this.tanggal_refund = tanggal_refund;
         this.ballance = ballance;
     }
 
-    public Refund(Pembelian pembelian, String tanggal_refund, int ballance) {
-        this.pembelian = pembelian;
+    public Refund(Game game, User user, String tanggal_refund, int ballance) {
+        this.game = game;
+        this.user = user;
         this.tanggal_refund = tanggal_refund;
         this.ballance = ballance;
     }
-
-    
 
     public int getId() {
         return id;
@@ -29,12 +30,20 @@ public class Refund {
         this.id = id;
     }
 
-    public Pembelian getPembelian() {
-        return pembelian;
+    public Game getGame() {
+        return game;
     }
 
-    public void setPembelian(Pembelian pembelian) {
-        this.pembelian = pembelian;
+    public void setGame(Game game) {
+        this.game = game;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getTanggal_refund() {

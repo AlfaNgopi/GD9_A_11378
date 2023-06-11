@@ -215,6 +215,11 @@ public class HomeView extends javax.swing.JFrame {
         });
 
         lblUserName.setText("username");
+        lblUserName.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblUserNameMouseClicked(evt);
+            }
+        });
 
         jLabel3.setText("-");
 
@@ -397,6 +402,13 @@ public class HomeView extends javax.swing.JFrame {
         }
        */
     }//GEN-LAST:event_tblGameListMouseClicked
+
+    private void lblUserNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUserNameMouseClicked
+        AkunView pv = new AkunView(user);
+        this.dispose();
+        
+        pv.setVisible(true);
+    }//GEN-LAST:event_lblUserNameMouseClicked
 
     /**
      * @param args the command line arguments

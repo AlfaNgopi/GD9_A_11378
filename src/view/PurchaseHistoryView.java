@@ -5,6 +5,7 @@ package view;
 import control.PembelianControl;
 import control.RefundControl;
 import model.User;
+import static view.HomeView.user;
 import static view.LibaryView.user;
 
 // NPM : 210711307
@@ -29,8 +30,8 @@ public class PurchaseHistoryView extends javax.swing.JFrame {
         initComponents();
         
         this.user = user;
-        
-        tblPurchase.setModel(PembelianC.showdataPembelian(""));
+        System.out.println(""+user.getUser_id());
+        tblPurchase.setModel(PembelianC.showdataPembelian(""+user.getUser_id()));
         tblRefund.setModel(RefundC.showdataRefund(""+user.getUser_id()));
         
         
@@ -210,6 +211,11 @@ public class PurchaseHistoryView extends javax.swing.JFrame {
         });
 
         lblUserName.setText("username");
+        lblUserName.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblUserNameMouseClicked(evt);
+            }
+        });
 
         jLabel6.setText("-");
 
@@ -321,6 +327,13 @@ public class PurchaseHistoryView extends javax.swing.JFrame {
 
         pv.setVisible(true);
     }//GEN-LAST:event_pnlHomeMouseClicked
+
+    private void lblUserNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUserNameMouseClicked
+        AkunView pv = new AkunView(user);
+        this.dispose();
+        
+        pv.setVisible(true);
+    }//GEN-LAST:event_lblUserNameMouseClicked
 
     /**
      * @param args the command line arguments

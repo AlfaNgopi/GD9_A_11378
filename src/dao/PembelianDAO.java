@@ -40,7 +40,7 @@ public class PembelianDAO {
         con = dbcon.makeConnection();
         
         String sql = "SELECT p.*, u.*, g.* FROM pembelian as p JOIN user as u ON p.user_id = u.user_id "
-                + "JOIN games as g ON p.game_id = g.game_id WHERE (u.user_id LIKE '% " + query +" %'"
+                + "JOIN games as g ON p.game_id = g.game_id WHERE (u.user_id = " + query +" "
                 + ")"
                 ;
         System.out.println("Mengambil data Pembelian...");

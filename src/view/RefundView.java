@@ -7,6 +7,7 @@ import control.RefundControl;
 import control.UserControl;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import model.Game;
 import model.Pembelian;
@@ -14,6 +15,7 @@ import model.Refund;
 import model.User;
 import static view.GameView.game;
 import static view.GameView.user;
+import static view.HomeView.user;
 
 // NPM : 210711307
 
@@ -180,6 +182,11 @@ public class RefundView extends javax.swing.JFrame {
         });
 
         lblUserName.setText("username");
+        lblUserName.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblUserNameMouseClicked(evt);
+            }
+        });
 
         jLabel6.setText("-");
 
@@ -312,8 +319,6 @@ public class RefundView extends javax.swing.JFrame {
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, Short.MAX_VALUE)
                 .addGap(6, 6, 6))
         );
-
-        gameLogo.setText("icon");
 
         lblGenre.setText("Genre");
 
@@ -479,45 +484,43 @@ public class RefundView extends javax.swing.JFrame {
         
             user.setWallet(user.getWallet() + game.getPrice());
             
-            List<Pembelian> p = PembelianC.getList();
             
-            Pembelian pgame = null;
+            Refund r = new Refund(game, user, timeStamp, user.getWallet());
             
-            for (Pembelian p1 : p) {
-                System.out.println(p1.getUser().getUser_id());
-                if (p1.getUser().getUser_id() == user.getUser_id() && p1.getGame().getGameId() == game.getGameId()) {
-                    pgame = p1;
+            String libaryLama = user.getLibrary();
+            String libaryBaru = "";
+            
+            String[] game_ids = libaryLama.split(",");
+            for (String game_id : game_ids) {
+                System.out.println("here");
+                if (Integer.parseInt(game_id) == game.getGameId()) {
+                    System.out.println("mengahpus game " + game.getGameName());
                     
-                    break;
-                }
-            }
-            
-            if (pgame!=null) {
-                Refund r = new Refund(pgame, timeStamp, user.getWallet());
+                }else{
                 
-                String[] deletes = user.getLibrary().split(",");
-                String baru = "";
-                
-                System.out.println(deletes);
-                for (String delete : deletes) {
-                    
-                    if (Integer.parseInt(delete) == game.getGameId()) {
-                        
+                    if (libaryBaru == "") {
+                        libaryBaru = game_id;
                     }else{
-                        if ("".equals(baru)) {
-                            baru = delete;
-                        }else{
-                            baru = baru + "," + delete;
-                        }
+                        libaryBaru = libaryBaru + "," + game_id;
                     }
                 }
-                
-                user.setLibrary(baru);
-                UserC.updateDataUser(user);
-                RefundC.insertDataRefund(r);
-                
-                System.out.println("berhasil refund");
             }
+                
+                
+            
+                
+            user.setLibrary(libaryBaru);
+            UserC.updateDataUser(user);
+            RefundC.insertDataRefund(r);
+
+            System.out.println("berhasil refund");
+            JOptionPane.showConfirmDialog(rootPane, "Berhasil Refund", "konfirmasi", JOptionPane.DEFAULT_OPTION);
+            
+            LibaryView pv = new LibaryView(user);
+            this.dispose();
+
+            pv.setVisible(true);
+            
 
            
 
@@ -538,6 +541,13 @@ public class RefundView extends javax.swing.JFrame {
     private void inputGenreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputGenreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_inputGenreActionPerformed
+
+    private void lblUserNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUserNameMouseClicked
+        AkunView pv = new AkunView(user);
+        this.dispose();
+        
+        pv.setVisible(true);
+    }//GEN-LAST:event_lblUserNameMouseClicked
 
     /**
      * @param args the command line arguments
@@ -634,11 +644,14 @@ public class RefundView extends javax.swing.JFrame {
     private void initGame() {
         lblGameName.setText(game.getGameName());
         txtDeskribsi.setText(game.getDeskripsi());
-        inputPublisher.setText("");
+        inputPublisher.setText(game.getPublisher());
         inputRelaseDate.setText(game.getReleaseDate());
         inputReview.setText(game.getReview());
+        inputGenre.setText(game.getGenre());
         
         lblHarga.setText(getGamePriceAsString());
+        
+        gameLogo.setIcon(new ImageIcon(game.getImage()));
     }
 
     private String getGamePriceAsString() {

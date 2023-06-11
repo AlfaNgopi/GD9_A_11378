@@ -288,6 +288,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="username"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblUserNameMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel6">
               <Properties>
@@ -549,9 +552,6 @@
               </SubComponents>
             </Container>
             <Component class="javax.swing.JLabel" name="gameLogo">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="icon"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblGenre">
               <Properties>

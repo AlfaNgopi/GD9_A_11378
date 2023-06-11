@@ -8,6 +8,7 @@ import java.util.List;
 import model.Game;
 import model.User;
 import tabel.TableGame;
+import static view.HomeView.user;
 
 // NPM : 210711307
 
@@ -221,6 +222,11 @@ public class LibaryView extends javax.swing.JFrame {
         });
 
         lblUserName.setText("username");
+        lblUserName.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblUserNameMouseClicked(evt);
+            }
+        });
 
         jLabel6.setText("-");
 
@@ -348,6 +354,13 @@ public class LibaryView extends javax.swing.JFrame {
         
         pv.setVisible(true);
     }//GEN-LAST:event_tblLibaryListMouseClicked
+
+    private void lblUserNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUserNameMouseClicked
+        AkunView pv = new AkunView(user);
+        this.dispose();
+        
+        pv.setVisible(true);
+    }//GEN-LAST:event_lblUserNameMouseClicked
 
     /**
      * @param args the command line arguments
