@@ -196,7 +196,7 @@
                 <Component class="javax.swing.JTextArea" name="txtDeskribsi">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="82" green="6d" red="52" type="rgb"/>
+                      <Color blue="48" green="37" red="21" type="rgb"/>
                     </Property>
                     <Property name="columns" type="int" value="20"/>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">

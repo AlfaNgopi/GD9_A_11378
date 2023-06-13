@@ -14,6 +14,7 @@ import model.Game;
 import model.Pembelian;
 import model.User;
 import static view.HomeView.user;
+import exception.UangKurangException;
 
 // NPM : 210711307
 
@@ -258,7 +259,7 @@ public class GameView extends javax.swing.JFrame {
 
         pnlContainer.setBackground(new java.awt.Color(82, 109, 130));
 
-        txtDeskribsi.setBackground(new java.awt.Color(82, 109, 130));
+        txtDeskribsi.setBackground(new java.awt.Color(33, 55, 72));
         txtDeskribsi.setColumns(20);
         txtDeskribsi.setForeground(new java.awt.Color(255, 255, 255));
         txtDeskribsi.setRows(5);
@@ -311,11 +312,9 @@ public class GameView extends javax.swing.JFrame {
         );
         pnlBuyLayout.setVerticalGroup(
             pnlBuyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlBuyLayout.createSequentialGroup()
-                .addGroup(pnlBuyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblHarga, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(pnlBuyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                .addComponent(lblHarga, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jPanel2.setBackground(new java.awt.Color(82, 109, 130));
@@ -479,7 +478,13 @@ public class GameView extends javax.swing.JFrame {
     private void inputGenreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputGenreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_inputGenreActionPerformed
-
+    
+    private void inputUangKurang() throws UangKurangException{
+        if (user.getWallet() < game.getPrice()){
+            throw new UangKurangException();
+        }
+    }
+    
     private void pnlBuyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlBuyMouseClicked
         
         // CEK SUDAH BELI ATAU BELUM
@@ -494,31 +499,35 @@ public class GameView extends javax.swing.JFrame {
         }
         
         //CEK UANG
-        if (user.getWallet() < game.getPrice()) {
+        
+        try{
+            inputUangKurang();
+            
+            String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
+        
+            user.setWallet(user.getWallet() - game.getPrice());
+
+            Pembelian p = new Pembelian(timeStamp, user, game, user.getWallet());
+
+
+
+            PembelianC.insertDataPembelian(p);
+
+            if ("".equals(user.getLibrary())) {
+                user.setLibrary(""+game.getGameId()+"");
+            }else{
+                user.setLibrary(user.getLibrary() + "," + game.getGameId());
+            }
+            UserC.updateDataUser(user);
+            JOptionPane.showConfirmDialog(rootPane, "Berhasil membeli "+game.getGameName(), "Konfirmasi", JOptionPane.DEFAULT_OPTION);
+
+            initUser();
+        }catch(UangKurangException e){
+            e.getMessage();
             JOptionPane.showConfirmDialog(rootPane, "Uang Anda Kurang !!!", "konfirmasi", JOptionPane.DEFAULT_OPTION);
-            return;
         }
         
         
-        String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
-        
-        user.setWallet(user.getWallet() - game.getPrice());
-        
-        Pembelian p = new Pembelian(timeStamp, user, game, user.getWallet());
-        
-        
-        
-        PembelianC.insertDataPembelian(p);
-        
-        if ("".equals(user.getLibrary())) {
-            user.setLibrary(""+game.getGameId()+"");
-        }else{
-            user.setLibrary(user.getLibrary() + "," + game.getGameId());
-        }
-        UserC.updateDataUser(user);
-        JOptionPane.showConfirmDialog(rootPane, "Berhasil membeli "+game.getGameName(), "Konfirmasi", JOptionPane.DEFAULT_OPTION);
-        
-        initUser();
         
     }//GEN-LAST:event_pnlBuyMouseClicked
 

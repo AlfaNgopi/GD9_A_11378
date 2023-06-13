@@ -3,6 +3,7 @@ package view;
 // Nama : Vincentius Kenton
 
 import control.UserControl;
+import exception.InputKosongException;
 import java.util.List;
 import javax.swing.JOptionPane;
 import model.User;
@@ -101,6 +102,11 @@ public class AkunView extends javax.swing.JFrame {
 
         inputPassword.setBackground(new java.awt.Color(221, 230, 237));
         inputPassword.setForeground(new java.awt.Color(0, 0, 0));
+        inputPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputPasswordActionPerformed(evt);
+            }
+        });
 
         lblId.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 12)); // NOI18N
         lblId.setForeground(new java.awt.Color(0, 0, 0));
@@ -480,6 +486,12 @@ public class AkunView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_inputUserIdActionPerformed
 
+    private void inputKosongException() throws InputKosongException{
+        if(inputName.getText().equals("") || inputPassword.getText().equals("")){
+            throw new InputKosongException();
+        }
+    }
+    
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         UserC.deleteDataUser(user.getUser_id());
         JOptionPane.showConfirmDialog(rootPane, "Berhasil Delete", "konfirmasi", JOptionPane.DEFAULT_OPTION);
@@ -493,13 +505,24 @@ public class AkunView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        user.setNama(inputName.getText());
-        user.setPassword(inputPassword.getText());
-        UserC.updateDataUserNamePassword(user);
-        JOptionPane.showConfirmDialog(rootPane, "Berhasil Update", "konfirmasi", JOptionPane.DEFAULT_OPTION);
-        initUser();
+        update();
     }//GEN-LAST:event_btnUpdateActionPerformed
 
+    private void update(){
+        try{
+            inputKosongException();
+            
+            user.setNama(inputName.getText());
+            user.setPassword(inputPassword.getText());
+            UserC.updateDataUserNamePassword(user);
+            JOptionPane.showConfirmDialog(rootPane, "Berhasil Update", "konfirmasi", JOptionPane.DEFAULT_OPTION);
+            initUser();
+        }catch(InputKosongException e){
+            e.getMessage();
+            JOptionPane.showConfirmDialog(rootPane, "Nama atau password tidak boleh kosong !!!", "Konfirmasi", JOptionPane.DEFAULT_OPTION);
+        }
+    }
+    
     private void btnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOutActionPerformed
         LoginView pv = new LoginView();
         this.dispose();
@@ -534,6 +557,10 @@ public class AkunView extends javax.swing.JFrame {
 
         pv.setVisible(true);
     }//GEN-LAST:event_lblUserNameMouseClicked
+
+    private void inputPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputPasswordActionPerformed
 
     /**
      * @param args the command line arguments

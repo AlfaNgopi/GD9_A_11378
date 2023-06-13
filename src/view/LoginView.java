@@ -4,6 +4,7 @@ package view;
 
 import control.UserControl;
 import java.util.List;
+import javax.swing.JOptionPane;
 import model.User;
 
 // NPM : 210711307
@@ -296,6 +297,7 @@ public class LoginView extends javax.swing.JFrame {
     private javax.swing.JPanel panelLogo;
     // End of variables declaration//GEN-END:variables
 
+    
     public void login(){
         String nama = inputName.getText();
         String pass = inputPassword.getText();
@@ -307,6 +309,8 @@ public class LoginView extends javax.swing.JFrame {
             this.dispose();
             System.out.println("cek");
             pv.setVisible(true);
+        }else{
+            JOptionPane.showConfirmDialog(rootPane, "Nama atau password salah !!!", "Konfirmasi", JOptionPane.DEFAULT_OPTION);
         }
     }
     

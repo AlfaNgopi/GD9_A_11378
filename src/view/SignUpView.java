@@ -364,6 +364,7 @@ public class SignUpView extends javax.swing.JFrame {
         inputUserId.setText(""+newUserId);
         inputUserId.setEnabled(false);
     }
+    
 
     private void signup() {
         try{

@@ -17,7 +17,7 @@ public class User {
         
         if ("".equals(nama) || "".equals(password)) {
             throw new InputKosongException();
-        }else{
+        }else {
             this.wallet = wallet;
             this.nama = nama;
             this.password = password;

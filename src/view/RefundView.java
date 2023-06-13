@@ -99,7 +99,7 @@ public class RefundView extends javax.swing.JFrame {
 
         pnlContainer.setBackground(new java.awt.Color(82, 109, 130));
 
-        txtDeskribsi.setBackground(new java.awt.Color(82, 109, 130));
+        txtDeskribsi.setBackground(new java.awt.Color(33, 55, 72));
         txtDeskribsi.setColumns(20);
         txtDeskribsi.setForeground(new java.awt.Color(255, 255, 255));
         txtDeskribsi.setRows(5);
