@@ -5,9 +5,6 @@ package view;
 import control.PembelianControl;
 import control.RefundControl;
 import model.User;
-import static view.HomeView.user;
-import static view.LibaryView.user;
-import static view.RefundView.user;
 
 // NPM : 210711307
 
@@ -19,12 +16,12 @@ import static view.RefundView.user;
  *
  * @author ASUS
  */
-public class PurchaseHistoryView extends javax.swing.JFrame {
+public class PurchaseHistoryView extends javax.swing.JFrame implements IHeader{
 
-    static User user;
+    private static User user;
     
-    PembelianControl PembelianC = new PembelianControl();
-    RefundControl RefundC = new RefundControl();
+    private PembelianControl PembelianC = new PembelianControl();
+    private RefundControl RefundC = new RefundControl();
     
     
     public PurchaseHistoryView(User user) {
@@ -194,7 +191,7 @@ public class PurchaseHistoryView extends javax.swing.JFrame {
             .addComponent(lblHistory1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
         );
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/LOGOO.png"))); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/GG.png"))); // NOI18N
 
         lblWallet.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 12)); // NOI18N
         lblWallet.setText("wallet");
@@ -411,7 +408,7 @@ public class PurchaseHistoryView extends javax.swing.JFrame {
     private javax.swing.JLabel titleContent;
     // End of variables declaration//GEN-END:variables
 
-    private void initUser() {
+    public void initUser() {
         lblUserName.setText(user.getNama());
         lblWallet.setText("Rp " + user.getWallet());
     }

@@ -7,8 +7,6 @@ import exception.InputKosongException;
 import java.util.List;
 import javax.swing.JOptionPane;
 import model.User;
-import static view.PurchaseHistoryView.user;
-import static view.RefundView.user;
 
 // NPM : 210711307
 
@@ -20,11 +18,11 @@ import static view.RefundView.user;
  *
  * @author ASUS
  */
-public class AkunView extends javax.swing.JFrame {
+public class AkunView extends javax.swing.JFrame implements IHeader{
 
-    UserControl UserC = new UserControl();
+    private UserControl UserC = new UserControl();
     
-    static User user;
+    private static User user;
     
     
     public AkunView(User user) {
@@ -349,7 +347,7 @@ public class AkunView extends javax.swing.JFrame {
             .addComponent(lblHistory1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
         );
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/LOGOO.png"))); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/GG.png"))); // NOI18N
 
         lblWallet.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 12)); // NOI18N
         lblWallet.setText("wallet");
@@ -648,7 +646,7 @@ public class AkunView extends javax.swing.JFrame {
 
     
 
-    private void initUser() {
+    public void initUser() {
         
         lblUserName.setText(user.getNama());
         lblWallet.setText("Rp " + user.getWallet());

@@ -21,7 +21,7 @@ import static view.GameView.game;
  */
 public class SignUpView extends javax.swing.JFrame {
 
-    UserControl UserC = new UserControl();
+    private UserControl UserC = new UserControl();
     
     
     public SignUpView() {

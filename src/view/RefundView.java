@@ -10,12 +10,8 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import model.Game;
-import model.Pembelian;
 import model.Refund;
 import model.User;
-import static view.GameView.game;
-import static view.GameView.user;
-import static view.HomeView.user;
 
 // NPM : 210711307
 
@@ -27,14 +23,14 @@ import static view.HomeView.user;
  *
  * @author ASUS
  */
-public class RefundView extends javax.swing.JFrame {
+public class RefundView extends javax.swing.JFrame implements IHeader, IGame{
 
-    static User user;
-    static Game game;
+    private static User user;
+    private static Game game;
     
-    UserControl UserC = new UserControl();
-    PembelianControl PembelianC = new PembelianControl();
-    RefundControl RefundC = new RefundControl();
+    private UserControl UserC = new UserControl();
+    
+    private RefundControl RefundC = new RefundControl();
     
     public RefundView(User user, Game game) {
         
@@ -338,7 +334,7 @@ public class RefundView extends javax.swing.JFrame {
             .addComponent(lblHistory1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
         );
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/LOGOO.png"))); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/GG.png"))); // NOI18N
 
         lblWallet.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 12)); // NOI18N
         lblWallet.setText("wallet");
@@ -660,12 +656,12 @@ public class RefundView extends javax.swing.JFrame {
     private javax.swing.JTextArea txtDeskribsi;
     // End of variables declaration//GEN-END:variables
 
-    private void initUser() {
+    public void initUser() {
         lblUserName.setText(user.getNama());
         lblWallet.setText("Rp " + user.getWallet());
     }
 
-    private void initGame() {
+    public void initGame() {
         lblGameName.setText(game.getGameName());
         txtDeskribsi.setText(getDeskripsi());
         inputPublisher.setText(game.getPublisher());

@@ -8,7 +8,6 @@ import java.util.List;
 import model.Game;
 import model.User;
 import tabel.TableGame;
-import static view.RefundView.user;
 
 // NPM : 210711307
 
@@ -20,14 +19,14 @@ import static view.RefundView.user;
  *
  * @author ASUS
  */
-public class HomeView extends javax.swing.JFrame {
+public class HomeView extends javax.swing.JFrame implements IHeader{
 
-    GameControl GameC = new GameControl();
-    UserControl UserC = new UserControl();
+    private GameControl GameC = new GameControl();
+    private UserControl UserC = new UserControl();
     
-    static User user;
+    private static User user;
     
-    List<Game> gameList;
+    private List<Game> gameList;
     
     public HomeView(User user) {
         initComponents();
@@ -209,7 +208,7 @@ public class HomeView extends javax.swing.JFrame {
             .addComponent(lblHistory1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
         );
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/LOGOO.png"))); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/GG.png"))); // NOI18N
 
         lblWallet.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 12)); // NOI18N
         lblWallet.setText("wallet");
@@ -344,61 +343,7 @@ public class HomeView extends javax.swing.JFrame {
         pv.setVisible(true);
         
         
-        /*
-        setEditDeleteBtn(true);
-        setComponent(false);
         
-        
-        int clickedRow = tablePeminjaman.getSelectedRow();
-        TableModel tableModel = tablePeminjaman.getModel();
-        
-        //UNTUK DELETE
-        selectedId = Integer.parseInt(tableModel.getValueAt(clickedRow, 8).toString());
-        
-        
-        //UNTUK UBAH
-        
-        //judul pustaka
-        int indexPustaka = -1;
-        String judulPustaka = tableModel.getValueAt(clickedRow, 0).toString();
-        for (Pustaka pustaka : listPustaka) {
-            if (pustaka.getJudul().equals(judulPustaka)) {
-                indexPustaka = listPustaka.indexOf(pustaka);
-            }
-        }
-        judulPustakaCBX.setSelectedIndex(indexPustaka);
-        
-        //nama Mahaiswa
-        int indexMahasiswa = -1;
-        String namaMahasiswa = tableModel.getValueAt(clickedRow, 2).toString();
-        for (Mahasiswa mahasiswa : listMahasiswa) {
-            if (mahasiswa.getNama().equals(namaMahasiswa)) {
-                indexMahasiswa = listMahasiswa.indexOf(mahasiswa);
-            }
-        }
-        namaMahasiswaCBX.setSelectedIndex(indexMahasiswa);
-        
-        //lama pinjam
-        lamaPinjamInput.setText(tableModel.getValueAt(clickedRow, 3).toString());
-        
-        //tanggal pinjam
-        tanggalPinjamInput.setText(tableModel.getValueAt(clickedRow, 4).toString());
-        
-        //kondisi
-        sobekCheckBox.setSelected(false);
-        coretanCheckBox.setSelected(false);
-        menguningCheckBox.setSelected(false);
-        String kondisi = tableModel.getValueAt(clickedRow, 5).toString();
-        if (kondisi.contains("Sobek")) {
-            sobekCheckBox.setSelected(true);
-        }
-        if (kondisi.contains("Coretan")) {
-            coretanCheckBox.setSelected(true);
-        }
-       if (kondisi.contains("Menguning")) {
-            menguningCheckBox.setSelected(true);
-        }
-       */
     }//GEN-LAST:event_tblGameListMouseClicked
 
     private void pnlHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlHomeMouseClicked

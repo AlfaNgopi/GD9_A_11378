@@ -13,7 +13,6 @@ import javax.swing.JOptionPane;
 import model.Game;
 import model.Pembelian;
 import model.User;
-import static view.HomeView.user;
 import exception.UangKurangException;
 
 // NPM : 210711307
@@ -26,14 +25,14 @@ import exception.UangKurangException;
  *
  * @author ASUS
  */
-public class GameView extends javax.swing.JFrame {
+public class GameView extends javax.swing.JFrame implements IHeader, IGame{
 
     static User user;
     static Game game;
     
-    UserControl UserC = new UserControl();
+    private UserControl UserC = new UserControl();
     
-    PembelianControl PembelianC = new PembelianControl();
+    private PembelianControl PembelianC = new PembelianControl();
     
     public GameView(User user, Game game) {
         this.user = user;
@@ -175,7 +174,7 @@ public class GameView extends javax.swing.JFrame {
             .addComponent(lblHistory1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
         );
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/LOGOO.png"))); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/GG.png"))); // NOI18N
 
         lblWallet.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 12)); // NOI18N
         lblWallet.setText("wallet");
@@ -631,12 +630,14 @@ public class GameView extends javax.swing.JFrame {
     private javax.swing.JTextArea txtDeskribsi;
     // End of variables declaration//GEN-END:variables
 
-    private void initUser() {
+    @Override
+    public void initUser() {
         lblUserName.setText(user.getNama());
         lblWallet.setText("Rp "+user.getWallet()+"");
     }
 
-    private void initGame() {
+    @Override
+    public void initGame() {
         lblGameName.setText(game.getGameName());
         txtDeskribsi.setText(getGameDesc());
         inputPublisher.setText(game.getPublisher());

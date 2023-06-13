@@ -19,7 +19,7 @@ import model.User;
  */
 public class LoginView extends javax.swing.JFrame {
 
-    UserControl UserC;
+    private UserControl UserC;
     
     
     public LoginView() {
