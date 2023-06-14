@@ -3,34 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/F:/KULIAH/SEM%204/Pemrograman%20Berorientasi%20Obyek/GD9_A_11378/src/connection/DbConnection.java</file>
-            <file>file:/F:/KULIAH/SEM%204/Pemrograman%20Berorientasi%20Obyek/GD9_A_11378/src/exception/InputKosongException.java</file>
-            <file>file:/F:/KULIAH/SEM%204/Pemrograman%20Berorientasi%20Obyek/GD9_A_11378/src/model/Game.java</file>
-            <file>file:/F:/KULIAH/SEM%204/Pemrograman%20Berorientasi%20Obyek/GD9_A_11378/src/dao/PembelianDAO.java</file>
-            <file>file:/F:/KULIAH/SEM%204/Pemrograman%20Berorientasi%20Obyek/GD9_A_11378/src/tabel/TablePembelian.java</file>
-            <file>file:/F:/KULIAH/SEM%204/Pemrograman%20Berorientasi%20Obyek/GD9_A_11378/src/view/PurchaseHistoryView.java</file>
-            <file>file:/F:/KULIAH/SEM%204/Pemrograman%20Berorientasi%20Obyek/GD9_A_11378/src/view/RefundView.java</file>
-            <file>file:/F:/KULIAH/SEM%204/Pemrograman%20Berorientasi%20Obyek/GD9_A_11378/src/control/UserControl.java</file>
-            <file>file:/F:/KULIAH/SEM%204/Pemrograman%20Berorientasi%20Obyek/GD9_A_11378/src/control/RefundControl.java</file>
-            <file>file:/F:/KULIAH/SEM%204/Pemrograman%20Berorientasi%20Obyek/GD9_A_11378/src/dao/GameDAO.java</file>
-            <file>file:/F:/KULIAH/SEM%204/Pemrograman%20Berorientasi%20Obyek/GD9_A_11378/src/tabel/TableRefund.java</file>
-            <file>file:/F:/KULIAH/SEM%204/Pemrograman%20Berorientasi%20Obyek/GD9_A_11378/src/exception/UangKurangException.java</file>
-            <file>file:/F:/KULIAH/SEM%204/Pemrograman%20Berorientasi%20Obyek/GD9_A_11378/src/view/IHeader.java</file>
-            <file>file:/F:/KULIAH/SEM%204/Pemrograman%20Berorientasi%20Obyek/GD9_A_11378/src/control/GameControl.java</file>
-            <file>file:/F:/KULIAH/SEM%204/Pemrograman%20Berorientasi%20Obyek/GD9_A_11378/src/control/PembelianControl.java</file>
-            <file>file:/F:/KULIAH/SEM%204/Pemrograman%20Berorientasi%20Obyek/GD9_A_11378/src/view/LoginView.java</file>
-            <file>file:/F:/KULIAH/SEM%204/Pemrograman%20Berorientasi%20Obyek/GD9_A_11378/src/view/HomeView.java</file>
-            <file>file:/F:/KULIAH/SEM%204/Pemrograman%20Berorientasi%20Obyek/GD9_A_11378/src/view/GameView.java</file>
-            <file>file:/F:/KULIAH/SEM%204/Pemrograman%20Berorientasi%20Obyek/GD9_A_11378/src/dao/UserDAO.java</file>
-            <file>file:/F:/KULIAH/SEM%204/Pemrograman%20Berorientasi%20Obyek/GD9_A_11378/src/view/IGame.java</file>
-            <file>file:/F:/KULIAH/SEM%204/Pemrograman%20Berorientasi%20Obyek/GD9_A_11378/src/view/AkunView.java</file>
-            <file>file:/F:/KULIAH/SEM%204/Pemrograman%20Berorientasi%20Obyek/GD9_A_11378/src/model/Pembelian.java</file>
-            <file>file:/F:/KULIAH/SEM%204/Pemrograman%20Berorientasi%20Obyek/GD9_A_11378/src/tabel/TableGame.java</file>
-            <file>file:/F:/KULIAH/SEM%204/Pemrograman%20Berorientasi%20Obyek/GD9_A_11378/src/model/User.java</file>
-            <file>file:/F:/KULIAH/SEM%204/Pemrograman%20Berorientasi%20Obyek/GD9_A_11378/src/model/Refund.java</file>
-            <file>file:/F:/KULIAH/SEM%204/Pemrograman%20Berorientasi%20Obyek/GD9_A_11378/src/dao/RefundDAO.java</file>
-            <file>file:/F:/KULIAH/SEM%204/Pemrograman%20Berorientasi%20Obyek/GD9_A_11378/src/view/LibaryView.java</file>
-            <file>file:/F:/KULIAH/SEM%204/Pemrograman%20Berorientasi%20Obyek/GD9_A_11378/src/view/SignUpView.java</file>
+            <file>file:/F:/KULIAH/SEM%204/Pemrograman%20Berorientasi%20Obyek/GAME%20MARKET/src/view/LoginView.java</file>
         </group>
     </open-files>
 </project-private>

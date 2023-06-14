@@ -1,16 +1,11 @@
 package view;
 
-// Nama : Vincentius Kenton
 
 import control.UserControl;
 import java.util.List;
 import javax.swing.JOptionPane;
 import model.User;
 
-// NPM : 210711307
-
-// Nama : Alfa Nada Yulaswara
-// NPM : 210711378
 
 
 /**

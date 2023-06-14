@@ -675,7 +675,10 @@ public class RefundView extends javax.swing.JFrame implements IHeader, IGame{
     }
 
     private String getGamePriceAsString() {
-        return "" + game.getPrice() + "";
+        if (game.getPrice() == 0) {
+            return  "FREE !";
+        }
+        return "Rp. " + game.getPrice() + "";
     }
 
     private String intToString(int i) {

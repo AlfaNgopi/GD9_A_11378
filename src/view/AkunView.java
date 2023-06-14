@@ -471,13 +471,15 @@ public class AkunView extends javax.swing.JFrame implements IHeader{
     }//GEN-LAST:event_inputNameActionPerformed
 
     private void btnTopUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTopUpActionPerformed
-        
-        user.setWallet(user.getWallet() + Integer.parseInt(inputTopUp.getText()));
-        
-        UserC.updateDataUser(user);
-        JOptionPane.showConfirmDialog(rootPane, "Berhasil Top Up", "konfirmasi", JOptionPane.DEFAULT_OPTION);
-        initUser();
-        
+        if (!"".equals(inputTopUp.getText())) {
+            user.setWallet(user.getWallet() + Integer.parseInt(inputTopUp.getText()));
+            UserC.updateDataUser(user);
+            JOptionPane.showConfirmDialog(rootPane, "Berhasil Top Up", "konfirmasi", JOptionPane.DEFAULT_OPTION);
+            initUser();
+        }else{
+            JOptionPane.showConfirmDialog(rootPane, "Tidak boleh Kosong !", "konfirmasi", JOptionPane.DEFAULT_OPTION);
+
+        }
     }//GEN-LAST:event_btnTopUpActionPerformed
 
     private void inputUserIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputUserIdActionPerformed
